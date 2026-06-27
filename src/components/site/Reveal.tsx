@@ -33,9 +33,8 @@ export function Reveal({
   }, []);
 
   return (
-    // @ts-expect-error generic element
     <As
-      ref={ref}
+      ref={ref as never}
       className={className}
       style={{
         opacity: shown ? 1 : 0,
