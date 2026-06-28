@@ -1,17 +1,9 @@
+import logoAsset from "@/assets/brand-logo.png.asset.json";
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#home" aria-label="Braso Taste — Início" className={`group inline-flex items-center gap-3 ${className}`}>
-      <span aria-hidden className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-brand-gold/70">
-        <FlameIcon className="h-4 w-4 text-brand-gold" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className="text-[15px] font-semibold tracking-[0.18em] text-brand-navy">
-          BRASO<span className="text-brand-gold">·</span>TASTE
-        </span>
-        <span className="mt-1 text-[9px] tracking-[0.34em] text-muted-foreground">
-          BBQ &amp; GASTRONOMIC
-        </span>
-      </span>
+    <a href="#home" aria-label="Braso Taste — Início" className={`inline-flex items-center ${className}`}>
+      <img src={logoAsset.url} alt="Braso Taste — BBQ & Gastronomic Experience at Home" className="h-12 w-auto md:h-14" />
     </a>
   );
 }
