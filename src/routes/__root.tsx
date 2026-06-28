@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Experiências gastronômicas premium na sua casa, conduzidas pelo Chef Fabio Tortelote. Alta gastronomia, técnica e hospitalidade ao redor da brasa.",
       },
       { name: "author", content: "Braso Taste" },
-      { property: "og:title", content: "Braso Taste — Experiência gastronômica na sua casa" },
+      { property: "og:title", content: "Braso Taste — BBQ & Gastronomic Experience at Home" },
       {
         property: "og:description",
         content:
@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Braso Taste — BBQ & Gastronomic Experience at Home" },
+      { name: "description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
+      { property: "og:description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
+      { name: "twitter:description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2522eedc-6c27-4da4-9651-b257a7b5bc1e/id-preview-5ddcbe21--3241b415-3bbe-4049-adf2-953138ef6644.lovable.app-1782616147780.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2522eedc-6c27-4da4-9651-b257a7b5bc1e/id-preview-5ddcbe21--3241b415-3bbe-4049-adf2-953138ef6644.lovable.app-1782616147780.png" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
