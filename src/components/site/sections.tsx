@@ -587,8 +587,8 @@ export function Footer() {
     <footer className="bg-brand-navy-deep text-brand-cream/80">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
-          <span className="grid h-14 w-14 place-items-center rounded-full border border-brand-gold/60">
-            <IconFlame className="h-6 w-6 text-brand-gold" />
+          <span className="grid h-16 w-16 place-items-center rounded-full border border-brand-gold/60 md:h-20 md:w-20">
+            <IconFlame className="h-8 w-8 text-brand-gold md:h-10 md:w-10" />
           </span>
           <p className="mt-6 font-display text-[13px] tracking-[0.32em] uppercase text-brand-cream">
             Braso<span className="text-brand-gold">·</span>Taste
