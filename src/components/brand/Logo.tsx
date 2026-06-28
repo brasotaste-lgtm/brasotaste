@@ -1,7 +1,7 @@
 import logoAsset from "@/assets/brand-logo.png.asset.json";
 
 export function Logo({ className = "", size = "default" }: { className?: string; size?: "default" | "large" | "xl" }) {
-  const height = size === "xl" ? "h-20 md:h-24" : size === "large" ? "h-16 md:h-20" : "h-14 md:h-16";
+  const height = size === "xl" ? "h-24 md:h-28" : size === "large" ? "h-20 md:h-24" : "h-16 md:h-20";
   return (
     <a href="#home" aria-label="Braso Taste — Início" className={`inline-flex items-center ${className}`}>
       <img
@@ -20,4 +20,5 @@ export function FlameIcon({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
 
