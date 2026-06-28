@@ -174,8 +174,8 @@ export function Experiences() {
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/70 via-brand-navy-deep/10 to-transparent" />
-                  <div className="absolute left-5 top-5 grid h-20 w-20 place-items-center rounded-full bg-brand-cream/95 text-brand-navy shadow-md transition-colors duration-500 group-hover:bg-brand-gold group-hover:text-brand-navy">
-                    <e.Icon className="h-10 w-10" />
+                  <div className="absolute left-5 top-5 grid h-20 w-20 place-items-center rounded-full bg-brand-cream/95 text-brand-navy shadow-md transition-colors duration-500 group-hover:bg-brand-gold group-hover:text-brand-navy md:h-24 md:w-24">
+                    <e.Icon className="h-10 w-10 md:h-12 md:w-12" />
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col px-7 py-7">
