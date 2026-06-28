@@ -40,11 +40,11 @@ export function Header() {
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-500 sm:px-8 ${
-          scrolled ? "py-3" : "py-5"
+          scrolled ? "py-4" : "py-6"
         }`}
       >
         <div className={scrolled ? "text-brand-navy" : "text-white"}>
-          <Logo className={scrolled ? "" : "[&_*]:!text-white"} />
+          <Logo size="large" className={scrolled ? "" : "[&_*]:!text-white"} />
         </div>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -101,20 +101,20 @@ export function Header() {
         aria-hidden={!open}
       >
         <div
-          className={`absolute inset-0 bg-brand-navy-deep/70 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-brand-navy-deep/80 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
           onClick={() => setOpen(false)}
         />
         <aside
-          className={`absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col bg-brand-cream px-7 py-7 shadow-2xl transition-transform duration-500 ${
+          className={`absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col border-l border-border/70 bg-brand-cream px-7 py-7 shadow-2xl transition-transform duration-500 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex items-center justify-between">
-            <Logo />
+            <Logo size="xl" />
             <button
               onClick={() => setOpen(false)}
               aria-label="Fechar menu"
-              className="grid h-10 w-10 place-items-center rounded-full border border-brand-navy/15 text-brand-navy"
+              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/15 text-brand-navy"
             >
               <X className="h-5 w-5" />
             </button>

@@ -1,9 +1,14 @@
 import logoAsset from "@/assets/brand-logo.png.asset.json";
 
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({ className = "", size = "default" }: { className?: string; size?: "default" | "large" | "xl" }) {
+  const height = size === "xl" ? "h-24 md:h-28" : size === "large" ? "h-20 md:h-24" : "h-16 md:h-20";
   return (
     <a href="#home" aria-label="Braso Taste — Início" className={`inline-flex items-center ${className}`}>
-      <img src={logoAsset.url} alt="Braso Taste — BBQ & Gastronomic Experience at Home" className="h-12 w-auto md:h-14" />
+      <img
+        src={logoAsset.url}
+        alt="Braso Taste — BBQ & Gastronomic Experience at Home"
+        className={`w-auto ${height}`}
+      />
     </a>
   );
 }
@@ -15,3 +20,5 @@ export function FlameIcon({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+
