@@ -10,7 +10,7 @@ import selectionAsset from "@/assets/icon-selection.png.asset.json";
 
 type IconProps = { className?: string };
 
-function BrandIcon({ src, alt, className = "h-12 w-12" }: { src: string; alt: string; className?: string }) {
+function BrandIcon({ src, alt, className = "h-16 w-16" }: { src: string; alt: string; className?: string }) {
   return <img src={src} alt={alt} loading="lazy" className={`object-contain ${className}`} />;
 }
 
