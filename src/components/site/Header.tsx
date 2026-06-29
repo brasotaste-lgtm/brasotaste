@@ -52,7 +52,7 @@ export function Header() {
             <a
               key={n.href}
               href={n.href}
-              className={`text-[12px] font-medium tracking-[0.18em] uppercase transition-colors ${
+              className={`text-[14px] font-semibold tracking-[0.20em] uppercase transition-colors ${
                 scrolled
                   ? "text-brand-navy/80 hover:text-brand-gold"
                   : "text-white/85 hover:text-brand-gold"
