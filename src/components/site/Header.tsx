@@ -109,12 +109,12 @@ export function Header() {
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="relative flex items-center justify-center">
             <Logo size="xl" />
             <button
               onClick={() => setOpen(false)}
               aria-label="Fechar menu"
-              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/15 text-brand-navy"
+              className="absolute right-0 grid h-11 w-11 place-items-center rounded-full border border-brand-navy/15 text-brand-navy"
             >
               <X className="h-5 w-5" />
             </button>
