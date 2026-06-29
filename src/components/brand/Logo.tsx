@@ -1,7 +1,7 @@
 import logoAsset from "@/assets/brand-logo.png.asset.json";
 
 export function Logo({ className = "", size = "default" }: { className?: string; size?: "default" | "large" | "xl" }) {
-  const height = size === "xl" ? "h-36 md:h-52" : size === "large" ? "h-32 md:h-44" : "h-28 md:h-36";
+  const height = size === "xl" ? "h-52 md:h-52" : size === "large" ? "h-32 md:h-44" : "h-28 md:h-36";
   return (
     <a href="#home" aria-label="Braso Taste — Início" className={`inline-flex items-center ${className}`}>
       <img
