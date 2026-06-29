@@ -40,7 +40,7 @@ export function Header() {
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-500 sm:px-8 ${
-          scrolled ? "py-4" : "py-6"
+          scrolled ? "py-5" : "py-8"
         }`}
       >
         <div className={scrolled ? "text-brand-navy" : "text-white"}>
