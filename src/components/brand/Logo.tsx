@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/brand-logo.png.asset.json";
+import logoAsset from "@/assets/brand-logo.svg.asset.json";
 
 export function Logo({ className = "", size = "default" }: { className?: string; size?: "default" | "large" | "xl" }) {
   const height = size === "xl" ? "h-52 md:h-52" : size === "large" ? "h-32 md:h-44" : "h-28 md:h-36";
