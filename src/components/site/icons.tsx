@@ -15,11 +15,11 @@ function BrandIcon({ src, alt, className = "h-16 w-16" }: { src: string; alt: st
 }
 
 export function IconSelection({ className }: IconProps) {
-  return <BrandIcon src={celebrationAsset.url} alt="Selection" className={className} />;
+  return <BrandIcon src={selectionAsset.url} alt="Selection" className={className} />;
 }
 
 export function IconCelebration({ className }: IconProps) {
-  return <BrandIcon src={selectionAsset.url} alt="Celebration" className={className} />;
+  return <BrandIcon src={celebrationAsset.url} alt="Celebration" className={className} />;
 }
 
 export function IconPersonal({ className }: IconProps) {
