@@ -15,6 +15,7 @@ import {
 
 import { Smoke } from "./Smoke";
 import { Reveal } from "./Reveal";
+import { Logo } from "@/components/brand/Logo";
 import {
   IconAnatomy,
   IconBrunch,
