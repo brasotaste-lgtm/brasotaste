@@ -174,17 +174,17 @@ export function Experiences() {
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/70 via-brand-navy-deep/10 to-transparent" />
-                  <div className="absolute left-5 top-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
-                    <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
-                  </div>
                 </div>
                 <div className="flex flex-1 flex-col px-7 py-7">
-                  <p className="text-[10px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
-                  <h3 className="mt-3 font-display text-xl font-medium text-brand-navy">{e.title}</h3>
-                  <p className="mt-3 flex-1 text-[14px] leading-relaxed text-muted-foreground">{e.text}</p>
+                  <div className="mx-auto mb-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
+                    <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
+                  </div>
+                  <p className="text-center text-[10px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
+                  <h3 className="mt-3 text-center font-display text-xl font-medium text-brand-navy">{e.title}</h3>
+                  <p className="mt-3 flex-1 text-center text-[14px] leading-relaxed text-muted-foreground">{e.text}</p>
                   <a
                     href="#contato"
-                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
+                    className="mt-6 inline-flex items-center justify-center gap-2 text-[11px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
                   >
                     Saiba mais
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
