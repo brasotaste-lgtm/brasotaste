@@ -52,7 +52,7 @@ export function Header() {
             <a
               key={n.href}
               href={n.href}
-              className={`text-[14px] font-semibold tracking-[0.20em] uppercase transition-colors ${
+              className={`text-[22px] font-semibold tracking-[0.20em] uppercase transition-colors ${
                 scrolled
                   ? "text-brand-navy/80 hover:text-brand-gold"
                   : "text-white/85 hover:text-brand-gold"
@@ -79,7 +79,7 @@ export function Header() {
           </a>
           <a
             href="#contato"
-            className="hidden rounded-sm bg-brand-gold px-5 py-3 text-[11px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] md:inline-flex"
+            className="hidden rounded-sm bg-brand-gold px-5 py-3 text-[18px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] md:inline-flex"
           >
             Solicitar orçamento
           </a>
@@ -136,7 +136,7 @@ export function Header() {
           <a
             href="#contato"
             onClick={() => setOpen(false)}
-            className="mt-auto inline-flex w-full items-center justify-center rounded-sm bg-brand-gold py-4 text-[11px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
+            className="mt-auto inline-flex w-full items-center justify-center rounded-sm bg-brand-gold py-4 text-[18px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
           >
             Solicitar orçamento
           </a>
@@ -144,7 +144,7 @@ export function Header() {
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-sm border border-brand-navy/20 py-4 text-[11px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-sm border border-brand-navy/20 py-4 text-[18px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
