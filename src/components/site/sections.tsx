@@ -61,11 +61,14 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
         <div className="max-w-3xl animate-fade-up">
           <p className="eyebrow !text-brand-gold">BBQ &amp; Gastronomic Experience</p>
-          <div className="mt-6 flex flex-wrap items-center gap-6">
+          <div className="relative mt-6 inline-block">
             <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
               Sabor <span className="italic font-normal text-brand-gold">Braso</span>
             </h1>
-            <Logo size="xl" className="[&_img]:!h-40 md:[&_img]:!h-56 lg:[&_img]:!h-64" />
+            <Logo
+              size="xl"
+              className="pointer-events-none absolute left-full top-1/2 ml-4 -translate-y-1/2 [&_img]:!h-40 md:[&_img]:!h-56 lg:[&_img]:!h-64"
+            />
           </div>
           <span className="mt-7 inline-block h-px w-16 bg-brand-gold" />
           <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
