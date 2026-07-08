@@ -162,7 +162,7 @@ export function Experiences() {
             <span className="italic text-brand-gold">a mesa Braso</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <p className="mt-6 max-w-xl text-[24px] leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-[24px] leading-relaxed text-muted-foreground text-justify">
             Cada formato é desenhado com técnica de alta gastronomia e o calor do encontro.
             Escolha o que combina com o seu momento — nós cuidamos de cada detalhe.
           </p>
@@ -189,7 +189,7 @@ export function Experiences() {
                   </div>
                   <p className="text-center text-[16px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
                   <h3 className="mt-3 text-center font-display text-xl font-medium text-brand-navy">{e.title}</h3>
-                  <p className="mt-3 flex-1 text-center text-[22px] leading-relaxed text-muted-foreground">{e.text}</p>
+                  <p className="mt-3 flex-1 text-justify text-[22px] leading-relaxed text-muted-foreground">{e.text}</p>
                   <a
                     href="#contato"
                     className="mt-6 inline-flex items-center justify-center gap-2 text-[18px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
@@ -220,7 +220,7 @@ export function About() {
             <span className="italic text-brand-gold">memórias gastronômicas</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-muted-foreground">
+          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-muted-foreground text-justify">
             <p>
               A Braso Taste nasce do encontro entre técnica de alta gastronomia, o calor da brasa e o
               cuidado de receber bem. Levamos ao seu espaço uma operação completa — chef, equipe,
@@ -293,7 +293,7 @@ export function Chef() {
             Chef <span className="italic text-brand-gold">Fabio Tortelote</span>
           </h2>
           <span className="gold-divider mt-6" />
-          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-brand-cream/85">
+          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-brand-cream/85 text-justify">
             <p>
               Trajetória construída entre brasas, cozinhas autorais e o estudo dos cortes. Fabio
               une técnica clássica, criatividade contemporânea e a obsessão pelo ponto certo do fogo.
@@ -411,7 +411,7 @@ export function Testimonials() {
             <Reveal key={t.name} delay={i * 100}>
               <figure className="flex h-full flex-col rounded-sm border border-border/70 bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
                 <Quote className="h-6 w-6 text-brand-gold" />
-                <blockquote className="mt-5 flex-1 text-[24px] leading-relaxed text-foreground/85" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
+                <blockquote className="mt-5 flex-1 text-[24px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
                 <div className="mt-8 flex items-center gap-1 text-brand-gold">
                   {Array.from({ length: 5 }).map((_, k) => (
                     <Star key={k} className="h-3.5 w-3.5 fill-current" />
@@ -474,7 +474,7 @@ export function Contact() {
             <span className="italic text-brand-gold">experiência</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <p className="mt-7 max-w-md text-[24px] leading-relaxed text-brand-cream/85">
+          <p className="mt-7 max-w-md text-[24px] leading-relaxed text-brand-cream/85 text-justify">
             Conte-nos sobre o seu evento. Em até 24 horas retornaremos com uma proposta personalizada.
           </p>
 
