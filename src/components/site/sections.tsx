@@ -597,10 +597,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
           <Logo size="large" />
-          <p className="mt-5 text-[11px] tracking-[0.24em] uppercase text-brand-cream/50">
-            BBQ &amp; Gastronomic Experience at Home
-          </p>
         </div>
+
 
         <div className="mt-12 grid gap-8 border-t border-white/10 pt-12 text-[13px] sm:grid-cols-2 md:grid-cols-4">
           <div>
