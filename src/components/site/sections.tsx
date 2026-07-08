@@ -59,17 +59,21 @@ export function Hero() {
       <Smoke />
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
-        <div className="max-w-2xl animate-fade-up">
+        <div className="max-w-3xl animate-fade-up">
           <p className="eyebrow !text-brand-gold">BBQ &amp; Gastronomic Experience</p>
-          <h1 className="mt-6 font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
-            Sabor <span className="italic font-normal text-brand-gold">Braso</span>
-          </h1>
+          <div className="mt-6 flex flex-wrap items-center gap-6">
+            <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
+              Sabor <span className="italic font-normal text-brand-gold">Braso</span>
+            </h1>
+            <Logo size="xl" className="[&_img]:!h-40 md:[&_img]:!h-56 lg:[&_img]:!h-64" />
+          </div>
           <span className="mt-7 inline-block h-px w-16 bg-brand-gold" />
           <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
             Técnica, fogo e hospitalidade conduzidos pelo Chef Fabio Tortelote.
           </p>
+
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
