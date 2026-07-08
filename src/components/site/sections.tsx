@@ -59,17 +59,21 @@ export function Hero() {
       <Smoke />
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
-        <div className="max-w-2xl animate-fade-up">
+        <div className="max-w-3xl animate-fade-up">
           <p className="eyebrow !text-brand-gold">BBQ &amp; Gastronomic Experience</p>
-          <h1 className="mt-6 font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
-            Sabor <span className="italic font-normal text-brand-gold">Braso</span>
-          </h1>
+          <div className="mt-6 flex flex-wrap items-center gap-6">
+            <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
+              Sabor <span className="italic font-normal text-brand-gold">Braso</span>
+            </h1>
+            <Logo size="xl" className="[&_img]:!h-40 md:[&_img]:!h-56 lg:[&_img]:!h-64" />
+          </div>
           <span className="mt-7 inline-block h-px w-16 bg-brand-gold" />
           <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
             Técnica, fogo e hospitalidade conduzidos pelo Chef Fabio Tortelote.
           </p>
+
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
@@ -225,18 +229,22 @@ export function About() {
             </p>
           </div>
 
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border/70 pt-8">
+          <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-border/70 pt-8 sm:grid-cols-3">
             {[
-              { k: "+12", v: "anos de cozinha" },
-              { k: "+500", v: "eventos realizados" },
+              { k: "+10", v: "cidades atendidas", sub: "Grande RJ, Serrana à Região dos Lagos" },
+              { k: "100%", v: "eventos personalizados" },
               { k: "100%", v: "feito no seu espaço" },
             ].map((s) => (
               <div key={s.v}>
                 <dt className="font-display text-3xl font-light text-brand-navy">{s.k}</dt>
                 <dd className="mt-2 text-[11px] tracking-[0.18em] uppercase text-muted-foreground">{s.v}</dd>
+                {s.sub && (
+                  <dd className="mt-1 text-[11px] leading-snug text-muted-foreground/80">{s.sub}</dd>
+                )}
               </div>
             ))}
           </dl>
+
         </Reveal>
 
         <Reveal delay={120} className="order-1 lg:order-2">
@@ -589,10 +597,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
           <Logo size="large" />
-          <p className="mt-5 text-[11px] tracking-[0.24em] uppercase text-brand-cream/50">
-            BBQ &amp; Gastronomic Experience at Home
-          </p>
         </div>
+
 
         <div className="mt-12 grid gap-8 border-t border-white/10 pt-12 text-[13px] sm:grid-cols-2 md:grid-cols-4">
           <div>

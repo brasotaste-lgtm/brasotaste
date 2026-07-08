@@ -43,9 +43,9 @@ export function Header() {
           scrolled ? "py-5" : "py-8"
         }`}
       >
-        <div className={scrolled ? "text-brand-navy" : "text-white"}>
-          <Logo size="large" className={scrolled ? "" : "[&_*]:!text-white"} />
-        </div>
+        <div />
+
+
 
         <nav className="hidden items-center gap-8 lg:flex">
           {NAV.map((n) => (
