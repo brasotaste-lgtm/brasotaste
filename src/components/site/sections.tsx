@@ -229,18 +229,22 @@ export function About() {
             </p>
           </div>
 
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border/70 pt-8">
+          <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-border/70 pt-8 sm:grid-cols-3">
             {[
-              { k: "+12", v: "anos de cozinha" },
-              { k: "+500", v: "eventos realizados" },
+              { k: "+10", v: "cidades atendidas", sub: "Grande RJ, Serrana à Região dos Lagos" },
+              { k: "100%", v: "eventos personalizados" },
               { k: "100%", v: "feito no seu espaço" },
             ].map((s) => (
               <div key={s.v}>
                 <dt className="font-display text-3xl font-light text-brand-navy">{s.k}</dt>
                 <dd className="mt-2 text-[11px] tracking-[0.18em] uppercase text-muted-foreground">{s.v}</dd>
+                {s.sub && (
+                  <dd className="mt-1 text-[11px] leading-snug text-muted-foreground/80">{s.sub}</dd>
+                )}
               </div>
             ))}
           </dl>
+
         </Reveal>
 
         <Reveal delay={120} className="order-1 lg:order-2">
