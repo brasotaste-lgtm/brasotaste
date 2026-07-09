@@ -69,7 +69,7 @@ export function Hero() {
               className="pointer-events-none hidden md:inline-flex [&_img]:!h-24 lg:[&_img]:!h-32"
             />
           </div>
-          <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
+          <p className="mt-6 max-w-lg text-[14px] font-light leading-relaxed text-white/85 sm:text-[16px]">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
             Técnica, fogo e hospitalidade conduzidos pelo Chef Fabio Tortelote.
