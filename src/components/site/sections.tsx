@@ -58,17 +58,16 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/85" />
       <Smoke />
 
+      <Logo
+        size="xl"
+        className="pointer-events-none absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-16 [&_img]:!h-72 lg:[&_img]:!h-[26rem]"
+      />
+
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
         <div className="max-w-3xl animate-fade-up">
-          <div className="relative inline-flex items-center gap-4">
-            <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
-              Sabor <span className="italic font-normal text-brand-gold">Braso</span>
-            </h1>
-            <Logo
-              size="default"
-              className="pointer-events-none hidden md:inline-flex [&_img]:!h-24 lg:[&_img]:!h-32"
-            />
-          </div>
+          <h1 className="font-display text-[56px] font-light leading-[1.02] tracking-tight sm:text-7xl md:text-8xl lg:text-[112px]">
+            Sabor <span className="italic font-normal text-brand-gold">Braso</span>
+          </h1>
           <p className="mt-6 max-w-lg text-[14px] font-light leading-relaxed text-white/85 sm:text-[16px]">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
