@@ -79,14 +79,14 @@ export function Hero() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
               href="#contato"
-              className="group inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[18px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
             >
               Solicitar orçamento
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#experiencias"
-              className="inline-flex items-center justify-center rounded-sm border border-white/40 bg-white/5 px-7 py-4 text-[18px] font-semibold tracking-[0.24em] uppercase text-white backdrop-blur-sm transition-colors hover:border-brand-gold hover:text-brand-gold"
+              className="inline-flex items-center justify-center rounded-sm border border-white/40 bg-white/5 px-7 py-4 text-[14px] font-semibold tracking-[0.24em] uppercase text-white backdrop-blur-sm transition-colors hover:border-brand-gold hover:text-brand-gold"
             >
               Conhecer experiências
             </a>
@@ -94,7 +94,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 text-center text-[16px] tracking-[0.4em] text-white/60 md:block">
+      <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 text-center text-[12px] tracking-[0.4em] text-white/60 md:block">
         <span className="block">SCROLL</span>
         <span className="mx-auto mt-2 block h-10 w-px bg-white/40" />
       </div>
@@ -160,7 +160,7 @@ export function Experiences() {
             <span className="italic text-brand-gold">a mesa Braso</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <p className="mt-6 max-w-xl text-[24px] leading-relaxed text-muted-foreground text-justify">
+          <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-muted-foreground text-justify">
             Cada formato é desenhado com técnica de alta gastronomia e o calor do encontro.
             Escolha o que combina com o seu momento — nós cuidamos de cada detalhe.
           </p>
@@ -185,12 +185,12 @@ export function Experiences() {
                   <div className="mx-auto mb-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
                     <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
                   </div>
-                  <p className="text-center text-[16px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
+                  <p className="text-center text-[12px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
                   <h3 className="mt-3 text-center font-display text-xl font-medium text-brand-navy">{e.title}</h3>
-                  <p className="mt-3 flex-1 text-justify text-[22px] leading-relaxed text-muted-foreground">{e.text}</p>
+                  <p className="mt-3 flex-1 text-justify text-[16px] leading-relaxed text-muted-foreground">{e.text}</p>
                   <a
                     href="#contato"
-                    className="mt-6 inline-flex items-center justify-center gap-2 text-[18px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
+                    className="mt-6 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
                   >
                     Saiba mais
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -218,7 +218,7 @@ export function About() {
             <span className="italic text-brand-gold">memórias gastronômicas</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-muted-foreground text-justify">
+          <div className="mt-7 space-y-5 text-[18px] leading-relaxed text-muted-foreground text-justify">
             <p>
               A Braso Taste nasce do encontro entre técnica de alta gastronomia, o calor da brasa e o
               cuidado de receber bem. Levamos ao seu espaço uma operação completa — chef, equipe,
@@ -238,9 +238,9 @@ export function About() {
             ].map((s) => (
               <div key={s.v}>
                 <dt className="font-display text-3xl font-light text-brand-navy">{s.k}</dt>
-                <dd className="mt-2 text-[18px] tracking-[0.18em] uppercase text-muted-foreground">{s.v}</dd>
+                <dd className="mt-2 text-[14px] tracking-[0.18em] uppercase text-muted-foreground">{s.v}</dd>
                 {s.sub && (
-                  <dd className="mt-1 text-[18px] leading-snug text-muted-foreground/80">{s.sub}</dd>
+                  <dd className="mt-1 text-[14px] leading-snug text-muted-foreground/80">{s.sub}</dd>
                 )}
               </div>
             ))}
@@ -291,7 +291,7 @@ export function Chef() {
             Chef <span className="italic text-brand-gold">Fabio Tortelote</span>
           </h2>
           <span className="gold-divider mt-6" />
-          <div className="mt-7 space-y-5 text-[24px] leading-relaxed text-brand-cream/85 text-justify">
+          <div className="mt-7 space-y-5 text-[18px] leading-relaxed text-brand-cream/85 text-justify">
             <p>
               Trajetória construída entre brasas, cozinhas autorais e o estudo dos cortes. Fabio
               une técnica clássica, criatividade contemporânea e a obsessão pelo ponto certo do fogo.
@@ -310,7 +310,7 @@ export function Chef() {
             ].map((b) => (
               <li key={b.t} className="flex items-center gap-3 border-l border-brand-gold/40 pl-4">
                 <b.Icon className="h-5 w-5 text-brand-gold" />
-                <span className="text-[19px] tracking-[0.2em] uppercase">{b.t}</span>
+                <span className="text-[14px] tracking-[0.2em] uppercase">{b.t}</span>
               </li>
             ))}
           </ul>
@@ -346,7 +346,7 @@ export function Gallery() {
             href="https://instagram.com/brasotaste"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[18px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
+            className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
           >
             <Instagram className="h-4 w-4" />
             @brasotaste
@@ -409,7 +409,7 @@ export function Testimonials() {
             <Reveal key={t.name} delay={i * 100}>
               <figure className="flex h-full flex-col rounded-sm border border-border/70 bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
                 <Quote className="h-6 w-6 text-brand-gold" />
-                <blockquote className="mt-5 flex-1 text-[24px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
+                <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
                 <div className="mt-8 flex items-center gap-1 text-brand-gold">
                   {Array.from({ length: 5 }).map((_, k) => (
                     <Star key={k} className="h-3.5 w-3.5 fill-current" />
@@ -417,7 +417,7 @@ export function Testimonials() {
                 </div>
                 <figcaption className="mt-4 border-t border-border pt-4">
                   <div className="font-display text-base font-medium text-brand-navy" dangerouslySetInnerHTML={{ __html: t.name }} />
-                  <div className="mt-1 text-[18px] tracking-[0.18em] uppercase text-muted-foreground">{t.role}</div>
+                  <div className="mt-1 text-[14px] tracking-[0.18em] uppercase text-muted-foreground">{t.role}</div>
                 </figcaption>
               </figure>
             </Reveal>
@@ -459,7 +459,7 @@ export function Contact() {
   }
 
   const input =
-    "h-12 w-full rounded-sm border border-border bg-card px-4 text-[22px] text-foreground placeholder:text-muted-foreground/60 transition-all focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/30";
+    "h-12 w-full rounded-sm border border-border bg-card px-4 text-[16px] text-foreground placeholder:text-muted-foreground/60 transition-all focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/30";
 
   return (
     <section id="contato" className="relative bg-brand-navy text-brand-cream py-24 sm:py-32">
@@ -472,11 +472,11 @@ export function Contact() {
             <span className="italic text-brand-gold">experiência</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <p className="mt-7 max-w-md text-[24px] leading-relaxed text-brand-cream/85 text-justify">
+          <p className="mt-7 max-w-md text-[18px] leading-relaxed text-brand-cream/85 text-justify">
             Conte-nos sobre o seu evento. Em até 24 horas retornaremos com uma proposta personalizada.
           </p>
 
-          <ul className="mt-10 space-y-5 text-[22px]">
+          <ul className="mt-10 space-y-5 text-[16px]">
             <li className="flex items-center gap-4">
               <span className="grid h-10 w-10 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
                 <Phone className="h-4 w-4" />
@@ -560,7 +560,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-brand-gold py-4 text-[18px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] disabled:opacity-60"
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-brand-gold py-4 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] disabled:opacity-60"
             >
               {loading ? "Enviando…" : "Solicitar orçamento"}
               <ArrowRight className="h-4 w-4" />
@@ -583,7 +583,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-2 block text-[16px] font-medium tracking-[0.22em] uppercase text-brand-cream/70">
+      <span className="mb-2 block text-[12px] font-medium tracking-[0.22em] uppercase text-brand-cream/70">
         {label}
       </span>
       {children}
@@ -601,7 +601,7 @@ export function Footer() {
         </div>
 
 
-        <div className="mt-12 grid gap-8 border-t border-white/10 pt-12 text-[21px] sm:grid-cols-2 md:grid-cols-4">
+        <div className="mt-12 grid gap-8 border-t border-white/10 pt-12 text-[16px] sm:grid-cols-2 md:grid-cols-4">
           <div>
             <p className="eyebrow">WhatsApp</p>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 hover:text-brand-gold">
@@ -626,7 +626,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-[18px] tracking-[0.18em] uppercase text-brand-cream/40 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-[14px] tracking-[0.18em] uppercase text-brand-cream/40 sm:flex-row">
           <p>© {new Date().getFullYear()} Braso Taste. Todos os direitos reservados.</p>
           <p>Conduzido pelo Chef Fabio Tortelote</p>
         </div>
