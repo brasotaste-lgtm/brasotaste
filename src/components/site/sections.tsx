@@ -65,10 +65,10 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
         <div className="max-w-3xl animate-fade-up">
-          <h1 className="font-display text-[56px] font-light leading-[1.02] tracking-tight sm:text-7xl md:text-8xl lg:text-[112px]">
+          <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
             Sabor <span className="italic font-normal text-brand-gold">Braso</span>
           </h1>
-          <p className="mt-6 max-w-lg text-[14px] font-light leading-relaxed text-white/85 sm:text-[16px]">
+          <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
             Técnica, fogo e hospitalidade conduzidos pelo Chef Fabio Tortelote.
