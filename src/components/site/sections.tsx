@@ -59,9 +59,10 @@ export function Hero() {
       <Smoke />
 
       <Logo
-        size="xl"
-        className="pointer-events-none absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-16 [&_img]:!h-72 lg:[&_img]:!h-[26rem]"
+        size="default"
+        className="pointer-events-none absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-16 [&_img]:!h-[150px] lg:[&_img]:!h-[150px]"
       />
+
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
         <div className="max-w-3xl animate-fade-up">
