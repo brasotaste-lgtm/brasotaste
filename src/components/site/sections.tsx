@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Award,
@@ -16,25 +17,12 @@ import {
 import { Smoke } from "./Smoke";
 import { Reveal } from "./Reveal";
 import { Logo } from "@/components/brand/Logo";
-import {
-  IconAnatomy,
-  IconBrunch,
-  IconBurger,
-  IconCelebration,
-  IconFlame,
-  IconPersonal,
-  IconSelection,
-} from "./icons";
+import { IconFlame } from "./icons";
+import { EXPERIENCES } from "@/data/experiences";
 
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
-import expSelection from "@/assets/exp-selection.jpg";
-import expCelebration from "@/assets/exp-celebration.jpg";
-import expPersonal from "@/assets/exp-personal.jpg";
-import expAnatomy from "@/assets/exp-anatomy.jpg";
-import expBrunch from "@/assets/exp-brunch.jpg";
-import expBurger from "@/assets/exp-burger.jpg";
 import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
@@ -60,8 +48,9 @@ export function Hero() {
 
       <Logo
         size="default"
-        className="pointer-events-none absolute right-[6%] top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
+        className="pointer-events-none absolute right-[6%] top-[38%] z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
+
 
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
@@ -103,51 +92,6 @@ export function Hero() {
 }
 
 /* ---------- EXPERIENCES ---------- */
-const EXPERIENCES = [
-  {
-    Icon: IconSelection,
-    img: expSelection,
-    title: "Braso Taste Selection",
-    sub: "Alta gastronomia na brasa",
-    text: "Cortes premium selecionados, harmonizações exclusivas e o tempo certo do fogo conduzido pelo chef.",
-  },
-  {
-    Icon: IconCelebration,
-    img: expCelebration,
-    title: "Braso Celebration",
-    sub: "Eventos &amp; celebrações",
-    text: "Menus completos para grupos, com serviço dedicado para transformar datas especiais em memória.",
-  },
-  {
-    Icon: IconPersonal,
-    img: expPersonal,
-    title: "Braso Personal Taste",
-    sub: "Experiência totalmente sua",
-    text: "Menu desenhado junto ao cliente, com ingredientes escolhidos a quatro mãos com o chef.",
-  },
-  {
-    Icon: IconAnatomy,
-    img: expAnatomy,
-    title: "Da Anatomia à Brasa",
-    sub: "Workshop &amp; degustação",
-    text: "Desossa ao vivo, técnica de cortes e degustação guiada — uma imersão no universo do fogo.",
-  },
-  {
-    Icon: IconBrunch,
-    img: expBrunch,
-    title: "Brunch Braso Taste",
-    sub: "Eventos diurnos",
-    text: "Mesas sofisticadas para reunir família e amigos sob a luz do dia, com um menu leve e autoral.",
-  },
-  {
-    Icon: IconBurger,
-    img: expBurger,
-    title: "Braso House Burger",
-    sub: "Estação ao vivo",
-    text: "Hambúrgueres artesanais preparados ao vivo, com pães, blends e finalizações da casa.",
-  },
-];
-
 export function Experiences() {
   return (
     <section id="experiencias" className="relative bg-background py-14 sm:py-20">
@@ -185,16 +129,17 @@ export function Experiences() {
                   <div className="mx-auto mb-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
                     <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
                   </div>
-                  <p className="text-center text-[12px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
+                  <p className="text-center text-[12px] tracking-[0.28em] uppercase text-brand-gold">{e.sub}</p>
                   <h3 className="mt-3 text-center font-display text-xl font-medium text-brand-navy">{e.title}</h3>
                   <p className="mt-3 flex-1 text-justify text-[16px] leading-relaxed text-muted-foreground">{e.text}</p>
-                  <a
-                    href="#contato"
+                  <Link
+                    to="/experiencias/$slug"
+                    params={{ slug: e.slug }}
                     className="mt-6 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
                   >
                     Saiba mais
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             </Reveal>
@@ -204,6 +149,7 @@ export function Experiences() {
     </section>
   );
 }
+
 
 /* ---------- ABOUT ---------- */
 export function About() {
