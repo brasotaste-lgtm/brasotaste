@@ -5,7 +5,7 @@ import { Header } from "@/components/site/Header";
 import { FloatingWhatsApp, Footer } from "@/components/site/sections";
 import { Reveal } from "@/components/site/Reveal";
 import { Toaster } from "@/components/ui/sonner";
-import { EXPERIENCES, getExperienceBySlug } from "@/data/experiences";
+import { EXPERIENCES, getExperienceBySlug, type Experience } from "@/data/experiences";
 
 const WHATSAPP =
   "https://wa.me/5521974064098?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20Braso%20Taste";
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/experiencias/$slug")({
 });
 
 function ExperienceDetail() {
-  const { exp } = Route.useLoaderData();
+  const { exp } = Route.useLoaderData() as { exp: Experience };
   const others = EXPERIENCES.filter((e) => e.slug !== exp.slug).slice(0, 3);
 
   return (
