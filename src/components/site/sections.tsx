@@ -60,7 +60,7 @@ export function Hero() {
 
       <Logo
         size="default"
-        className="pointer-events-none absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-16 [&_img]:!h-[150px] lg:[&_img]:!h-[150px]"
+        className="pointer-events-none absolute right-[6%] top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
 
 
