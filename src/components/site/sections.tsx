@@ -91,51 +91,6 @@ export function Hero() {
 }
 
 /* ---------- EXPERIENCES ---------- */
-const EXPERIENCES = [
-  {
-    Icon: IconSelection,
-    img: expSelection,
-    title: "Braso Taste Selection",
-    sub: "Alta gastronomia na brasa",
-    text: "Cortes premium selecionados, harmonizações exclusivas e o tempo certo do fogo conduzido pelo chef.",
-  },
-  {
-    Icon: IconCelebration,
-    img: expCelebration,
-    title: "Braso Celebration",
-    sub: "Eventos &amp; celebrações",
-    text: "Menus completos para grupos, com serviço dedicado para transformar datas especiais em memória.",
-  },
-  {
-    Icon: IconPersonal,
-    img: expPersonal,
-    title: "Braso Personal Taste",
-    sub: "Experiência totalmente sua",
-    text: "Menu desenhado junto ao cliente, com ingredientes escolhidos a quatro mãos com o chef.",
-  },
-  {
-    Icon: IconAnatomy,
-    img: expAnatomy,
-    title: "Da Anatomia à Brasa",
-    sub: "Workshop &amp; degustação",
-    text: "Desossa ao vivo, técnica de cortes e degustação guiada — uma imersão no universo do fogo.",
-  },
-  {
-    Icon: IconBrunch,
-    img: expBrunch,
-    title: "Brunch Braso Taste",
-    sub: "Eventos diurnos",
-    text: "Mesas sofisticadas para reunir família e amigos sob a luz do dia, com um menu leve e autoral.",
-  },
-  {
-    Icon: IconBurger,
-    img: expBurger,
-    title: "Braso House Burger",
-    sub: "Estação ao vivo",
-    text: "Hambúrgueres artesanais preparados ao vivo, com pães, blends e finalizações da casa.",
-  },
-];
-
 export function Experiences() {
   return (
     <section id="experiencias" className="relative bg-background py-14 sm:py-20">
@@ -173,16 +128,17 @@ export function Experiences() {
                   <div className="mx-auto mb-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
                     <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
                   </div>
-                  <p className="text-center text-[12px] tracking-[0.28em] uppercase text-brand-gold" dangerouslySetInnerHTML={{ __html: e.sub }} />
+                  <p className="text-center text-[12px] tracking-[0.28em] uppercase text-brand-gold">{e.sub}</p>
                   <h3 className="mt-3 text-center font-display text-xl font-medium text-brand-navy">{e.title}</h3>
                   <p className="mt-3 flex-1 text-justify text-[16px] leading-relaxed text-muted-foreground">{e.text}</p>
-                  <a
-                    href="#contato"
+                  <Link
+                    to="/experiencias/$slug"
+                    params={{ slug: e.slug }}
                     className="mt-6 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
                   >
                     Saiba mais
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             </Reveal>
@@ -192,6 +148,7 @@ export function Experiences() {
     </section>
   );
 }
+
 
 /* ---------- ABOUT ---------- */
 export function About() {
