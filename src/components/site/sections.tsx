@@ -150,7 +150,7 @@ const EXPERIENCES = [
 
 export function Experiences() {
   return (
-    <section id="experiencias" className="relative bg-background py-24 sm:py-32">
+    <section id="experiencias" className="relative bg-background py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">As experiências</p>
@@ -208,7 +208,7 @@ export function Experiences() {
 /* ---------- ABOUT ---------- */
 export function About() {
   return (
-    <section id="sobre" className="relative overflow-hidden bg-brand-cream-deep py-24 sm:py-32">
+    <section id="sobre" className="relative overflow-hidden bg-brand-cream-deep py-14 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal className="order-2 lg:order-1">
           <p className="eyebrow">Sobre a Braso Taste</p>
@@ -269,7 +269,7 @@ export function About() {
 /* ---------- CHEF ---------- */
 export function Chef() {
   return (
-    <section id="chef" className="relative bg-brand-navy text-brand-cream py-24 sm:py-32">
+    <section id="chef" className="relative bg-brand-navy text-brand-cream py-14 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
         <Reveal className="lg:col-span-5">
           <div className="relative mx-auto max-w-md">
@@ -332,7 +332,7 @@ const GALLERY = [
 
 export function Gallery() {
   return (
-    <section id="galeria" className="bg-background py-24 sm:py-32">
+    <section id="galeria" className="bg-background py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-xl">
@@ -394,7 +394,7 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section id="depoimentos" className="bg-brand-cream-deep py-24 sm:py-32">
+    <section id="depoimentos" className="bg-brand-cream-deep py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">Depoimentos</p>
@@ -462,7 +462,7 @@ export function Contact() {
     "h-12 w-full rounded-sm border border-border bg-card px-4 text-[16px] text-foreground placeholder:text-muted-foreground/60 transition-all focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/30";
 
   return (
-    <section id="contato" className="relative bg-brand-navy text-brand-cream py-24 sm:py-32">
+    <section id="contato" className="relative bg-brand-navy text-brand-cream py-14 sm:py-20">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
         <Reveal className="lg:col-span-5">
           <p className="eyebrow">Contato</p>
