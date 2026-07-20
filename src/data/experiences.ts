@@ -1,3 +1,4 @@
+import type { ComponentType, SVGProps } from "react";
 import {
   IconAnatomy,
   IconBrunch,
@@ -16,7 +17,7 @@ import expBurger from "@/assets/exp-burger.jpg";
 
 export type Experience = {
   slug: string;
-  Icon: (props: { className?: string }) => JSX.Element;
+  Icon: ComponentType<SVGProps<SVGSVGElement> & { className?: string }>;
   img: string;
   title: string;
   sub: string;
