@@ -48,8 +48,9 @@ export function Hero() {
 
       <Logo
         size="default"
-        className="pointer-events-none absolute right-[6%] top-1/2 z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
+        className="pointer-events-none absolute right-[6%] top-[38%] z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
+
 
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
