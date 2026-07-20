@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Award,
@@ -16,25 +17,12 @@ import {
 import { Smoke } from "./Smoke";
 import { Reveal } from "./Reveal";
 import { Logo } from "@/components/brand/Logo";
-import {
-  IconAnatomy,
-  IconBrunch,
-  IconBurger,
-  IconCelebration,
-  IconFlame,
-  IconPersonal,
-  IconSelection,
-} from "./icons";
+import { IconFlame } from "./icons";
+import { EXPERIENCES } from "@/data/experiences";
 
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
-import expSelection from "@/assets/exp-selection.jpg";
-import expCelebration from "@/assets/exp-celebration.jpg";
-import expPersonal from "@/assets/exp-personal.jpg";
-import expAnatomy from "@/assets/exp-anatomy.jpg";
-import expBrunch from "@/assets/exp-brunch.jpg";
-import expBurger from "@/assets/exp-burger.jpg";
 import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
