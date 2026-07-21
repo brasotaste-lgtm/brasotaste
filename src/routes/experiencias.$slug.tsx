@@ -87,8 +87,8 @@ function ExperienceDetail() {
                 {exp.intro}
               </p>
               <div className="mt-8 rounded-sm border border-border/70 bg-card p-6">
-                <p className="text-[12px] tracking-[0.24em] uppercase text-brand-gold">Ideal para</p>
-                <p className="mt-3 text-[16px] leading-relaxed text-foreground/85">{exp.ideal}</p>
+                <p className="text-[14px] tracking-[0.24em] uppercase text-brand-gold">Ideal para</p>
+                <p className="mt-3 text-[18px] leading-relaxed text-foreground/85">{exp.ideal}</p>
               </div>
             </Reveal>
 
@@ -101,8 +101,8 @@ function ExperienceDetail() {
               <ul className="mt-8 space-y-6">
                 {exp.highlights.map((h) => (
                   <li key={h.title} className="border-l-2 border-brand-gold/70 pl-5">
-                    <p className="font-display text-lg font-medium text-brand-navy">{h.title}</p>
-                    <p className="mt-2 text-[16px] leading-relaxed text-muted-foreground text-justify">{h.text}</p>
+                    <p className="font-display text-xl font-medium text-brand-navy">{h.title}</p>
+                    <p className="mt-2 text-[18px] leading-relaxed text-muted-foreground text-justify">{h.text}</p>
                   </li>
                 ))}
               </ul>
