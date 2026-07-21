@@ -131,7 +131,7 @@ function ExperienceDetail() {
                     <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-gold/15 text-brand-gold">
                       <Check className="h-4 w-4" />
                     </span>
-                    <span className="text-[16px] leading-relaxed text-foreground/85">{item}</span>
+                    <span className="text-[18px] leading-relaxed text-foreground/85">{item}</span>
                   </li>
                 </Reveal>
               ))}
