@@ -51,31 +51,33 @@ export function Hero() {
         className="pointer-events-none absolute right-[6%] top-[38%] z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[8%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
 
-
-
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
         <div className="max-w-3xl animate-fade-up">
-          <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
+          <Logo
+            size="default"
+            className="mb-4 flex justify-center md:hidden [&_img]:!h-[160px] [&_img]:mx-auto"
+          />
+          <h1 className="font-display text-[40px] font-light leading-[1.02] tracking-tight text-center md:text-left sm:text-6xl md:text-7xl lg:text-[88px]">
             Sabor <span className="italic font-normal text-brand-gold">Braso</span>
           </h1>
-          <p className="mt-6 max-w-lg text-base font-light leading-relaxed text-white/85 sm:text-lg">
+          <p className="mt-5 max-w-lg text-[15px] font-light leading-relaxed text-white/85 text-center md:text-left sm:text-lg">
             A experiência gastronômica na sua casa.
             <br className="hidden sm:block" />
             Técnica, fogo e hospitalidade conduzidos pelo Chef Fabio Tortelote.
           </p>
 
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
               href="#contato"
-              className="group inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-6 py-3.5 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
             >
               Solicitar orçamento
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#experiencias"
-              className="inline-flex items-center justify-center rounded-sm border border-white/40 bg-white/5 px-7 py-4 text-[14px] font-semibold tracking-[0.24em] uppercase text-white backdrop-blur-sm transition-colors hover:border-brand-gold hover:text-brand-gold"
+              className="inline-flex items-center justify-center rounded-sm border border-white/40 bg-white/5 px-6 py-3.5 text-[13px] font-semibold tracking-[0.22em] uppercase text-white backdrop-blur-sm transition-colors hover:border-brand-gold hover:text-brand-gold"
             >
               Conhecer experiências
             </a>
