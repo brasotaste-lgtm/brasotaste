@@ -202,9 +202,9 @@ function ExperienceDetail() {
                       <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/70 via-brand-navy-deep/10 to-transparent" />
                     </div>
                     <div className="flex flex-1 flex-col px-6 py-6">
-                      <p className="text-[12px] tracking-[0.28em] uppercase text-brand-gold">{o.sub}</p>
+                      <p className="text-[14px] tracking-[0.28em] uppercase text-brand-gold">{o.sub}</p>
                       <h3 className="mt-2 font-display text-xl font-medium text-brand-navy">{o.title}</h3>
-                      <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors group-hover:text-brand-gold">
+                      <span className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors group-hover:text-brand-gold">
                         Saiba mais <ArrowRight className="h-3.5 w-3.5" />
                       </span>
                     </div>
