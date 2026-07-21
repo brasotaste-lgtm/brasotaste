@@ -9,9 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as ChefRouteImport } from './routes/chef'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperienciasSlugRouteImport } from './routes/experiencias.$slug'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChefRoute = ChefRouteImport.update({
+  id: '/chef',
+  path: '/chef',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +43,65 @@ const ExperienciasSlugRoute = ExperienciasSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chef': typeof ChefRoute
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chef': typeof ChefRoute
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chef': typeof ChefRoute
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/experiencias/$slug'
+  fullPaths: '/' | '/chef' | '/contato' | '/sobre' | '/experiencias/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experiencias/$slug'
-  id: '__root__' | '/' | '/experiencias/$slug'
+  to: '/' | '/chef' | '/contato' | '/sobre' | '/experiencias/$slug'
+  id: '__root__' | '/' | '/chef' | '/contato' | '/sobre' | '/experiencias/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChefRoute: typeof ChefRoute
+  ContatoRoute: typeof ContatoRoute
+  SobreRoute: typeof SobreRoute
   ExperienciasSlugRoute: typeof ExperienciasSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chef': {
+      id: '/chef'
+      path: '/chef'
+      fullPath: '/chef'
+      preLoaderRoute: typeof ChefRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +121,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChefRoute: ChefRoute,
+  ContatoRoute: ContatoRoute,
+  SobreRoute: SobreRoute,
   ExperienciasSlugRoute: ExperienciasSlugRoute,
 }
 export const routeTree = rootRouteImport
