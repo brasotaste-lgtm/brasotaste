@@ -59,13 +59,13 @@ function ExperienceDetail() {
           <div className="relative z-10 mx-auto flex min-h-[70svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 sm:px-8 sm:pb-24">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 self-start text-[12px] font-semibold tracking-[0.24em] uppercase text-white/70 transition-colors hover:text-brand-gold"
+              className="inline-flex items-center gap-2 self-start text-[14px] font-semibold tracking-[0.24em] uppercase text-white/80 transition-colors hover:text-brand-gold"
             >
-              <ArrowLeft className="h-3.5 w-3.5" /> Voltar
+              <ArrowLeft className="h-4 w-4" /> Voltar
             </Link>
             <div className="mt-6 flex items-center gap-4">
               <exp.Icon className="h-16 w-16 text-brand-gold md:h-20 md:w-20" />
-              <p className="text-[12px] tracking-[0.28em] uppercase text-brand-gold">{exp.sub}</p>
+              <p className="text-[14px] tracking-[0.28em] uppercase text-brand-gold">{exp.sub}</p>
             </div>
             <h1 className="mt-4 max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[80px]">
               {exp.title}
