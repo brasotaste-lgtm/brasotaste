@@ -49,70 +49,71 @@ export function Header() {
   }`;
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
-        scrolled
-          ? "border-b border-border/60 bg-background/95 backdrop-blur-xl"
-          : "bg-gradient-to-b from-black/50 to-transparent"
-      }`}
-    >
-
-      <div
-        className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-500 sm:px-8 ${
-          scrolled ? "py-3 sm:py-4" : "py-4 sm:py-6"
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
+          scrolled
+            ? "border-b border-border/60 bg-background/95 backdrop-blur-xl"
+            : "bg-gradient-to-b from-black/50 to-transparent"
         }`}
       >
-        <div />
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-500 sm:px-8 ${
+            scrolled ? "py-3 sm:py-4" : "py-4 sm:py-6"
+          }`}
+        >
+          <div />
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {NAV.map((n) =>
-            n.kind === "route" ? (
-              <Link key={n.label} to={n.to} className={linkClass}>
-                {n.label}
-              </Link>
-            ) : (
-              <Link key={n.label} to="/" hash={n.hash} className={linkClass}>
-                {n.label}
-              </Link>
-            ),
-          )}
-        </nav>
+          <nav className="hidden items-center gap-8 lg:flex">
+            {NAV.map((n) =>
+              n.kind === "route" ? (
+                <Link key={n.label} to={n.to} className={linkClass}>
+                  {n.label}
+                </Link>
+              ) : (
+                <Link key={n.label} to="/" hash={n.hash} className={linkClass}>
+                  {n.label}
+                </Link>
+              ),
+            )}
+          </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className={`grid h-10 w-10 place-items-center rounded-full border transition-colors ${
-              scrolled
-                ? "border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-brand-cream"
-                : "border-white/40 text-white hover:bg-white hover:text-brand-navy"
-            }`}
-          >
-            <MessageCircle className="h-4 w-4" />
-          </a>
-          <Link
-            to="/contato"
-            className="hidden rounded-sm bg-brand-gold px-5 py-3 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] md:inline-flex"
-          >
-            Solicitar orçamento
-          </Link>
-          <button
-            onClick={() => setOpen(true)}
-            aria-label="Abrir menu"
-            className={`grid h-10 w-10 place-items-center rounded-full border lg:hidden ${
-              scrolled ? "border-brand-navy/20 text-brand-navy" : "border-white/60 text-white"
-            }`}
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className={`grid h-10 w-10 place-items-center rounded-full border transition-colors ${
+                scrolled
+                  ? "border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-brand-cream"
+                  : "border-white/40 text-white hover:bg-white hover:text-brand-navy"
+              }`}
+            >
+              <MessageCircle className="h-4 w-4" />
+            </a>
+            <Link
+              to="/contato"
+              className="hidden rounded-sm bg-brand-gold px-5 py-3 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)] md:inline-flex"
+            >
+              Solicitar orçamento
+            </Link>
+            <button
+              onClick={() => setOpen(true)}
+              aria-label="Abrir menu"
+              className={`grid h-10 w-10 place-items-center rounded-full border lg:hidden ${
+                scrolled ? "border-brand-navy/20 text-brand-navy" : "border-white/60 text-white"
+              }`}
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — sibling of header so it always covers viewport */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-[200] lg:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
         aria-hidden={!open}
       >
         <div
@@ -122,7 +123,8 @@ export function Header() {
           onClick={() => setOpen(false)}
         />
         <aside
-          className={`absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col overflow-y-auto border-l border-border/70 bg-brand-cream px-6 py-6 shadow-2xl transition-transform duration-500 ${
+          style={{ backgroundColor: "#FAF6F1" }}
+          className={`absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col overflow-y-auto border-l border-border/70 px-6 py-5 shadow-2xl transition-transform duration-500 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -139,14 +141,14 @@ export function Header() {
             </button>
           </div>
 
-          <nav className="mt-8 flex flex-col">
+          <nav className="mt-4 flex flex-col">
             {NAV.map((n) =>
               n.kind === "route" ? (
                 <Link
                   key={n.label}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border/70 py-4 text-base font-medium text-brand-navy"
+                  className="border-b border-border/70 py-3 text-base font-medium text-brand-navy"
                 >
                   {n.label}
                 </Link>
@@ -156,7 +158,7 @@ export function Header() {
                   to="/"
                   hash={n.hash}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border/70 py-4 text-base font-medium text-brand-navy"
+                  className="border-b border-border/70 py-3 text-base font-medium text-brand-navy"
                 >
                   {n.label}
                 </Link>
@@ -167,7 +169,7 @@ export function Header() {
           <Link
             to="/contato"
             onClick={() => setOpen(false)}
-            className="mt-8 inline-flex w-full items-center justify-center rounded-sm bg-brand-gold py-4 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-sm bg-brand-gold py-3 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
           >
             Solicitar orçamento
           </Link>
@@ -175,13 +177,14 @@ export function Header() {
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-sm border border-brand-navy/20 py-4 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-sm border border-brand-navy/20 py-3 text-[13px] font-semibold tracking-[0.22em] uppercase text-brand-navy"
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
           </a>
         </aside>
       </div>
-    </header>
+    </>
   );
 }
+

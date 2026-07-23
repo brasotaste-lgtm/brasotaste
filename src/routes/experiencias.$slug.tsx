@@ -49,14 +49,15 @@ function ExperienceDetail() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative isolate min-h-[70svh] w-full overflow-hidden bg-brand-navy-deep text-white">
+        <section className="relative isolate min-h-[60svh] w-full overflow-hidden bg-brand-navy-deep text-white">
           <img
             src={exp.img}
             alt={exp.title}
             className="absolute inset-0 h-full w-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/85" />
-          <div className="relative z-10 mx-auto flex min-h-[70svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 sm:px-8 sm:pb-24">
+          <div className="relative z-10 mx-auto flex min-h-[60svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-16 sm:pt-28">
+
             <Link
               to="/"
               className="inline-flex items-center gap-2 self-start text-[14px] font-semibold tracking-[0.24em] uppercase text-white/80 transition-colors hover:text-brand-gold"
@@ -75,7 +76,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Intro + highlights */}
-        <section className="bg-background py-14 sm:py-20">
+        <section className="bg-background py-8 sm:py-12">
           <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-6">
               <p className="eyebrow">A experiência</p>
@@ -111,7 +112,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Includes */}
-        <section className="bg-brand-cream-deep py-14 sm:py-20">
+        <section className="bg-brand-cream-deep py-8 sm:py-12">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">O que está incluso</p>
@@ -140,7 +141,7 @@ function ExperienceDetail() {
         </section>
 
         {/* CTA */}
-        <section className="bg-brand-navy text-brand-cream py-14 sm:py-20">
+        <section className="bg-brand-navy text-brand-cream py-8 sm:py-12">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               <p className="eyebrow">Vamos conversar</p>
@@ -174,7 +175,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Related */}
-        <section className="bg-background py-14 sm:py-20">
+        <section className="bg-background py-8 sm:py-12">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal>
               <p className="eyebrow">Outras experiências</p>
