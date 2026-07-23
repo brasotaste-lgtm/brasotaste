@@ -76,7 +76,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Intro + highlights */}
-        <section className="bg-background py-14 sm:py-20">
+        <section className="bg-background py-8 sm:py-12">
           <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-6">
               <p className="eyebrow">A experiência</p>
@@ -112,7 +112,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Includes */}
-        <section className="bg-brand-cream-deep py-14 sm:py-20">
+        <section className="bg-brand-cream-deep py-8 sm:py-12">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">O que está incluso</p>
@@ -141,7 +141,7 @@ function ExperienceDetail() {
         </section>
 
         {/* CTA */}
-        <section className="bg-brand-navy text-brand-cream py-14 sm:py-20">
+        <section className="bg-brand-navy text-brand-cream py-8 sm:py-12">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               <p className="eyebrow">Vamos conversar</p>
@@ -175,7 +175,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Related */}
-        <section className="bg-background py-14 sm:py-20">
+        <section className="bg-background py-8 sm:py-12">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal>
               <p className="eyebrow">Outras experiências</p>
