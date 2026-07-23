@@ -14,6 +14,7 @@ import { Route as ExperienciasRouteImport } from './routes/experiencias'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ChefRouteImport } from './routes/chef'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperienciasIndexRouteImport } from './routes/experiencias.index'
 import { Route as ExperienciasSlugRouteImport } from './routes/experiencias.$slug'
 
 const SobreRoute = SobreRouteImport.update({
@@ -41,6 +42,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperienciasIndexRoute = ExperienciasIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExperienciasRoute,
+} as any)
 const ExperienciasSlugRoute = ExperienciasSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -54,14 +60,15 @@ export interface FileRoutesByFullPath {
   '/experiencias': typeof ExperienciasRouteWithChildren
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
+  '/experiencias/': typeof ExperienciasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chef': typeof ChefRoute
   '/contato': typeof ContatoRoute
-  '/experiencias': typeof ExperienciasRouteWithChildren
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
+  '/experiencias': typeof ExperienciasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +78,7 @@ export interface FileRoutesById {
   '/experiencias': typeof ExperienciasRouteWithChildren
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
+  '/experiencias/': typeof ExperienciasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,14 +89,15 @@ export interface FileRouteTypes {
     | '/experiencias'
     | '/sobre'
     | '/experiencias/$slug'
+    | '/experiencias/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/chef'
     | '/contato'
-    | '/experiencias'
     | '/sobre'
     | '/experiencias/$slug'
+    | '/experiencias'
   id:
     | '__root__'
     | '/'
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/experiencias'
     | '/sobre'
     | '/experiencias/$slug'
+    | '/experiencias/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiencias/': {
+      id: '/experiencias/'
+      path: '/'
+      fullPath: '/experiencias/'
+      preLoaderRoute: typeof ExperienciasIndexRouteImport
+      parentRoute: typeof ExperienciasRoute
+    }
     '/experiencias/$slug': {
       id: '/experiencias/$slug'
       path: '/$slug'
@@ -156,10 +173,12 @@ declare module '@tanstack/react-router' {
 
 interface ExperienciasRouteChildren {
   ExperienciasSlugRoute: typeof ExperienciasSlugRoute
+  ExperienciasIndexRoute: typeof ExperienciasIndexRoute
 }
 
 const ExperienciasRouteChildren: ExperienciasRouteChildren = {
   ExperienciasSlugRoute: ExperienciasSlugRoute,
+  ExperienciasIndexRoute: ExperienciasIndexRoute,
 }
 
 const ExperienciasRouteWithChildren = ExperienciasRoute._addFileChildren(
