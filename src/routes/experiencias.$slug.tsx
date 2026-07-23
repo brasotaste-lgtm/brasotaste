@@ -49,14 +49,15 @@ function ExperienceDetail() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative isolate min-h-[70svh] w-full overflow-hidden bg-brand-navy-deep text-white">
+        <section className="relative isolate min-h-[60svh] w-full overflow-hidden bg-brand-navy-deep text-white">
           <img
             src={exp.img}
             alt={exp.title}
             className="absolute inset-0 h-full w-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/85" />
-          <div className="relative z-10 mx-auto flex min-h-[70svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 sm:px-8 sm:pb-24">
+          <div className="relative z-10 mx-auto flex min-h-[60svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-16 sm:pt-28">
+
             <Link
               to="/"
               className="inline-flex items-center gap-2 self-start text-[14px] font-semibold tracking-[0.24em] uppercase text-white/80 transition-colors hover:text-brand-gold"
