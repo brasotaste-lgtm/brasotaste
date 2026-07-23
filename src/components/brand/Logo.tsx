@@ -3,7 +3,7 @@ import logoAsset from "@/assets/brand-logo.svg.asset.json";
 export function Logo({ className = "", size = "default" }: { className?: string; size?: "default" | "large" | "xl" }) {
   const height = size === "xl" ? "h-64 md:h-72" : size === "large" ? "h-44 md:h-56" : "h-36 md:h-48";
   return (
-    <a href="#home" aria-label="Braso Taste — Início" className={`inline-flex items-center ${className}`}>
+    <a href="#home" aria-label="Braso Taste — Início" className={`items-center ${className}`}>
       <img
         src={logoAsset.url}
         alt="Braso Taste — BBQ & Gastronomic Experience at Home"
