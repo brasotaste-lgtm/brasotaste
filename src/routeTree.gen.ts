@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as NossaHistoriaRouteImport } from './routes/nossa-historia'
 import { Route as ExperienciasRouteImport } from './routes/experiencias'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ChefRouteImport } from './routes/chef'
@@ -20,6 +21,11 @@ import { Route as ExperienciasSlugRouteImport } from './routes/experiencias.$slu
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NossaHistoriaRoute = NossaHistoriaRouteImport.update({
+  id: '/nossa-historia',
+  path: '/nossa-historia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperienciasRoute = ExperienciasRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/chef': typeof ChefRoute
   '/contato': typeof ContatoRoute
   '/experiencias': typeof ExperienciasRouteWithChildren
+  '/nossa-historia': typeof NossaHistoriaRoute
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
   '/experiencias/': typeof ExperienciasIndexRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chef': typeof ChefRoute
   '/contato': typeof ContatoRoute
+  '/nossa-historia': typeof NossaHistoriaRoute
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
   '/experiencias': typeof ExperienciasIndexRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/chef': typeof ChefRoute
   '/contato': typeof ContatoRoute
   '/experiencias': typeof ExperienciasRouteWithChildren
+  '/nossa-historia': typeof NossaHistoriaRoute
   '/sobre': typeof SobreRoute
   '/experiencias/$slug': typeof ExperienciasSlugRoute
   '/experiencias/': typeof ExperienciasIndexRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/chef'
     | '/contato'
     | '/experiencias'
+    | '/nossa-historia'
     | '/sobre'
     | '/experiencias/$slug'
     | '/experiencias/'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chef'
     | '/contato'
+    | '/nossa-historia'
     | '/sobre'
     | '/experiencias/$slug'
     | '/experiencias'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '/chef'
     | '/contato'
     | '/experiencias'
+    | '/nossa-historia'
     | '/sobre'
     | '/experiencias/$slug'
     | '/experiencias/'
@@ -114,6 +126,7 @@ export interface RootRouteChildren {
   ChefRoute: typeof ChefRoute
   ContatoRoute: typeof ContatoRoute
   ExperienciasRoute: typeof ExperienciasRouteWithChildren
+  NossaHistoriaRoute: typeof NossaHistoriaRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -124,6 +137,13 @@ declare module '@tanstack/react-router' {
       path: '/sobre'
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nossa-historia': {
+      id: '/nossa-historia'
+      path: '/nossa-historia'
+      fullPath: '/nossa-historia'
+      preLoaderRoute: typeof NossaHistoriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experiencias': {
@@ -190,6 +210,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChefRoute: ChefRoute,
   ContatoRoute: ContatoRoute,
   ExperienciasRoute: ExperienciasRouteWithChildren,
+  NossaHistoriaRoute: NossaHistoriaRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
