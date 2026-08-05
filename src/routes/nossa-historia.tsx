@@ -129,9 +129,9 @@ function NossaHistoriaPage() {
               <span className="italic text-brand-gold">como tudo começou</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[18px] leading-relaxed text-white/85 text-justify">
-              Antes de existir marca, cardápio ou equipe, existia uma brasa acesa em casa e duas
-              pessoas que gostavam de receber. Essa é a história de como um almoço de família virou
-              a Braso Taste.
+              Nenhuma história começa no dia em que uma empresa abre as portas. A nossa começou em
+              duas casas do Rio de Janeiro, em mesas que nunca ficavam vazias — muito antes de
+              existir um nome, um logotipo ou um cliente.
             </p>
           </div>
         </section>
@@ -142,25 +142,27 @@ function NossaHistoriaPage() {
             <Reveal>
               <p className="eyebrow">Os fundadores</p>
               <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-                Dois ofícios que se
+                O fogo prepara a comida.
                 <br />
-                <span className="italic text-brand-gold">completam à mesa</span>.
+                <span className="italic text-brand-gold">As pessoas dão sentido à mesa</span>.
               </h2>
               <span className="gold-divider mt-6" />
               <div className="mt-7 space-y-5 text-[18px] leading-relaxed text-muted-foreground text-justify">
                 <p>
-                  Fábio Tortelote traz a técnica: anos de cozinha, obsessão por ponto, corte e
-                  temperatura, e uma leitura de alta gastronomia aplicada ao fogo aberto. Para ele,
-                  a brasa não é um atalho — é o método mais exigente que existe.
+                  Fábio Tortelote aprendeu com o pai, Salvador, que nada bom se constrói com pressa,
+                  e com a avó Iolanda que comida é uma forma de dizer que alguém é bem-vindo. Da
+                  eletrônica e da tecnologia trouxe o resto: método, precisão e controle de tempo —
+                  hoje aplicados ao ponto exato de cada corte na brasa.
                 </p>
                 <p>
-                  Tatiana traz a experiência: o olhar de anfitriã que enxerga o evento inteiro antes
-                  de ele acontecer. Fluxo, tempo, atendimento, ambiente. É o trabalho invisível que
-                  faz tudo parecer simples para quem está na mesa.
+                  Tatiana cresceu entre música, ciência e a cozinha da avó Moema, onde valia a regra
+                  de que é melhor sobrar do que faltar. É dela o olhar de anfitriã: o fluxo do
+                  evento, o ritmo do serviço, a beleza da mesa e o cuidado que faz tudo parecer
+                  simples para quem está sentado.
                 </p>
                 <p>
-                  A Braso Taste existe exatamente no encontro desses dois ofícios — e é por isso que
-                  entregamos experiência, não apenas comida.
+                  A Braso Taste vive exatamente no encontro dessas duas heranças — por isso
+                  entregamos uma experiência inteira, e não apenas comida.
                 </p>
               </div>
             </Reveal>
@@ -185,10 +187,11 @@ function NossaHistoriaPage() {
             <Reveal>
               <p className="eyebrow">A trajetória</p>
               <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
-                Do quintal de casa à sua casa
+                De duas cozinhas de família para a sua casa
               </h2>
               <span className="gold-divider mt-6" />
             </Reveal>
+
 
             <ol className="mt-12 space-y-12 border-l border-border/70 pl-6 sm:pl-10">
               {CHAPTERS.map((c, i) => (
