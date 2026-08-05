@@ -39,35 +39,52 @@ export const Route = createFileRoute("/nossa-historia")({
 
 const CHAPTERS = [
   {
-    year: "O começo",
-    title: "Uma mesa, um fogo, duas pessoas",
+    year: "Antes da primeira brasa",
+    title: "Duas casas, a mesma lição",
     body: [
-      "Tudo começou do jeito mais simples possível: um fim de semana em casa, a brasa acesa no quintal e amigos chegando sem hora para ir embora. Fábio cuidava do fogo — a carne no ponto, o tempo certo de cada corte, a paciência que só a brasa ensina. Tatiana cuidava de tudo o que acontece ao redor dele: a mesa posta, a taça cheia, a conversa que não deixa ninguém de fora.",
-      "Era só um almoço de família. Mas todo mundo saía dali dizendo a mesma frase: “isso aqui não é um churrasco, é uma experiência”.",
+      "Na casa de Fábio havia cheiro de madeira, de oficina e de carne assando devagar na brasa. Havia a avó Iolanda, que dizia “eu te amo” em forma de comida; a mãe Rosiléa, que fazia do cuidado um hábito diário; e o pai Salvador, que ensinava pelo exemplo que tudo o que vale a pena exige paciência.",
+      "Em outro canto do Rio crescia Tatiana, filha de Alice e Norberto, cercada de música, plantas, ciência e bolo saindo do forno. Na cozinha mandava a avó Moema — pequena no tamanho, enorme no acolhimento — e uma regra silenciosa: é melhor sobrar do que faltar.",
+      "Sem nunca terem se conhecido, as duas famílias ensinavam exatamente a mesma coisa: a comida nunca foi o centro. O centro sempre foram as pessoas.",
     ],
   },
   {
-    year: "A virada",
-    title: "Do quintal para a casa dos outros",
+    year: "O encontro",
+    title: "Quando as duas mesas viraram uma só",
     body: [
-      "O primeiro convite veio de um amigo: “faz na minha casa?”. Depois veio outro, e outro. Sem plano de negócio, sem cardápio impresso, sem nome. Só o desejo de repetir aquela sensação em outras mesas.",
-      "Foi aí que Tatiana e Fábio perceberam que o que tinham em mãos não era um serviço de comida — era um serviço de encontro. A gastronomia é o meio; o que fica é a memória do dia.",
+      "Fábio, o menino que desmontava brinquedos para entender o mundo, levou essa curiosidade para a eletrônica e para a tecnologia — e trouxe de lá método, controle de tempo e responsabilidade. Tatiana trouxe o olhar da natureza e do afeto: cores, texturas, aromas, estações e a arte de fazer o outro se sentir em casa.",
+      "Juntos, entenderam cedo que sucesso não podia significar só produtividade. Precisava significar presença.",
+    ],
+  },
+  {
+    year: "O marco",
+    title: "Um casamento junino",
+    body: [
+      "A Braso nasceu de verdade no próprio casamento dos dois: uma festa junina onde brasa, madeira, mesa posta, natureza e artesanato se encontraram. Naquela noite ficou claro que aquilo tinha identidade própria — e que dava para oferecer a outras pessoas a mesma sensação que eles receberam a vida inteira.",
+      "A sensação de chegar a um lugar e perceber, antes da primeira garfada, que alguém preparou tudo aquilo pensando em você.",
     ],
   },
   {
     year: "O nome",
-    title: "Braso Taste nasce da brasa",
+    title: "Braso: o fogo que transforma",
     body: [
-      "Braso vem do fogo, do calor que transforma. Taste é o sabor, o cuidado com o detalhe, a técnica que faz um prato simples virar algo inesquecível. Juntos, os dois nomes traduzem exatamente o que fazemos: alta gastronomia conduzida pela brasa, dentro da sua casa.",
-      "Fábio assumiu a cozinha e a curadoria dos menus, trazendo técnica de alta gastronomia para um universo que quase sempre é tratado como informal. Tatiana assumiu a experiência: o atendimento, a operação, o ritmo do evento, a hospitalidade que faz o anfitrião sentar e aproveitar a própria festa.",
+      "Faltava um nome. Testaram, simplificaram, e nasceu Braso — uma palavra inédita que carrega muitas histórias. Braso lembra brasa: o fogo, o calor, o ponto onde ingredientes simples viram algo extraordinário.",
+      "Ali entenderam que a Braso nunca seria apenas uma empresa de gastronomia. Seria um convite para reunir pessoas.",
+    ],
+  },
+  {
+    year: "O primeiro sim",
+    title: "E se fizéssemos do nosso jeito?",
+    body: [
+      "Não havia marca consolidada nem experiência comercial. Havia uma pergunta feita numa madrugada: e se fizéssemos do nosso jeito? Veio o primeiro sim, depois outro — e com eles as frases que passaram a valer mais que qualquer elogio ao cardápio: “foi a primeira vez que consegui conversar com todos os meus convidados”.",
+      "Aniversários, bodas, pais reencontrando filhos, amigos se despedindo antes de uma mudança. Cada evento carregava uma história.",
     ],
   },
   {
     year: "Hoje",
-    title: "Mais de 10 cidades, uma só filosofia",
+    title: "Da nossa mesa para a sua",
     body: [
-      "Hoje a Braso Taste atende da Grande Rio à Região Serrana e à Região dos Lagos, com uma operação completa: chef, equipe, equipamentos e curadoria levados até o seu espaço. Cada evento é 100% personalizado — não existe menu padrão, existe o seu menu.",
-      "O que não mudou desde o primeiro almoço no quintal: a brasa no centro, a mesa cheia e a certeza de que ninguém deveria trabalhar na própria comemoração.",
+      "Hoje a Braso Taste atende da Grande Rio à Região Serrana e à Região dos Lagos, com operação completa: planejamento, curadoria, cozinha, serviço e o pós-evento — para que o anfitrião só precise estar presente.",
+      "O que não mudou desde a cozinha de Moema e da churrasqueira de Salvador: a brasa no centro, a mesa cheia e a certeza de que sempre cabe mais um prato.",
     ],
   },
 ];
@@ -75,17 +92,18 @@ const CHAPTERS = [
 const VALUES = [
   {
     k: "Fogo",
-    v: "A brasa é o nosso ponto de partida — técnica, tempo e respeito pelo ingrediente.",
+    v: "O fogo prepara a comida. Técnica, tempo e respeito pelo ingrediente — a brasa como linguagem, não como atalho.",
   },
   {
     k: "Mesa",
-    v: "Comida boa é desculpa para reunir gente. O encontro é sempre o objetivo final.",
+    v: "As pessoas dão sentido à mesa. Reunir é o objetivo; o alimento é o caminho até ele.",
   },
   {
     k: "Cuidado",
-    v: "Do primeiro contato à última taça: hospitalidade em cada detalhe da operação.",
+    v: "Herança de duas cozinhas: acolher bem, prever tudo e deixar o anfitrião livre para viver a própria festa.",
   },
 ];
+
 
 function NossaHistoriaPage() {
   return (
@@ -111,9 +129,9 @@ function NossaHistoriaPage() {
               <span className="italic text-brand-gold">como tudo começou</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[18px] leading-relaxed text-white/85 text-justify">
-              Antes de existir marca, cardápio ou equipe, existia uma brasa acesa em casa e duas
-              pessoas que gostavam de receber. Essa é a história de como um almoço de família virou
-              a Braso Taste.
+              Nenhuma história começa no dia em que uma empresa abre as portas. A nossa começou em
+              duas casas do Rio de Janeiro, em mesas que nunca ficavam vazias — muito antes de
+              existir um nome, um logotipo ou um cliente.
             </p>
           </div>
         </section>
@@ -124,25 +142,27 @@ function NossaHistoriaPage() {
             <Reveal>
               <p className="eyebrow">Os fundadores</p>
               <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-                Dois ofícios que se
+                O fogo prepara a comida.
                 <br />
-                <span className="italic text-brand-gold">completam à mesa</span>.
+                <span className="italic text-brand-gold">As pessoas dão sentido à mesa</span>.
               </h2>
               <span className="gold-divider mt-6" />
               <div className="mt-7 space-y-5 text-[18px] leading-relaxed text-muted-foreground text-justify">
                 <p>
-                  Fábio Tortelote traz a técnica: anos de cozinha, obsessão por ponto, corte e
-                  temperatura, e uma leitura de alta gastronomia aplicada ao fogo aberto. Para ele,
-                  a brasa não é um atalho — é o método mais exigente que existe.
+                  Fábio Tortelote aprendeu com o pai, Salvador, que nada bom se constrói com pressa,
+                  e com a avó Iolanda que comida é uma forma de dizer que alguém é bem-vindo. Da
+                  eletrônica e da tecnologia trouxe o resto: método, precisão e controle de tempo —
+                  hoje aplicados ao ponto exato de cada corte na brasa.
                 </p>
                 <p>
-                  Tatiana traz a experiência: o olhar de anfitriã que enxerga o evento inteiro antes
-                  de ele acontecer. Fluxo, tempo, atendimento, ambiente. É o trabalho invisível que
-                  faz tudo parecer simples para quem está na mesa.
+                  Tatiana cresceu entre música, ciência e a cozinha da avó Moema, onde valia a regra
+                  de que é melhor sobrar do que faltar. É dela o olhar de anfitriã: o fluxo do
+                  evento, o ritmo do serviço, a beleza da mesa e o cuidado que faz tudo parecer
+                  simples para quem está sentado.
                 </p>
                 <p>
-                  A Braso Taste existe exatamente no encontro desses dois ofícios — e é por isso que
-                  entregamos experiência, não apenas comida.
+                  A Braso Taste vive exatamente no encontro dessas duas heranças — por isso
+                  entregamos uma experiência inteira, e não apenas comida.
                 </p>
               </div>
             </Reveal>
@@ -167,10 +187,11 @@ function NossaHistoriaPage() {
             <Reveal>
               <p className="eyebrow">A trajetória</p>
               <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
-                Do quintal de casa à sua casa
+                De duas cozinhas de família para a sua casa
               </h2>
               <span className="gold-divider mt-6" />
             </Reveal>
+
 
             <ol className="mt-12 space-y-12 border-l border-border/70 pl-6 sm:pl-10">
               {CHAPTERS.map((c, i) => (
