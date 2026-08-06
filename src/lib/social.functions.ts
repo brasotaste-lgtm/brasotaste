@@ -19,15 +19,40 @@ export type InstagramPost = {
 
 const GATEWAY = "https://connector-gateway.lovable.dev/google_maps";
 
+async function resolvePlaceId(lovableKey: string, connKey: string): Promise<string | null> {
+  const configured = process.env["GOOGLE_PLACE_ID"];
+  if (configured) return configured;
+
+  const res = await fetch(`${GATEWAY}/places/v1/places:searchText`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${lovableKey}`,
+      "X-Connection-Api-Key": connKey,
+      "Content-Type": "application/json",
+      "X-Goog-FieldMask": "places.id,places.displayName",
+    },
+    body: JSON.stringify({ textQuery: "Braso Taste", languageCode: "pt-BR" }),
+  });
+  if (!res.ok) {
+    console.error(`Places searchText falhou [${res.status}]: ${await res.text()}`);
+    return null;
+  }
+  const json = (await res.json()) as { places?: Array<{ id?: string }> };
+  return json.places?.[0]?.id ?? null;
+}
+
 /** Avaliações reais do Google Maps (Places API New). Retorna [] em caso de falha. */
 export const getGoogleReviews = createServerFn({ method: "GET" }).handler(async (): Promise<GoogleReview[]> => {
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const connKey = process.env["GOOGLE_MAPS_API_KEY"];
-  const placeId = process.env["GOOGLE_PLACE_ID"];
-  if (!lovableKey || !connKey || !placeId) return [];
+  if (!lovableKey || !connKey) return [];
 
   try {
-    const res = await fetch(`${GATEWAY}/v1/places/${encodeURIComponent(placeId)}`, {
+    const placeId = await resolvePlaceId(lovableKey, connKey);
+    if (!placeId) return [];
+
+    const res = await fetch(`${GATEWAY}/places/v1/places/${encodeURIComponent(placeId)}`, {
+
       headers: {
         Authorization: `Bearer ${lovableKey}`,
         "X-Connection-Api-Key": connKey,
