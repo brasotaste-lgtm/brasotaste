@@ -421,11 +421,6 @@ export function Testimonials() {
       </div>
     </section>
   );
-
-        </div>
-      </div>
-    </section>
-  );
 }
 
 /* ---------- CONTACT ---------- */
