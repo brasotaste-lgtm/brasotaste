@@ -375,6 +375,19 @@ const TESTIMONIALS = [
 ];
 
 export function Testimonials() {
+  const fetchReviews = useServerFn(getGoogleReviews);
+  const { data: reviews } = useQuery({
+    queryKey: ["google-reviews"],
+    queryFn: () => fetchReviews(),
+    staleTime: 1000 * 60 * 60,
+    retry: false,
+  });
+
+  const items = [
+    ...(reviews ?? []).map((r) => ({ name: r.name, role: r.role, text: r.text, rating: r.rating })),
+    ...TESTIMONIALS.map((t) => ({ ...t, rating: 5 })),
+  ];
+
   return (
     <section id="depoimentos" className="bg-brand-cream-deep py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -387,13 +400,13 @@ export function Testimonials() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100}>
+          {items.map((t, i) => (
+            <Reveal key={`${t.name}-${i}`} delay={i * 100}>
               <figure className="flex h-full flex-col rounded-sm border border-border/70 bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
                 <Quote className="h-6 w-6 text-brand-gold" />
                 <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
                 <div className="mt-8 flex items-center gap-1 text-brand-gold">
-                  {Array.from({ length: 5 }).map((_, k) => (
+                  {Array.from({ length: t.rating || 5 }).map((_, k) => (
                     <Star key={k} className="h-3.5 w-3.5 fill-current" />
                   ))}
                 </div>
@@ -404,6 +417,11 @@ export function Testimonials() {
               </figure>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+
         </div>
       </div>
     </section>
