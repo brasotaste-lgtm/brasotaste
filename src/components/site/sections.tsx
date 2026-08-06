@@ -1,6 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { getGoogleReviews, getInstagramPosts } from "@/lib/social.functions";
+
 import {
   ArrowRight,
   Award,
@@ -279,6 +283,24 @@ const GALLERY = [
 ];
 
 export function Gallery() {
+  const fetchPosts = useServerFn(getInstagramPosts);
+  const { data: posts } = useQuery({
+    queryKey: ["instagram-posts"],
+    queryFn: () => fetchPosts(),
+    staleTime: 1000 * 60 * 30,
+    retry: false,
+  });
+
+  const items =
+    posts && posts.length > 0
+      ? posts.map((p, i) => ({
+          src: p.imageUrl,
+          alt: p.caption,
+          href: p.permalink,
+          span: i === 0 || i === 5 ? "md:col-span-2" : undefined,
+        }))
+      : GALLERY.map((g) => ({ src: g.src, alt: g.alt, href: undefined as string | undefined, span: g.span }));
+
   return (
     <section id="galeria" className="bg-background py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -302,8 +324,8 @@ export function Gallery() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {GALLERY.map((g, i) => (
-            <Reveal key={i} delay={i * 60} className={`group relative overflow-hidden ${g.span ?? ""}`}>
+          {items.map((g, i) => {
+            const Media = (
               <div className="relative aspect-square overflow-hidden">
                 <img
                   src={g.src}
@@ -313,13 +335,25 @@ export function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
-            </Reveal>
-          ))}
+            );
+            return (
+              <Reveal key={`${g.src}-${i}`} delay={i * 60} className={`group relative overflow-hidden ${g.span ?? ""}`}>
+                {g.href ? (
+                  <a href={g.href} target="_blank" rel="noopener noreferrer" className="block">
+                    {Media}
+                  </a>
+                ) : (
+                  Media
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- TESTIMONIALS ---------- */
 const TESTIMONIALS = [
@@ -341,6 +375,19 @@ const TESTIMONIALS = [
 ];
 
 export function Testimonials() {
+  const fetchReviews = useServerFn(getGoogleReviews);
+  const { data: reviews } = useQuery({
+    queryKey: ["google-reviews"],
+    queryFn: () => fetchReviews(),
+    staleTime: 1000 * 60 * 60,
+    retry: false,
+  });
+
+  const items = [
+    ...(reviews ?? []).map((r) => ({ name: r.name, role: r.role, text: r.text, rating: r.rating })),
+    ...TESTIMONIALS.map((t) => ({ ...t, rating: 5 })),
+  ];
+
   return (
     <section id="depoimentos" className="bg-brand-cream-deep py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -353,13 +400,13 @@ export function Testimonials() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100}>
+          {items.map((t, i) => (
+            <Reveal key={`${t.name}-${i}`} delay={i * 100}>
               <figure className="flex h-full flex-col rounded-sm border border-border/70 bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
                 <Quote className="h-6 w-6 text-brand-gold" />
                 <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
                 <div className="mt-8 flex items-center gap-1 text-brand-gold">
-                  {Array.from({ length: 5 }).map((_, k) => (
+                  {Array.from({ length: t.rating || 5 }).map((_, k) => (
                     <Star key={k} className="h-3.5 w-3.5 fill-current" />
                   ))}
                 </div>
