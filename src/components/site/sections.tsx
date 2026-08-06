@@ -279,6 +279,24 @@ const GALLERY = [
 ];
 
 export function Gallery() {
+  const fetchPosts = useServerFn(getInstagramPosts);
+  const { data: posts } = useQuery({
+    queryKey: ["instagram-posts"],
+    queryFn: () => fetchPosts(),
+    staleTime: 1000 * 60 * 30,
+    retry: false,
+  });
+
+  const items =
+    posts && posts.length > 0
+      ? posts.map((p, i) => ({
+          src: p.imageUrl,
+          alt: p.caption,
+          href: p.permalink,
+          span: i === 0 || i === 5 ? "md:col-span-2" : undefined,
+        }))
+      : GALLERY.map((g) => ({ src: g.src, alt: g.alt, href: undefined as string | undefined, span: g.span }));
+
   return (
     <section id="galeria" className="bg-background py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -302,8 +320,8 @@ export function Gallery() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {GALLERY.map((g, i) => (
-            <Reveal key={i} delay={i * 60} className={`group relative overflow-hidden ${g.span ?? ""}`}>
+          {items.map((g, i) => {
+            const Media = (
               <div className="relative aspect-square overflow-hidden">
                 <img
                   src={g.src}
@@ -313,13 +331,25 @@ export function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
-            </Reveal>
-          ))}
+            );
+            return (
+              <Reveal key={`${g.src}-${i}`} delay={i * 60} className={`group relative overflow-hidden ${g.span ?? ""}`}>
+                {g.href ? (
+                  <a href={g.href} target="_blank" rel="noopener noreferrer" className="block">
+                    {Media}
+                  </a>
+                ) : (
+                  Media
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- TESTIMONIALS ---------- */
 const TESTIMONIALS = [
