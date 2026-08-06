@@ -1,12 +1,12 @@
 /**
- * Official brand icons (PNG) served from the Lovable Assets CDN.
+ * Official brand icons (PNG) bundled locally from src/assets.
  */
-import anatomyAsset from "@/assets/icon-anatomy.png.asset.json";
-import brunchAsset from "@/assets/icon-brunch.png.asset.json";
-import burgerAsset from "@/assets/icon-burger.png.asset.json";
-import celebrationAsset from "@/assets/icon-celebration.png.asset.json";
-import personalAsset from "@/assets/icon-personal.png.asset.json";
-import selectionAsset from "@/assets/icon-selection.png.asset.json";
+import anatomyUrl from "@/assets/icon-anatomy.png";
+import brunchUrl from "@/assets/icon-brunch.png";
+import burgerUrl from "@/assets/icon-burger.png";
+import celebrationUrl from "@/assets/icon-celebration.png";
+import personalUrl from "@/assets/icon-personal.png";
+import selectionUrl from "@/assets/icon-selection.png";
 
 type IconProps = { className?: string };
 
@@ -15,27 +15,27 @@ function BrandIcon({ src, alt, className = "h-16 w-16" }: { src: string; alt: st
 }
 
 export function IconSelection({ className }: IconProps) {
-  return <BrandIcon src={selectionAsset.url} alt="Selection" className={className} />;
+  return <BrandIcon src={selectionUrl} alt="Selection" className={className} />;
 }
 
 export function IconCelebration({ className }: IconProps) {
-  return <BrandIcon src={celebrationAsset.url} alt="Celebration" className={className} />;
+  return <BrandIcon src={celebrationUrl} alt="Celebration" className={className} />;
 }
 
 export function IconPersonal({ className }: IconProps) {
-  return <BrandIcon src={personalAsset.url} alt="Personal Taste" className={className} />;
+  return <BrandIcon src={personalUrl} alt="Personal Taste" className={className} />;
 }
 
 export function IconAnatomy({ className }: IconProps) {
-  return <BrandIcon src={anatomyAsset.url} alt="Anatomia à Brasa" className={className} />;
+  return <BrandIcon src={anatomyUrl} alt="Anatomia à Brasa" className={className} />;
 }
 
 export function IconBrunch({ className }: IconProps) {
-  return <BrandIcon src={brunchAsset.url} alt="Brunch" className={className} />;
+  return <BrandIcon src={brunchUrl} alt="Brunch" className={className} />;
 }
 
 export function IconBurger({ className }: IconProps) {
-  return <BrandIcon src={burgerAsset.url} alt="House Burger" className={className} />;
+  return <BrandIcon src={burgerUrl} alt="House Burger" className={className} />;
 }
 
 export function IconFlame({ className = "h-5 w-5" }: IconProps) {
