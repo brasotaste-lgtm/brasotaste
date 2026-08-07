@@ -441,7 +441,7 @@ const VIDEO_GALLERY = [
     poster: posterMesaBrunch,
     title: "Mesa Braso",
     alt: "Mesa real de frios, frutas, pães e acompanhamentos preparada pela Braso Taste",
-    layout: "wide",
+    layout: "portrait",
   },
   {
     src: videoFullService,
@@ -462,14 +462,14 @@ const VIDEO_GALLERY = [
     poster: posterFogoFinalizacao,
     title: "Fogo e finalização",
     alt: "Finalização gastronômica com calor e fumaça",
-    layout: "wide",
+    layout: "portrait",
   },
   {
     src: videoAnatomiaCortes,
     poster: posterAnatomiaCortes,
     title: "Anatomia dos cortes",
     alt: "Preparação técnica de cortes bovinos para a brasa",
-    layout: "wide",
+    layout: "portrait",
   },
 ];
 
