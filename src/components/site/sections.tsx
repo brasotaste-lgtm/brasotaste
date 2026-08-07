@@ -52,7 +52,7 @@ export function Hero() {
 
       <Logo
         size="default"
-        className="pointer-events-none absolute right-[6%] top-[38%] z-20 hidden -translate-y-1/2 md:inline-flex lg:right-[14%] [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
+        className="pointer-events-none absolute left-[74.5%] top-[38%] z-20 hidden -translate-x-1/2 -translate-y-1/2 md:inline-flex [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
@@ -176,56 +176,70 @@ export function About() {
             </p>
             <p>
               A Braso Taste é uma Boutique Gastronômica especializada em Culinária de Fogo.
-              Criamos experiências gastronômicas Full Service e Turnkey no espaço do cliente,
-              com curadoria conduzida pelo Chef Fábio Tortelote e gestão integral da experiência
-              e da operação por Tatiana Souza.
+              Criamos experiências gastronômicas Full Service e Turnkey no espaço do cliente, com
+              curadoria conduzida pelo Chef Fábio Tortelote e gestão da experiência e da operação
+              por Tatiana Souza.
             </p>
             <p>
               Da primeira conversa ao pós-evento, cuidamos de cada etapa: planejamento, curadoria,
-              compras, preparo, serviço, organização e limpeza da área de trabalho. Assim, o cliente
-              deixa de ser o organizador para viver plenamente o papel de anfitrião — presente à
-              mesa, nas conversas e nos momentos que realmente importam.
-            </p>
-            <p>
-              Cada evento é único. Cada detalhe é pensado para acolher desejos, superar expectativas
-              e transformar encontros em memórias que permanecem.
+              compras, preparo, serviço, organização e limpeza da área de trabalho — para que o
+              cliente viva plenamente o papel de anfitrião.
             </p>
             <p>
               Acreditamos que a comida é uma forma de arte e de expressão de afeto. Nosso propósito
-              é usar a gastronomia para aproximar pessoas, celebrar a vida e criar experiências que
-              ficam na memória e no coração.
+              é aproximar pessoas, celebrar a vida e criar experiências que permanecem na memória
+              e no coração.
             </p>
           </div>
 
-          <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-border/70 pt-8 sm:grid-cols-2">
+          <ul className="mt-8 space-y-4">
             {[
               {
                 k: "Paixão pelo Fogo",
-                v: "O fogo como técnica, linguagem e elemento transformador para criar experiências autênticas.",
+                v: "O poder transformador do fogo e da culinária para criar experiências únicas e autênticas.",
               },
               {
                 k: "Excelência e Qualidade",
-                v: "Rigor em cada detalhe, da seleção dos ingredientes à execução e ao atendimento.",
+                v: "A perfeição em cada detalhe, da escolha dos ingredientes ao atendimento.",
               },
               {
                 k: "Personalização e Afeto",
-                v: "Cada experiência é cocriada com o cliente, respeitando seus desejos, sua história e o seu momento.",
+                v: "Cada evento é cocriado com o cliente, com carinho e atenção aos seus desejos.",
               },
               {
-                k: "Conexão à Mesa",
-                v: "A mesa como lugar de presença, união, acolhimento e celebração.",
+                k: "Conexão e Comunidade",
+                v: "Os laços criados ao redor da mesa, promovendo a união e a celebração.",
               },
             ].map((s) => (
-              <div key={s.k} className="border-l border-brand-gold/50 pl-4">
-                <dt className="text-[14px] font-semibold tracking-[0.18em] uppercase text-brand-navy">{s.k}</dt>
-                <dd className="mt-2 text-[16px] leading-relaxed text-muted-foreground">{s.v}</dd>
+              <li key={s.k} className="flex gap-4">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-brand-gold/50 text-brand-gold">
+                  <IconFlame className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="text-[14px] font-semibold tracking-[0.16em] uppercase text-brand-navy">{s.k}</h3>
+                  <p className="mt-1 text-[16px] leading-relaxed text-muted-foreground">{s.v}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <dl className="mt-8 grid grid-cols-1 gap-6 border-t border-border/70 pt-7 sm:grid-cols-3">
+            {[
+              { k: "7", v: "municípios atendidos", sub: "Grande RJ, Serrana e Região dos Lagos" },
+              { k: "100%", v: "eventos personalizados" },
+              { k: "100%", v: "feito no seu espaço" },
+            ].map((s) => (
+              <div key={s.v}>
+                <dt className="font-display text-3xl font-semibold text-brand-navy">{s.k}</dt>
+                <dd className="mt-2 text-[13px] tracking-[0.16em] uppercase text-brand-navy">{s.v}</dd>
+                {s.sub && <dd className="mt-2 text-[14px] leading-snug text-muted-foreground">{s.sub}</dd>}
               </div>
             ))}
           </dl>
 
           <Link
             to="/contato"
-            className="mt-10 inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
           >
             Solicitar proposta personalizada
             <ArrowRight className="h-4 w-4" />
@@ -237,7 +251,7 @@ export function About() {
             <div className="absolute -left-3 -top-3 hidden h-full w-full border border-brand-gold/50 sm:block" />
             <img
               src={aboutGathering}
-              alt="Encontro elegante reunido ao redor da brasa"
+              alt="Tatiana Souza e Chef Fábio Tortelote, fundadores da Braso Taste"
               loading="lazy"
               width={1600}
               height={1100}
@@ -281,18 +295,9 @@ export function Chef() {
               de Fogo da Braso Taste.
             </p>
             <p>
-              Ele conduz cada evento como uma jornada sensorial. Da seleção e do porcionamento dos
-              ingredientes ao ponto exato da brasa, combina técnica clássica, criatividade
-              contemporânea e rigor absoluto com o sabor.
-            </p>
-            <p>
-              Sua assinatura é a hospitalidade: receber como em casa, com a precisão de um
-              restaurante de alta gastronomia e o carinho da comida de vó.
-            </p>
-            <p>
-              Na Braso Taste, o trabalho de Fábio encontra a visão de Tatiana sobre acolhimento,
-              experiência e operação. Dessa união nasce uma entrega completa, pensada para que o
-              anfitrião possa apenas viver o encontro.
+              Da seleção e do porcionamento ao ponto exato da brasa, une técnica clássica,
+              criatividade contemporânea e rigor com o sabor. Sua assinatura é a hospitalidade:
+              receber como em casa, com a precisão de um restaurante de alta gastronomia.
             </p>
           </div>
 
@@ -300,7 +305,7 @@ export function Chef() {
             O fogo prepara a comida. As pessoas dão sentido à mesa.
           </blockquote>
 
-          <ul className="mt-10 grid gap-6 sm:grid-cols-3">
+          <ul className="mt-8 space-y-5">
             {[
               {
                 Icon: Utensils,
@@ -318,12 +323,14 @@ export function Chef() {
                 d: "Receber como em casa, com precisão, cuidado e atenção a cada detalhe.",
               },
             ].map((b) => (
-              <li key={b.t} className="border-l border-brand-gold/40 pl-4">
-                <div className="flex items-center gap-3">
+              <li key={b.t} className="flex gap-4">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/50">
                   <b.Icon className="h-5 w-5 text-brand-gold" />
+                </span>
+                <div>
                   <span className="text-[14px] font-semibold tracking-[0.2em] uppercase">{b.t}</span>
+                  <p className="mt-1 text-[16px] leading-relaxed text-brand-cream/75">{b.d}</p>
                 </div>
-                <p className="mt-3 text-[16px] leading-relaxed text-brand-cream/75">{b.d}</p>
               </li>
             ))}
           </ul>
@@ -332,7 +339,7 @@ export function Chef() {
             to="/contato"
             className="mt-10 inline-flex items-center justify-center gap-2 rounded-sm border border-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.22em] uppercase text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-navy"
           >
-            Solicitar uma experiência
+            Contratar o Chef
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Reveal>
@@ -526,7 +533,7 @@ export function Contact() {
     "h-12 w-full rounded-sm border border-border bg-card px-4 text-[17px] text-foreground placeholder:text-muted-foreground/60 transition-all focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/30";
 
   return (
-    <section id="contato" className="relative bg-brand-navy-deep text-brand-cream py-12 sm:py-14">
+    <section id="contato" className="relative bg-brand-navy text-brand-cream py-12 sm:py-14">
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <Reveal>
           <p className="eyebrow">Contato</p>
@@ -542,7 +549,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={120} className="mt-8">
-          <form onSubmit={handleSubmit} className="rounded-sm bg-brand-cream/[0.04] p-7 ring-1 ring-white/10 backdrop-blur-sm sm:p-10">
+          <form onSubmit={handleSubmit} className="rounded-sm bg-brand-navy-deep p-7 ring-1 ring-white/10 shadow-[var(--shadow-elegant)] sm:p-10">
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Nome">
                 <input name="name" required maxLength={120} className={input} placeholder="Seu nome" />
@@ -717,6 +724,5 @@ export function FloatingWhatsApp() {
     >
       <MessageCircle className="h-6 w-6" />
     </a>
-    
   );
 }
