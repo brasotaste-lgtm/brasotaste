@@ -458,8 +458,8 @@ export function Contact() {
 
   return (
     <section id="contato" className="relative bg-brand-navy text-brand-cream py-14 sm:py-20">
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
-        <Reveal className="lg:col-span-5">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <Reveal>
           <p className="eyebrow">Contato</p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
             Vamos criar a sua
@@ -467,45 +467,12 @@ export function Contact() {
             <span className="italic text-brand-gold">experiência</span>.
           </h2>
           <span className="gold-divider mt-6" />
-          <p className="mt-7 max-w-md text-[18px] leading-relaxed text-brand-cream/85 text-justify">
+          <p className="mt-7 max-w-2xl text-[18px] leading-relaxed text-brand-cream/85 text-justify">
             Conte-nos sobre o seu evento. Em até 24 horas retornaremos com uma proposta personalizada.
           </p>
-
-          <ul className="mt-10 space-y-5 text-[16px]">
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Phone className="h-4 w-4" />
-              </span>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
-                +55 21 97406-4098
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Instagram className="h-4 w-4" />
-              </span>
-              <a href="https://instagram.com/brasotaste" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
-                @brasotaste
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Mail className="h-4 w-4" />
-              </span>
-              <a href="mailto:contato@brasotatse.com.br" className="hover:text-brand-gold">
-                contato@brasotatse.com.br
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <span>Atendemos Rio de Janeiro e região.</span>
-            </li>
-          </ul>
         </Reveal>
 
-        <Reveal delay={120} className="lg:col-span-7">
+        <Reveal delay={120} className="mt-10">
           <form onSubmit={handleSubmit} className="rounded-sm bg-brand-cream/[0.04] p-7 ring-1 ring-white/10 backdrop-blur-sm sm:p-10">
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Nome">
@@ -562,7 +529,43 @@ export function Contact() {
             </button>
           </form>
         </Reveal>
+
+        <Reveal delay={200}>
+          <ul className="mt-12 grid gap-5 text-[16px] sm:grid-cols-2">
+            <li className="flex items-center gap-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
+                <Phone className="h-4 w-4" />
+              </span>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
+                +55 21 97406-4098
+              </a>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
+                <Instagram className="h-4 w-4" />
+              </span>
+              <a href="https://instagram.com/brasotaste" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
+                @brasotaste
+              </a>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
+                <Mail className="h-4 w-4" />
+              </span>
+              <a href="mailto:contato@brasotatse.com.br" className="hover:text-brand-gold">
+                contato@brasotatse.com.br
+              </a>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
+                <MapPin className="h-4 w-4" />
+              </span>
+              <span>Atendemos Rio de Janeiro e região.</span>
+            </li>
+          </ul>
+        </Reveal>
       </div>
+
     </section>
   );
 }
