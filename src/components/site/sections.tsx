@@ -588,7 +588,15 @@ export function Footer() {
             <p className="eyebrow">CNPJ</p>
             <p className="mt-3">60.333.080/0001-29</p>
           </div>
+          <div className="sm:col-span-2 md:col-span-4">
+            <p className="eyebrow">Local de atendimento</p>
+            <p className="mt-3 inline-flex items-start gap-2">
+              <MapPin className="mt-1 h-4 w-4 shrink-0 text-brand-gold" />
+              Atendemos o Rio de Janeiro e região — Grande RJ, Região Serrana e Região dos Lagos.
+            </p>
+          </div>
         </div>
+
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-[14px] tracking-[0.18em] uppercase text-brand-cream/40 sm:flex-row">
           <p>© {new Date().getFullYear()} Braso Taste. Todos os direitos reservados.</p>
