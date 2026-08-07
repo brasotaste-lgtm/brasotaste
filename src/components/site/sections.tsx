@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { getGoogleReviews, getInstagramPosts } from "@/lib/social.functions";
+import { getGoogleReviews } from "@/lib/social.functions";
 
 import {
   ArrowRight,
@@ -29,12 +29,6 @@ import { EXPERIENCES } from "@/data/experiences";
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
 import videoFire from "@/assets/videos/fogo-brasa.mp4";
 import videoCarving from "@/assets/videos/corte-finalizacao.mp4";
 import videoFullService from "@/assets/videos/mesa-full-service.mp4";
@@ -60,7 +54,7 @@ export function Hero() {
 
       <Logo
         size="default"
-        className="pointer-events-none absolute left-[74.5%] top-[38%] z-20 hidden -translate-x-1/2 -translate-y-1/2 md:inline-flex [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
+        className="pointer-events-none absolute left-[66%] top-[38%] z-20 hidden -translate-x-1/2 -translate-y-1/2 md:inline-flex [&_img]:!h-[300px] lg:[&_img]:!h-[300px]"
       />
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-28 md:justify-center md:pt-0">
@@ -116,25 +110,23 @@ export function Experiences() {
   };
 
   return (
-    <section id="experiencias" className="relative bg-background py-12 sm:py-14">
+    <section id="experiencias" className="relative bg-background py-8 sm:py-10">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-end lg:gap-14">
-          <div>
+        <Reveal>
+          <div className="max-w-5xl">
             <p className="eyebrow">As experiências</p>
-            <h2 className="mt-4 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-              Seis maneiras de viver
-              <br />
-              <span className="italic text-brand-gold">a mesa Braso</span>.
+            <h2 className="mt-3 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl lg:whitespace-nowrap lg:text-[46px]">
+              Seis maneiras de viver <span className="italic text-brand-gold">a mesa Braso</span>.
             </h2>
-            <span className="gold-divider mt-5" />
+            <span className="gold-divider mt-4" />
           </div>
-          <p className="max-w-xl text-[18px] leading-relaxed text-muted-foreground lg:pb-1">
+          <p className="mt-4 max-w-4xl text-[18px] leading-relaxed text-muted-foreground">
             Cada formato é desenhado com técnica de alta gastronomia e o calor do encontro.
             Escolha o que combina com o seu momento — nós cuidamos de cada detalhe.
           </p>
         </Reveal>
 
-        <div className="mt-8 flex items-center justify-between gap-4">
+        <div className="mt-5 flex items-center justify-between gap-4">
           <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
             Deslize para conhecer todas
           </p>
@@ -160,7 +152,7 @@ export function Experiences() {
 
         <div
           ref={carouselRef}
-          className="scrollbar-thin mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-5"
+          className="experience-carousel mt-3 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-2"
         >
           {EXPERIENCES.map((e, i) => (
             <Reveal
@@ -175,7 +167,7 @@ export function Experiences() {
                 className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
               >
                 <article className="relative flex h-full flex-col overflow-hidden rounded-sm border border-border/70 bg-card transition-all duration-500 group-hover:-translate-y-1 group-hover:border-brand-gold/60 group-hover:shadow-[var(--shadow-gold-glow)]">
-                  <div className="relative aspect-[16/9] overflow-hidden">
+                  <div className="relative aspect-[2/1] overflow-hidden">
                     <img
                       src={e.img}
                       alt={e.title}
@@ -186,9 +178,9 @@ export function Experiences() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/65 via-brand-navy-deep/5 to-transparent" />
                   </div>
-                  <div className="flex flex-1 flex-col px-6 py-5">
-                    <div className="mx-auto mb-2 grid h-14 w-14 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-16 md:w-16">
-                      <e.Icon className="h-14 w-14 md:h-16 md:w-16" />
+                  <div className="flex flex-1 flex-col px-5 py-4">
+                    <div className="mx-auto mb-1 grid h-12 w-12 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110">
+                      <e.Icon className="h-12 w-12" />
                     </div>
                     <p className="text-center text-[12px] tracking-[0.24em] uppercase text-brand-gold">{e.sub}</p>
                     <h3 className="mt-2 text-center font-display text-[21px] font-medium text-brand-navy">{e.title}</h3>
@@ -408,15 +400,6 @@ export function Chef() {
 }
 
 /* ---------- GALLERY ---------- */
-const GALLERY = [
-  { src: g1, alt: "Picanha fatiada na tábua", span: "md:col-span-2 md:row-span-2" },
-  { src: g2, alt: "Brasas vivas" },
-  { src: g3, alt: "Vinho sendo servido" },
-  { src: g4, alt: "Tempero e sal grosso" },
-  { src: g5, alt: "Prato autoral finalizado" },
-  { src: g6, alt: "Ambiente elegante ao ar livre", span: "md:col-span-2" },
-];
-
 const VIDEO_GALLERY = [
   {
     src: videoFire,
@@ -439,24 +422,6 @@ const VIDEO_GALLERY = [
 ];
 
 export function Gallery() {
-  const fetchPosts = useServerFn(getInstagramPosts);
-  const { data: posts } = useQuery({
-    queryKey: ["instagram-posts"],
-    queryFn: () => fetchPosts(),
-    staleTime: 1000 * 60 * 30,
-    retry: false,
-  });
-
-  const items =
-    posts && posts.length > 0
-      ? posts.map((p, i) => ({
-          src: p.imageUrl,
-          alt: p.caption,
-          href: p.permalink,
-          span: i === 0 || i === 5 ? "md:col-span-2" : undefined,
-        }))
-      : GALLERY.map((g) => ({ src: g.src, alt: g.alt, href: undefined as string | undefined, span: g.span }));
-
   return (
     <section id="galeria" className="bg-background py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -464,9 +429,12 @@ export function Gallery() {
           <div className="max-w-xl">
             <p className="eyebrow">Galeria</p>
             <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-              Momentos <span className="italic text-brand-gold">à mesa</span>.
+              Braso em <span className="italic text-brand-gold">movimento</span>.
             </h2>
             <span className="gold-divider mt-6" />
+            <p className="mt-5 text-[18px] leading-relaxed text-muted-foreground">
+              Registros reais da preparação, do fogo e do serviço no espaço do cliente.
+            </p>
           </div>
           <a
             href="https://instagram.com/brasotaste"
@@ -479,41 +447,7 @@ export function Gallery() {
           </a>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {items.map((g, i) => {
-            const Media = (
-              <div className="relative aspect-square overflow-hidden">
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
-            );
-            return (
-              <Reveal key={`${g.src}-${i}`} delay={i * 60} className={`group relative overflow-hidden ${g.span ?? ""}`}>
-                {g.href ? (
-                  <a href={g.href} target="_blank" rel="noopener noreferrer" className="block">
-                    {Media}
-                  </a>
-                ) : (
-                  Media
-                )}
-              </Reveal>
-            );
-          })}
-        </div>
-
-        <Reveal className="mt-12">
-          <p className="eyebrow">Braso em movimento</p>
-          <h3 className="mt-4 font-display text-2xl font-light text-brand-navy sm:text-3xl">
-            Da brasa à <span className="italic text-brand-gold">mesa</span>.
-          </h3>
-        </Reveal>
-
-        <div className="mt-7 grid gap-4 sm:grid-cols-3">
+        <div className="mt-9 grid gap-4 sm:grid-cols-3">
           {VIDEO_GALLERY.map((video, i) => (
             <Reveal key={video.title} delay={i * 80}>
               <figure className="group relative overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
@@ -579,26 +513,27 @@ export function Testimonials() {
   return (
     <section id="depoimentos" className="bg-brand-cream-deep py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="max-w-2xl">
-          <p className="eyebrow">Depoimentos</p>
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow flex items-center justify-center gap-3 before:h-px before:w-14 before:bg-brand-gold after:h-px after:w-14 after:bg-brand-gold">
+            Depoimentos
+          </p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-            O que dizem nossos <span className="italic text-brand-gold">anfitriões</span>.
+            O que dizem nossos <span className="italic text-brand-gold">convidados</span>
           </h2>
-          <span className="gold-divider mt-6" />
         </Reveal>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {items.map((t, i) => (
             <Reveal key={`${t.name}-${i}`} delay={i * 100}>
-              <figure className="flex h-full flex-col rounded-sm border border-border/70 bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
-                <Quote className="h-6 w-6 text-brand-gold" />
-                <blockquote className="mt-5 flex-1 text-[19px] leading-relaxed text-foreground/85 text-justify" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
-                <div className="mt-8 flex items-center gap-1 text-brand-gold">
+              <figure className="flex h-full flex-col rounded-sm border border-border/70 border-l-[3px] border-l-brand-gold bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-gold-glow)]">
+                <Quote className="h-7 w-7 text-brand-gold/60" />
+                <div className="mt-4 flex items-center gap-1 text-brand-gold">
                   {Array.from({ length: t.rating || 5 }).map((_, k) => (
                     <Star key={k} className="h-3.5 w-3.5 fill-current" />
                   ))}
                 </div>
-                <figcaption className="mt-4 border-t border-border pt-4">
+                <blockquote className="mt-5 flex-1 text-[19px] italic leading-relaxed text-foreground/85" dangerouslySetInnerHTML={{ __html: `“${t.text}”` }} />
+                <figcaption className="mt-6 border-t border-border pt-5">
                   <div className="font-display text-base font-medium text-brand-navy" dangerouslySetInnerHTML={{ __html: t.name }} />
                   <div className="mt-1 text-[14px] tracking-[0.18em] uppercase text-muted-foreground">{t.role}</div>
                 </figcaption>
@@ -646,8 +581,8 @@ export function Contact() {
 
   return (
     <section id="contato" className="relative bg-brand-navy text-brand-cream py-12 sm:py-14">
-      <div className="mx-auto max-w-4xl px-5 sm:px-8">
-        <Reveal>
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.3fr] lg:items-start lg:gap-14">
+        <Reveal className="lg:sticky lg:top-28">
           <p className="eyebrow">Contato</p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
             Vamos criar a sua
@@ -658,9 +593,28 @@ export function Contact() {
           <p className="mt-7 max-w-2xl text-[19px] leading-relaxed text-brand-cream/85 text-justify">
             Conte-nos sobre o seu evento. Em até 24 horas retornaremos com uma proposta personalizada.
           </p>
+
+          <div className="mt-9 space-y-5 text-[16px] text-brand-cream/90">
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 transition-colors hover:text-brand-gold">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold"><MessageCircle className="h-5 w-5" /></span>
+              <span><strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">WhatsApp</strong><span className="mt-1 block">(21) 97406-4098</span></span>
+            </a>
+            <a href="https://instagram.com/brasotaste" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 transition-colors hover:text-brand-gold">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold"><Instagram className="h-5 w-5" /></span>
+              <span><strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">Instagram</strong><span className="mt-1 block">@brasotaste</span></span>
+            </a>
+            <a href="mailto:contato@brasotaste.com.br" className="flex items-center gap-4 transition-colors hover:text-brand-gold">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold"><Mail className="h-5 w-5" /></span>
+              <span><strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">E-mail</strong><span className="mt-1 block">contato@brasotaste.com.br</span></span>
+            </a>
+            <div className="flex items-center gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold"><MapPin className="h-5 w-5" /></span>
+              <span><strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">Atendimento</strong><span className="mt-1 block">Grande RJ, Região Serrana e Região dos Lagos</span></span>
+            </div>
+          </div>
         </Reveal>
 
-        <Reveal delay={120} className="mt-8">
+        <Reveal delay={120}>
           <form onSubmit={handleSubmit} className="rounded-sm bg-brand-navy-deep p-7 ring-1 ring-white/10 shadow-[var(--shadow-elegant)] sm:p-10">
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Nome">

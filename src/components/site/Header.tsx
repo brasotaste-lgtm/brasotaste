@@ -44,7 +44,7 @@ export function Header() {
     };
   }, [open]);
 
-  const linkClass = `text-[15px] font-semibold tracking-[0.18em] uppercase transition-colors ${
+  const linkClass = `whitespace-nowrap text-[12px] font-semibold tracking-[0.14em] uppercase transition-colors xl:text-[13px] ${
     scrolled ? "text-brand-navy/80 hover:text-brand-gold" : "text-white/85 hover:text-brand-gold"
   }`;
 
@@ -64,7 +64,7 @@ export function Header() {
         >
           <div />
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
             {NAV.map((n) =>
               n.kind === "route" ? (
                 <Link key={n.label} to={n.to} className={linkClass}>
@@ -187,4 +187,3 @@ export function Header() {
     </>
   );
 }
-

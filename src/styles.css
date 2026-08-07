@@ -151,3 +151,12 @@
 }
 
 .animate-fade-up { animation: fade-up 0.9s ease-out both; }
+
+/* Horizontal interaction remains available without browser scrollbars. */
+.experience-carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.experience-carousel::-webkit-scrollbar {
+  display: none;
+}
