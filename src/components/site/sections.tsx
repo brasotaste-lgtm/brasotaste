@@ -530,40 +530,6 @@ export function Contact() {
           </form>
         </Reveal>
 
-        <Reveal delay={200}>
-          <ul className="mt-12 grid gap-5 text-[16px] sm:grid-cols-2">
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Phone className="h-4 w-4" />
-              </span>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
-                +55 21 97406-4098
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Instagram className="h-4 w-4" />
-              </span>
-              <a href="https://instagram.com/brasotaste" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold">
-                @brasotaste
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <Mail className="h-4 w-4" />
-              </span>
-              <a href="mailto:contato@brasotatse.com.br" className="hover:text-brand-gold">
-                contato@brasotatse.com.br
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-gold/60 text-brand-gold">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <span>Atendemos Rio de Janeiro e região.</span>
-            </li>
-          </ul>
-        </Reveal>
       </div>
 
     </section>
