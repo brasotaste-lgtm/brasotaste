@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
@@ -8,6 +8,8 @@ import { getGoogleReviews, getInstagramPosts } from "@/lib/social.functions";
 import {
   ArrowRight,
   Award,
+  ChevronLeft,
+  ChevronRight,
   Instagram,
   Mail,
   MapPin,
@@ -33,6 +35,12 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
+import videoFire from "@/assets/videos/fogo-brasa.mp4";
+import videoCarving from "@/assets/videos/corte-finalizacao.mp4";
+import videoFullService from "@/assets/videos/mesa-full-service.mp4";
+import posterFire from "@/assets/videos/fogo-brasa-poster.jpg";
+import posterCarving from "@/assets/videos/corte-finalizacao-poster.jpg";
+import posterFullService from "@/assets/videos/mesa-full-service-poster.jpg";
 
 const WHATSAPP = "https://wa.me/5521974064098?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20Braso%20Taste";
 
@@ -99,55 +107,99 @@ export function Hero() {
 
 /* ---------- EXPERIENCES ---------- */
 export function Experiences() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const moveCarousel = (direction: -1 | 1) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    carousel.scrollBy({ left: direction * carousel.clientWidth * 0.86, behavior: "smooth" });
+  };
+
   return (
     <section id="experiencias" className="relative bg-background py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="max-w-2xl">
-          <p className="eyebrow">As experiências</p>
-          <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
-            Seis maneiras de viver
-            <br />
-            <span className="italic text-brand-gold">a mesa Braso</span>.
-          </h2>
-          <span className="gold-divider mt-6" />
-          <p className="mt-6 max-w-xl text-[19px] leading-relaxed text-muted-foreground text-justify">
+        <Reveal className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-end lg:gap-14">
+          <div>
+            <p className="eyebrow">As experiências</p>
+            <h2 className="mt-4 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
+              Seis maneiras de viver
+              <br />
+              <span className="italic text-brand-gold">a mesa Braso</span>.
+            </h2>
+            <span className="gold-divider mt-5" />
+          </div>
+          <p className="max-w-xl text-[18px] leading-relaxed text-muted-foreground lg:pb-1">
             Cada formato é desenhado com técnica de alta gastronomia e o calor do encontro.
             Escolha o que combina com o seu momento — nós cuidamos de cada detalhe.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 flex items-center justify-between gap-4">
+          <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
+            Deslize para conhecer todas
+          </p>
+          <div className="flex gap-2" aria-label="Controles do carrossel">
+            <button
+              type="button"
+              onClick={() => moveCarousel(-1)}
+              aria-label="Experiências anteriores"
+              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-navy"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveCarousel(1)}
+              aria-label="Próximas experiências"
+              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-navy"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={carouselRef}
+          className="scrollbar-thin mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-5"
+        >
           {EXPERIENCES.map((e, i) => (
-            <Reveal key={e.title} delay={i * 80}>
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/70 bg-card transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/60 hover:shadow-[var(--shadow-gold-glow)]">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={e.img}
-                    alt={e.title}
-                    loading="lazy"
-                    width={1024}
-                    height={1280}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/70 via-brand-navy-deep/10 to-transparent" />
-                </div>
-                <div className="flex flex-1 flex-col px-7 py-7">
-                  <div className="mx-auto mb-5 grid h-24 w-24 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-28 md:w-28">
-                    <e.Icon className="h-24 w-24 md:h-28 md:w-28" />
+            <Reveal
+              key={e.title}
+              delay={i * 60}
+              className="w-[84%] shrink-0 snap-start sm:w-[47%] lg:w-[29.5%]"
+            >
+              <Link
+                to="/experiencias/$slug"
+                params={{ slug: e.slug }}
+                aria-label={`Conhecer ${e.title}`}
+                className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
+              >
+                <article className="relative flex h-full flex-col overflow-hidden rounded-sm border border-border/70 bg-card transition-all duration-500 group-hover:-translate-y-1 group-hover:border-brand-gold/60 group-hover:shadow-[var(--shadow-gold-glow)]">
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.title}
+                      loading="lazy"
+                      width={1280}
+                      height={720}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/65 via-brand-navy-deep/5 to-transparent" />
                   </div>
-                  <p className="text-center text-[13px] tracking-[0.28em] uppercase text-brand-gold">{e.sub}</p>
-                  <h3 className="mt-3 text-center font-display text-[22px] font-medium text-brand-navy">{e.title}</h3>
-                  <p className="mt-3 flex-1 text-justify text-[17px] leading-relaxed text-muted-foreground">{e.text}</p>
-                  <Link
-                    to="/experiencias/$slug"
-                    params={{ slug: e.slug }}
-                    className="mt-6 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors hover:text-brand-gold"
-                  >
-                    Saiba mais
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </article>
+                  <div className="flex flex-1 flex-col px-6 py-5">
+                    <div className="mx-auto mb-2 grid h-14 w-14 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110 md:h-16 md:w-16">
+                      <e.Icon className="h-14 w-14 md:h-16 md:w-16" />
+                    </div>
+                    <p className="text-center text-[12px] tracking-[0.24em] uppercase text-brand-gold">{e.sub}</p>
+                    <h3 className="mt-2 text-center font-display text-[21px] font-medium text-brand-navy">{e.title}</h3>
+                    <p className="mt-3 flex-1 text-justify text-[17px] leading-relaxed text-muted-foreground">{e.text}</p>
+                    <span className="mt-5 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors group-hover:text-brand-gold">
+                      Saiba mais
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </article>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -161,8 +213,9 @@ export function Experiences() {
 export function About() {
   return (
     <section id="sobre" className="relative overflow-hidden bg-brand-cream-deep py-12 sm:py-14">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-14">
-        <Reveal className="order-2 lg:order-1">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+          <Reveal>
           <p className="eyebrow">Sobre a Braso Taste</p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
             Transformamos encontros em
@@ -192,44 +245,62 @@ export function About() {
             </p>
           </div>
 
-          <ul className="mt-8 space-y-4">
-            {[
-              {
-                k: "Paixão pelo Fogo",
-                v: "O poder transformador do fogo e da culinária para criar experiências únicas e autênticas.",
-              },
-              {
-                k: "Excelência e Qualidade",
-                v: "A perfeição em cada detalhe, da escolha dos ingredientes ao atendimento.",
-              },
-              {
-                k: "Personalização e Afeto",
-                v: "Cada evento é cocriado com o cliente, com carinho e atenção aos seus desejos.",
-              },
-              {
-                k: "Conexão e Comunidade",
-                v: "Os laços criados ao redor da mesa, promovendo a união e a celebração.",
-              },
-            ].map((s) => (
-              <li key={s.k} className="flex gap-4">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-brand-gold/50 text-brand-gold">
-                  <IconFlame className="h-4 w-4" />
-                </span>
-                <div>
-                  <h3 className="text-[14px] font-semibold tracking-[0.16em] uppercase text-brand-navy">{s.k}</h3>
-                  <p className="mt-1 text-[16px] leading-relaxed text-muted-foreground">{s.v}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          </Reveal>
 
-          <dl className="mt-8 grid grid-cols-1 gap-6 border-t border-border/70 pt-7 sm:grid-cols-3">
+          <Reveal delay={120}>
+            <div className="relative">
+              <div className="absolute -left-3 -top-3 hidden h-full w-full border border-brand-gold/50 sm:block" />
+              <img
+                src={aboutGathering}
+                alt="Tatiana Souza e Chef Fábio Tortelote, fundadores da Braso Taste"
+                loading="lazy"
+                width={1600}
+                height={1100}
+                className="relative aspect-[4/3] w-full object-cover shadow-[var(--shadow-elegant)]"
+              />
+            </div>
+
+            <ul className="mt-8 space-y-4">
+              {[
+                {
+                  k: "Paixão pelo Fogo",
+                  v: "O poder transformador do fogo e da culinária para criar experiências únicas e autênticas.",
+                },
+                {
+                  k: "Excelência e Qualidade",
+                  v: "A perfeição em cada detalhe, da escolha dos ingredientes ao atendimento.",
+                },
+                {
+                  k: "Personalização e Afeto",
+                  v: "Cada evento é cocriado com o cliente, com carinho e atenção aos seus desejos.",
+                },
+                {
+                  k: "Conexão e Comunidade",
+                  v: "Os laços criados ao redor da mesa, promovendo a união e a celebração.",
+                },
+              ].map((s) => (
+                <li key={s.k} className="flex gap-4">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-brand-gold/50 text-brand-gold">
+                    <IconFlame className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <h3 className="text-[14px] font-semibold tracking-[0.16em] uppercase text-brand-navy">{s.k}</h3>
+                    <p className="mt-1 text-[16px] leading-relaxed text-muted-foreground">{s.v}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        <Reveal className="mt-10 border-t border-border/70 pt-8">
+          <dl className="mx-auto grid max-w-4xl grid-cols-1 gap-7 text-center sm:grid-cols-3">
             {[
               { k: "7", v: "municípios atendidos", sub: "Grande RJ, Serrana e Região dos Lagos" },
               { k: "100%", v: "eventos personalizados" },
               { k: "100%", v: "feito no seu espaço" },
             ].map((s) => (
-              <div key={s.v}>
+              <div key={s.v} className="flex flex-col items-center">
                 <dt className="font-display text-3xl font-semibold text-brand-navy">{s.k}</dt>
                 <dd className="mt-2 text-[13px] tracking-[0.16em] uppercase text-brand-navy">{s.v}</dd>
                 {s.sub && <dd className="mt-2 text-[14px] leading-snug text-muted-foreground">{s.sub}</dd>}
@@ -237,26 +308,14 @@ export function About() {
             ))}
           </dl>
 
-          <Link
-            to="/contato"
-            className="mt-8 inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
-          >
-            Solicitar proposta personalizada
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </Reveal>
-
-        <Reveal delay={120} className="order-1 lg:order-2">
-          <div className="relative">
-            <div className="absolute -left-3 -top-3 hidden h-full w-full border border-brand-gold/50 sm:block" />
-            <img
-              src={aboutGathering}
-              alt="Tatiana Souza e Chef Fábio Tortelote, fundadores da Braso Taste"
-              loading="lazy"
-              width={1600}
-              height={1100}
-              className="relative aspect-[4/3] w-full object-cover shadow-[var(--shadow-elegant)]"
-            />
+          <div className="mt-8 flex justify-center">
+            <Link
+              to="/contato"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-brand-gold px-7 py-4 text-[14px] font-semibold tracking-[0.22em] uppercase text-brand-navy transition-all duration-300 hover:bg-brand-gold-soft hover:shadow-[var(--shadow-gold-glow)]"
+            >
+              Solicitar proposta personalizada
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </Reveal>
       </div>
@@ -358,6 +417,27 @@ const GALLERY = [
   { src: g6, alt: "Ambiente elegante ao ar livre", span: "md:col-span-2" },
 ];
 
+const VIDEO_GALLERY = [
+  {
+    src: videoFire,
+    poster: posterFire,
+    title: "Fogo e brasa",
+    alt: "Carnes sendo preparadas sobre o fogo",
+  },
+  {
+    src: videoCarving,
+    poster: posterCarving,
+    title: "Corte e finalização",
+    alt: "Chef finalizando o corte de uma carne assada",
+  },
+  {
+    src: videoFullService,
+    poster: posterFullService,
+    title: "Experiência Full Service",
+    alt: "Mesa de serviço gastronômico montada no espaço do cliente",
+  },
+];
+
 export function Gallery() {
   const fetchPosts = useServerFn(getInstagramPosts);
   const { data: posts } = useQuery({
@@ -424,6 +504,38 @@ export function Gallery() {
               </Reveal>
             );
           })}
+        </div>
+
+        <Reveal className="mt-12">
+          <p className="eyebrow">Braso em movimento</p>
+          <h3 className="mt-4 font-display text-2xl font-light text-brand-navy sm:text-3xl">
+            Da brasa à <span className="italic text-brand-gold">mesa</span>.
+          </h3>
+        </Reveal>
+
+        <div className="mt-7 grid gap-4 sm:grid-cols-3">
+          {VIDEO_GALLERY.map((video, i) => (
+            <Reveal key={video.title} delay={i * 80}>
+              <figure className="group relative overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
+                <video
+                  src={video.src}
+                  poster={video.poster}
+                  aria-label={video.alt}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="aspect-[9/16] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-navy-deep/90 to-transparent px-5 pb-5 pt-14">
+                  <figcaption className="text-[13px] font-semibold tracking-[0.2em] uppercase text-brand-cream">
+                    {video.title}
+                  </figcaption>
+                </div>
+              </figure>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

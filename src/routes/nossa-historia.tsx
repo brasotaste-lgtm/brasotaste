@@ -7,7 +7,10 @@ import { Toaster } from "@/components/ui/sonner";
 
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
-import chefPortrait from "@/assets/chef-portrait.jpg";
+import storyCouple from "@/assets/story/casal-sorrindo.jpg";
+import wedding1 from "@/assets/story/casamento-01.jpg";
+import wedding2 from "@/assets/story/casamento-02.jpg";
+import wedding3 from "@/assets/story/casamento-03.jpg";
 
 export const Route = createFileRoute("/nossa-historia")({
   head: () => ({
@@ -104,6 +107,12 @@ const VALUES = [
   },
 ];
 
+const WEDDING_PHOTOS = [
+  { src: wedding1, alt: "Tatiana e Fábio celebrando o casamento junino" },
+  { src: wedding2, alt: "Tatiana e Fábio dançando no casamento junino" },
+  { src: wedding3, alt: "Tatiana e Fábio compartilhando a mesa com os convidados" },
+];
+
 
 function NossaHistoriaPage() {
   return (
@@ -171,13 +180,44 @@ function NossaHistoriaPage() {
               <div className="relative">
                 <div className="absolute -left-3 -top-3 hidden h-full w-full border border-brand-gold/50 sm:block" />
                 <img
-                  src={chefPortrait}
-                  alt="Retrato do Chef Fábio Tortelote"
+                  src={storyCouple}
+                  alt="Tatiana Souza e Fábio Tortelote, fundadores da Braso Taste"
                   loading="lazy"
                   className="relative aspect-[4/5] w-full object-cover shadow-[var(--shadow-elegant)]"
                 />
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        {/* CASAMENTO JUNINO */}
+        <section className="bg-brand-cream-deep pb-14 sm:pb-20">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <Reveal>
+              <p className="eyebrow">O casamento que acendeu a primeira brasa</p>
+              <h2 className="mt-5 max-w-3xl font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
+                Uma celebração onde fogo, mesa e afeto
+                <span className="italic text-brand-gold"> ganharam identidade</span>.
+              </h2>
+              <span className="gold-divider mt-6" />
+            </Reveal>
+
+            <div className="mt-9 grid gap-4 md:grid-cols-2">
+              {WEDDING_PHOTOS.map((photo, i) => (
+                <Reveal key={photo.src} delay={i * 90} className={i === 0 ? "md:row-span-2" : ""}>
+                  <figure className="h-full overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      loading="lazy"
+                      className={`w-full object-cover transition-transform duration-[1400ms] hover:scale-[1.03] ${
+                        i === 0 ? "aspect-[4/5] h-full" : "aspect-[3/2]"
+                      }`}
+                    />
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
