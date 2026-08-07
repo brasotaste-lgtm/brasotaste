@@ -152,6 +152,7 @@ export function Experiences() {
 
         <div
           ref={carouselRef}
+          style={{ scrollbarWidth: "none", overflowY: "hidden" }}
           className="experience-carousel mt-3 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-2"
         >
           {EXPERIENCES.map((e, i) => (

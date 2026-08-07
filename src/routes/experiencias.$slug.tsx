@@ -49,14 +49,14 @@ function ExperienceDetail() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative isolate min-h-[60svh] w-full overflow-hidden bg-brand-navy-deep text-white">
+        <section className="relative isolate min-h-[350px] w-full overflow-hidden bg-brand-navy-deep text-white">
           <img
             src={exp.img}
             alt={exp.title}
             className="absolute inset-0 h-full w-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/85" />
-          <div className="relative z-10 mx-auto flex min-h-[60svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-16 sm:pt-28">
+          <div className="relative z-10 mx-auto flex min-h-[350px] max-w-7xl flex-col justify-end px-5 pb-8 pt-24 sm:px-8 sm:pb-10 sm:pt-24">
 
             <Link
               to="/"
@@ -64,30 +64,30 @@ function ExperienceDetail() {
             >
               <ArrowLeft className="h-4 w-4" /> Voltar
             </Link>
-            <div className="mt-6 flex items-center gap-4">
-              <exp.Icon className="h-16 w-16 text-brand-gold md:h-20 md:w-20" />
+            <div className="mt-4 flex items-center gap-4">
+              <exp.Icon className="h-14 w-14 text-brand-gold md:h-16 md:w-16" />
               <p className="text-[14px] tracking-[0.28em] uppercase text-brand-gold">{exp.sub}</p>
             </div>
-            <h1 className="mt-4 max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[80px]">
+            <h1 className="mt-4 max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[64px]">
               {exp.title}
             </h1>
-            <span className="mt-6 block h-px w-24 bg-brand-gold" />
+            <span className="mt-4 block h-px w-20 bg-brand-gold" />
           </div>
         </section>
 
         {/* Intro + highlights */}
-        <section className="bg-background py-8 sm:py-12">
-          <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
+        <section className="bg-background py-8 sm:py-10">
+          <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-6">
               <p className="eyebrow">A experiência</p>
-              <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
                 Sobre a <span className="italic text-brand-gold">experiência</span>.
               </h2>
-              <span className="gold-divider mt-6" />
-              <p className="mt-7 text-[18px] leading-relaxed text-muted-foreground text-justify">
+              <span className="gold-divider mt-4" />
+              <p className="mt-5 text-[18px] leading-relaxed text-muted-foreground text-justify">
                 {exp.intro}
               </p>
-              <div className="mt-8 rounded-sm border border-border/70 bg-card p-6">
+              <div className="mt-6 rounded-sm border border-border/70 bg-card p-5">
                 <p className="text-[14px] tracking-[0.24em] uppercase text-brand-gold">Ideal para</p>
                 <p className="mt-3 text-[18px] leading-relaxed text-foreground/85">{exp.ideal}</p>
               </div>
@@ -95,11 +95,11 @@ function ExperienceDetail() {
 
             <Reveal delay={120} className="lg:col-span-6">
               <p className="eyebrow">Destaques</p>
-              <h3 className="mt-5 font-display text-2xl font-light text-brand-navy sm:text-3xl">
+              <h3 className="mt-3 font-display text-2xl font-light text-brand-navy sm:text-3xl">
                 O que torna esta experiência única.
               </h3>
-              <span className="gold-divider mt-6" />
-              <ul className="mt-8 space-y-6">
+              <span className="gold-divider mt-4" />
+              <ul className="mt-6 space-y-5">
                 {exp.highlights.map((h) => (
                   <li key={h.title} className="border-l-2 border-brand-gold/70 pl-5">
                     <p className="font-display text-xl font-medium text-brand-navy">{h.title}</p>
@@ -112,20 +112,20 @@ function ExperienceDetail() {
         </section>
 
         {/* Includes */}
-        <section className="bg-brand-cream-deep py-8 sm:py-12">
+        <section className="bg-brand-cream-deep py-8 sm:py-10">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">O que está incluso</p>
-              <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
                 Uma operação <span className="italic text-brand-gold">completa</span>.
               </h2>
-              <span className="gold-divider mt-6" />
+              <span className="gold-divider mt-4" />
               <p className="mt-6 text-[18px] leading-relaxed text-muted-foreground text-justify">
                 Cuidamos de todos os detalhes para que você apenas viva o momento.
               </p>
             </Reveal>
 
-            <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {exp.includes.map((item, i) => (
                 <Reveal key={item} delay={i * 60}>
                   <li className="flex items-start gap-4 rounded-sm border border-border/70 bg-card p-5">
@@ -141,11 +141,11 @@ function ExperienceDetail() {
         </section>
 
         {/* CTA */}
-        <section className="bg-brand-navy text-brand-cream py-8 sm:py-12">
+        <section className="bg-brand-navy text-brand-cream py-8 sm:py-10">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               <p className="eyebrow">Vamos conversar</p>
-              <h2 className="mt-5 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
+              <h2 className="mt-3 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
                 Solicite um orçamento para <span className="italic text-brand-gold">{exp.title}</span>.
               </h2>
               <span className="gold-divider mx-auto mt-6" />
@@ -175,17 +175,17 @@ function ExperienceDetail() {
         </section>
 
         {/* Related */}
-        <section className="bg-background py-8 sm:py-12">
+        <section className="bg-background py-8 sm:py-10">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal>
               <p className="eyebrow">Outras experiências</p>
-              <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
                 Explore outros <span className="italic text-brand-gold">formatos</span>.
               </h2>
-              <span className="gold-divider mt-6" />
+              <span className="gold-divider mt-4" />
             </Reveal>
 
-            <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {others.map((o, i) => (
                 <Reveal key={o.slug} delay={i * 80}>
                   <Link
@@ -222,3 +222,4 @@ function ExperienceDetail() {
     </div>
   );
 }
+
