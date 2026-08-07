@@ -28,7 +28,7 @@ function SobrePage() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
       <Header />
-      <main className="pt-24 sm:pt-28">
+      <main className="pt-[70px] sm:pt-[82px]">
         <About />
       </main>
       <Footer />
