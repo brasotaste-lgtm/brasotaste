@@ -35,6 +35,16 @@ import videoFullService from "@/assets/videos/mesa-full-service.mp4";
 import posterFire from "@/assets/videos/fogo-brasa-poster.jpg";
 import posterCarving from "@/assets/videos/corte-finalizacao-poster.jpg";
 import posterFullService from "@/assets/videos/mesa-full-service-poster.jpg";
+import videoMiniBurgers from "@/assets/videos/mini-burgers.mp4";
+import posterMiniBurgers from "@/assets/videos/mini-burgers-poster.jpg";
+import videoMesaBrunch from "@/assets/videos/mesa-brunch.mp4";
+import posterMesaBrunch from "@/assets/videos/mesa-brunch-poster.jpg";
+import videoCarneBrasa from "@/assets/videos/carne-na-brasa.mp4";
+import posterCarneBrasa from "@/assets/videos/carne-na-brasa-poster.jpg";
+import videoFogoFinalizacao from "@/assets/videos/fogo-finalizacao.mp4";
+import posterFogoFinalizacao from "@/assets/videos/fogo-finalizacao-poster.jpg";
+import videoAnatomiaCortes from "@/assets/videos/anatomia-cortes.mp4";
+import posterAnatomiaCortes from "@/assets/videos/anatomia-cortes-poster.jpg";
 
 const WHATSAPP = "https://wa.me/5521974064098?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20Braso%20Taste";
 
@@ -407,18 +417,56 @@ const VIDEO_GALLERY = [
     poster: posterFire,
     title: "Fogo e brasa",
     alt: "Carnes sendo preparadas sobre o fogo",
+    layout: "portrait",
+  },
+  {
+    src: videoMiniBurgers,
+    poster: posterMiniBurgers,
+    title: "Estação de mini burgers",
+    alt: "Mesa real com mini burgers artesanais e molhos da Braso Taste",
+    layout: "portrait",
   },
   {
     src: videoCarving,
     poster: posterCarving,
     title: "Corte e finalização",
     alt: "Chef finalizando o corte de uma carne assada",
+    layout: "portrait",
+  },
+  {
+    src: videoMesaBrunch,
+    poster: posterMesaBrunch,
+    title: "Mesa Braso",
+    alt: "Mesa real de frios, frutas, pães e acompanhamentos preparada pela Braso Taste",
+    layout: "wide",
   },
   {
     src: videoFullService,
     poster: posterFullService,
     title: "Experiência Full Service",
     alt: "Mesa de serviço gastronômico montada no espaço do cliente",
+    layout: "portrait",
+  },
+  {
+    src: videoCarneBrasa,
+    poster: posterCarneBrasa,
+    title: "Sabor da brasa",
+    alt: "Carne assada e dourada preparada pela Braso Taste",
+    layout: "portrait",
+  },
+  {
+    src: videoFogoFinalizacao,
+    poster: posterFogoFinalizacao,
+    title: "Fogo e finalização",
+    alt: "Finalização gastronômica com calor e fumaça",
+    layout: "wide",
+  },
+  {
+    src: videoAnatomiaCortes,
+    poster: posterAnatomiaCortes,
+    title: "Anatomia dos cortes",
+    alt: "Preparação técnica de cortes bovinos para a brasa",
+    layout: "wide",
   },
 ];
 
@@ -450,7 +498,11 @@ export function Gallery() {
 
         <div className="mt-9 grid gap-4 sm:grid-cols-3">
           {VIDEO_GALLERY.map((video, i) => (
-            <Reveal key={video.title} delay={i * 80}>
+            <Reveal
+              key={video.title}
+              delay={i * 60}
+              className={video.layout === "wide" ? "sm:col-span-2" : ""}
+            >
               <figure className="group relative overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
                 <video
                   src={video.src}
@@ -461,7 +513,7 @@ export function Gallery() {
                   loop
                   playsInline
                   preload="metadata"
-                  className="aspect-[9/16] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                  className={`${video.layout === "wide" ? "aspect-video" : "aspect-[9/16]"} w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]`}
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-navy-deep/90 to-transparent px-5 pb-5 pt-14">
                   <figcaption className="text-[13px] font-semibold tracking-[0.2em] uppercase text-brand-cream">
