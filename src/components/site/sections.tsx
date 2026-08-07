@@ -474,6 +474,14 @@ const VIDEO_GALLERY = [
 ];
 
 export function Gallery() {
+  const videoCarouselRef = useRef<HTMLDivElement>(null);
+
+  const moveVideoCarousel = (direction: -1 | 1) => {
+    const carousel = videoCarouselRef.current;
+    if (!carousel) return;
+    carousel.scrollBy({ left: direction * carousel.clientWidth * 0.82, behavior: "smooth" });
+  };
+
   return (
     <section id="galeria" className="bg-background py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -531,12 +539,40 @@ export function Gallery() {
           ))}
         </div>
 
-        <div className="mt-9 grid gap-4 sm:grid-cols-3">
+        <div className="mt-9 flex items-center justify-between gap-4">
+          <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
+            Deslize para assistir
+          </p>
+          <div className="flex gap-2" aria-label="Controles dos vídeos">
+            <button
+              type="button"
+              onClick={() => moveVideoCarousel(-1)}
+              aria-label="Vídeos anteriores"
+              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveVideoCarousel(1)}
+              aria-label="Próximos vídeos"
+              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={videoCarouselRef}
+          style={{ scrollbarWidth: "none", overflowY: "hidden" }}
+          className="experience-carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-2"
+        >
           {VIDEO_GALLERY.map((video, i) => (
             <Reveal
               key={video.title}
               delay={i * 60}
-              className={video.layout === "wide" ? "sm:col-span-2" : ""}
+              className="w-[76%] shrink-0 snap-start sm:w-[43%] lg:w-[28%]"
             >
               <figure className="group relative overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
                 <video
@@ -548,7 +584,7 @@ export function Gallery() {
                   loop
                   playsInline
                   preload="metadata"
-                  className={`${video.layout === "wide" ? "aspect-video" : "aspect-[9/16]"} w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]`}
+                  className="aspect-[9/16] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-navy-deep/90 to-transparent px-5 pb-5 pt-14">
                   <figcaption className="text-[13px] font-semibold tracking-[0.2em] uppercase text-brand-cream">
