@@ -29,6 +29,9 @@ import { EXPERIENCES } from "@/data/experiences";
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
+import galleryFogoChao from "@/assets/gallery-fogo-chao.jpg";
+import galleryEspetoBrasa from "@/assets/gallery-espeto-brasa.jpg";
+import galleryGrelha from "@/assets/gallery-grelha.jpg";
 import videoFire from "@/assets/videos/fogo-brasa.mp4";
 import videoCarving from "@/assets/videos/corte-finalizacao.mp4";
 import videoFullService from "@/assets/videos/mesa-full-service.mp4";
@@ -495,6 +498,38 @@ export function Gallery() {
             @brasotaste
           </a>
         </Reveal>
+
+        <div className="mt-9 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+          {[
+            {
+              src: galleryFogoChao,
+              alt: "Carnes e linguiças preparadas no fogo de chão",
+              className: "h-[300px] lg:h-[360px]",
+            },
+            {
+              src: galleryEspetoBrasa,
+              alt: "Carnes e linguiças assando diretamente sobre a brasa",
+              className: "col-span-2 h-[300px] lg:h-[360px]",
+            },
+            {
+              src: galleryGrelha,
+              alt: "Carnes variadas dourando sobre a grelha",
+              className: "h-[300px] lg:h-[360px]",
+            },
+          ].map((photo, i) => (
+            <Reveal key={photo.src} delay={i * 70} className={photo.className}>
+              <figure className="group relative h-full overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/35 to-transparent" />
+              </figure>
+            </Reveal>
+          ))}
+        </div>
 
         <div className="mt-9 grid gap-4 sm:grid-cols-3">
           {VIDEO_GALLERY.map((video, i) => (
