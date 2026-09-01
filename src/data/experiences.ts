@@ -39,9 +39,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "Aniversários, bodas, formaturas e datas que merecem ser lembradas. Um menu completo, do couvert à sobremesa, com serviço impecável e o calor da brasa como protagonista.",
     highlights: [
-      { title: "Menu completo", text: "Do couvert à sobremesa, tudo pensado para o seu momento." },
-      { title: "Equipe estendida", text: "Cozinha, salão e coordenação dedicados ao evento." },
-      { title: "Personalização", text: "Cardápio adaptado ao perfil dos seus convidados." },
+      {
+        title: "Menu completo",
+        text: "Do couvert à sobremesa, tudo pensado para o seu momento.",
+      },
+      {
+        title: "Equipe estendida",
+        text: "Cozinha, salão e coordenação dedicados ao evento.",
+      },
+      {
+        title: "Personalização",
+        text: "Cardápio adaptado ao perfil dos seus convidados.",
+      },
     ],
     includes: [
       "Chef, sous-chef e brigada completa",
@@ -61,9 +70,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "A experiência assinatura da Braso Taste. Uma curadoria de cortes nobres selecionados a dedo, brasa conduzida no ponto exato e harmonizações que valorizam cada mordida. Um jantar de alta gastronomia servido no conforto do seu espaço.",
     highlights: [
-      { title: "Curadoria de cortes", text: "Prime, dry aged e cortes especiais selecionados pelo chef." },
-      { title: "Harmonização", text: "Sugestões de vinhos e destilados para cada tempo do menu." },
-      { title: "Serviço à mesa", text: "Equipe dedicada durante toda a experiência." },
+      {
+        title: "Curadoria de cortes",
+        text: "Prime, dry aged e cortes especiais selecionados pelo chef.",
+      },
+      {
+        title: "Harmonização",
+        text: "Sugestões de vinhos e destilados para cada tempo do menu.",
+      },
+      {
+        title: "Serviço à mesa",
+        text: "Equipe dedicada durante toda a experiência.",
+      },
     ],
     includes: [
       "Chef executivo e equipe completa",
@@ -83,9 +101,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "Uma experiência co-criada. O chef Fabio senta com você, entende o momento, o gosto e o perfil dos convidados — e desenha um menu único, com ingredientes escolhidos a quatro mãos.",
     highlights: [
-      { title: "Consultoria com o chef", text: "Reunião presencial ou online para desenhar cada tempo." },
-      { title: "Ingredientes selecionados", text: "Fornecedores e insumos escolhidos com você." },
-      { title: "Menu autoral", text: "Um cardápio exclusivo, servido apenas para você." },
+      {
+        title: "Consultoria com o chef",
+        text: "Reunião presencial ou online para desenhar cada tempo.",
+      },
+      {
+        title: "Ingredientes selecionados",
+        text: "Fornecedores e insumos escolhidos com você.",
+      },
+      {
+        title: "Menu autoral",
+        text: "Um cardápio exclusivo, servido apenas para você.",
+      },
     ],
     includes: [
       "Sessão de curadoria com o chef",
@@ -105,9 +132,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "Uma imersão no universo do fogo. Desossa ao vivo, apresentação dos cortes, técnicas de brasa e degustação guiada — os convidados aprendem, provam e vivem cada etapa junto ao chef.",
     highlights: [
-      { title: "Aula ao vivo", text: "Desossa, apresentação de cortes e técnicas de brasa." },
-      { title: "Degustação guiada", text: "Cada corte servido no tempo certo, com narrativa do chef." },
-      { title: "Interatividade", text: "Os convidados participam, perguntam e experimentam." },
+      {
+        title: "Aula ao vivo",
+        text: "Desossa, apresentação de cortes e técnicas de brasa.",
+      },
+      {
+        title: "Degustação guiada",
+        text: "Cada corte servido no tempo certo, com narrativa do chef.",
+      },
+      {
+        title: "Interatividade",
+        text: "Os convidados participam, perguntam e experimentam.",
+      },
     ],
     includes: [
       "Chef executivo conduzindo o workshop",
@@ -127,9 +163,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "Uma estação ao vivo onde a brasa encontra o hambúrguer artesanal. Blends autorais, pães da casa e finalizações que transformam o clássico em experiência premium.",
     highlights: [
-      { title: "Blend autoral", text: "Combinação de cortes desenvolvida pelo chef." },
-      { title: "Pães da casa", text: "Produzidos especialmente para a experiência." },
-      { title: "Estação ao vivo", text: "Os convidados acompanham o preparo do início ao fim." },
+      {
+        title: "Blend autoral",
+        text: "Combinação de cortes desenvolvida pelo chef.",
+      },
+      {
+        title: "Pães da casa",
+        text: "Produzidos especialmente para a experiência.",
+      },
+      {
+        title: "Estação ao vivo",
+        text: "Os convidados acompanham o preparo do início ao fim.",
+      },
     ],
     includes: [
       "Estação completa de burger",
@@ -137,7 +182,8 @@ export const EXPERIENCES: Experience[] = [
       "Blends, pães e molhos autorais",
       "Acompanhamentos e finalizações premium",
     ],
-    ideal: "Eventos descontraídos com toque gourmet, confraternizações e comemorações.",
+    ideal:
+      "Eventos descontraídos com toque gourmet, confraternizações e comemorações.",
   },
   {
     slug: "brunch",
@@ -149,9 +195,18 @@ export const EXPERIENCES: Experience[] = [
     intro:
       "Reunir família e amigos sob a luz do dia, ao redor de uma mesa farta e elegante. Um menu leve, autoral e visualmente marcante — pães, defumados, ovos, frutas e o toque da brasa em versão diurna.",
     highlights: [
-      { title: "Mesa farta", text: "Composição visual sofisticada, do doce ao salgado." },
-      { title: "Menu autoral", text: "Receitas leves com o toque de brasa da Braso." },
-      { title: "Ambiente diurno", text: "Serviço pensado para a luz e o ritmo do dia." },
+      {
+        title: "Mesa farta",
+        text: "Composição visual sofisticada, do doce ao salgado.",
+      },
+      {
+        title: "Menu autoral",
+        text: "Receitas leves com o toque de brasa da Braso.",
+      },
+      {
+        title: "Ambiente diurno",
+        text: "Serviço pensado para a luz e o ritmo do dia.",
+      },
     ],
     includes: [
       "Chef e equipe de brunch",
@@ -166,4 +221,3 @@ export const EXPERIENCES: Experience[] = [
 export function getExperienceBySlug(slug: string) {
   return EXPERIENCES.find((e) => e.slug === slug);
 }
-

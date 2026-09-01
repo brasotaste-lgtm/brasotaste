@@ -11,13 +11,22 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { JsonLd } from "../components/seo/JsonLd";
+import {
+  DEFAULT_OG_IMAGE,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "../lib/seo";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Página não encontrada
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           A página que você procura não existe ou foi movida.
         </p>
@@ -72,47 +81,70 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { name: "theme-color", content: "#2A4069" },
-      { title: "Braso Taste — BBQ & Gastronomic Experience at Home" },
-      {
-        name: "description",
-        content:
-          "Experiências gastronômicas premium na sua casa, conduzidas pelo Chef Fabio Tortelote. Alta gastronomia, técnica e hospitalidade ao redor da brasa.",
-      },
-      { name: "author", content: "Braso Taste" },
-      { property: "og:title", content: "Braso Taste — BBQ & Gastronomic Experience at Home" },
-      {
-        property: "og:description",
-        content:
-          "Alta gastronomia, fogo e hospitalidade no seu espaço. Conduzido pelo Chef Fabio Tortelote.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Braso Taste — BBQ & Gastronomic Experience at Home" },
-      { name: "description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
-      { property: "og:description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
-      { name: "twitter:description", content: "Braso Taste Elevated offers premium at-home gastronomic experiences, generating event quotes." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2522eedc-6c27-4da4-9651-b257a7b5bc1e/id-preview-5ddcbe21--3241b415-3bbe-4049-adf2-953138ef6644.lovable.app-1782616147780.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2522eedc-6c27-4da4-9651-b257a7b5bc1e/id-preview-5ddcbe21--3241b415-3bbe-4049-adf2-953138ef6644.lovable.app-1782616147780.png" },
-    ],
-    links: [{ rel: "stylesheet", href: appCss }],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    head: () => ({
+      meta: [
+        { charSet: "utf-8" },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, viewport-fit=cover",
+        },
+        { name: "theme-color", content: "#2A4069" },
+        { title: "Braso Taste | Experiências gastronômicas no RJ" },
+        {
+          name: "description",
+          content:
+            "Experiências gastronômicas e culinária de fogo no espaço do cliente, com operação completa na Grande Rio, Região Serrana e Região dos Lagos.",
+        },
+        { name: "author", content: "Braso Taste" },
+        { name: "robots", content: "index, follow, max-image-preview:large" },
+        { property: "og:site_name", content: "Braso Taste" },
+        { property: "og:locale", content: "pt_BR" },
+        { property: "og:type", content: "website" },
+        {
+          property: "og:title",
+          content: "Braso Taste | Experiências gastronômicas no RJ",
+        },
+        {
+          property: "og:description",
+          content:
+            "Alta gastronomia, fogo e hospitalidade no seu espaço. Nós cuidamos de toda a operação.",
+        },
+        { property: "og:url", content: SITE_URL },
+        { property: "og:image", content: DEFAULT_OG_IMAGE },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        {
+          property: "og:image:alt",
+          content: "Fábio e Tatiana, fundadores da Braso Taste",
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "Braso Taste | Experiências gastronômicas no RJ",
+        },
+        {
+          name: "twitter:description",
+          content: "Alta gastronomia, fogo e hospitalidade no seu espaço.",
+        },
+        { name: "twitter:image", content: DEFAULT_OG_IMAGE },
+      ],
+      links: [{ rel: "stylesheet", href: appCss }],
+    }),
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent,
+  },
+);
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
       <head>
         <HeadContent />
+        <JsonLd data={[organizationSchema, websiteSchema]} />
       </head>
       <body>
         {children}

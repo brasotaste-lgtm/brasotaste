@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
-
 type NavItem =
   | { kind: "route"; to: string; label: string }
   | { kind: "hash"; hash: string; label: string };
@@ -45,7 +44,9 @@ export function Header() {
   }, [open]);
 
   const linkClass = `whitespace-nowrap text-[12px] font-semibold tracking-[0.14em] uppercase transition-colors xl:text-[13px] ${
-    scrolled ? "text-brand-navy/80 hover:text-brand-gold" : "text-white/85 hover:text-brand-gold"
+    scrolled
+      ? "text-brand-navy/80 hover:text-brand-gold"
+      : "text-white/85 hover:text-brand-gold"
   }`;
 
   return (
@@ -102,7 +103,9 @@ export function Header() {
               onClick={() => setOpen(true)}
               aria-label="Abrir menu"
               className={`grid h-10 w-10 place-items-center rounded-full border lg:hidden ${
-                scrolled ? "border-brand-navy/20 text-brand-navy" : "border-white/60 text-white"
+                scrolled
+                  ? "border-brand-navy/20 text-brand-navy"
+                  : "border-white/60 text-white"
               }`}
             >
               <Menu className="h-5 w-5" />

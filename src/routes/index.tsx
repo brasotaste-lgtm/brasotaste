@@ -13,23 +13,27 @@ import {
   Testimonials,
 } from "@/components/site/sections";
 import { Toaster } from "@/components/ui/sonner";
+import { canonicalUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+const title =
+  "Braso Taste | Experiências gastronômicas e churrasco premium no RJ";
+const description =
+  "Experiências gastronômicas completas no seu espaço, com culinária de fogo, chef e operação Full Service na Grande Rio, Região Serrana e Região dos Lagos.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Braso Taste — BBQ & Gastronomic Experience at Home" },
-      {
-        name: "description",
-        content:
-          "Experiências gastronômicas premium na sua casa, conduzidas pelo Chef Fabio Tortelote. Solicite um orçamento.",
-      },
-      { property: "og:title", content: "Braso Taste — Experiência gastronômica na sua casa" },
-      {
-        property: "og:description",
-        content:
-          "Alta gastronomia, fogo e hospitalidade. Eventos particulares e corporativos conduzidos pelo Chef Fabio Tortelote.",
-      },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: canonicalUrl("/") },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/") }],
   }),
   component: Index,
 });

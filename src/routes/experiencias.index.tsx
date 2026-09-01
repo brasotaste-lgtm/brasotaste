@@ -1,31 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { Header } from "@/components/site/Header";
-import { Experiences, FloatingWhatsApp, Footer } from "@/components/site/sections";
+import {
+  Experiences,
+  FloatingWhatsApp,
+  Footer,
+} from "@/components/site/sections";
 import { Toaster } from "@/components/ui/sonner";
+import { canonicalUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+const title = "Experiências gastronômicas no RJ | Braso Taste";
+const description =
+  "Conheça as experiências Braso Taste: churrasco premium, celebrações, menus personalizados, workshops, burgers e brunch no espaço do cliente.";
 
 export const Route = createFileRoute("/experiencias/")({
   head: () => ({
     meta: [
-      { title: "Experiências — Braso Taste" },
-      {
-        name: "description",
-        content:
-          "Conheça as seis experiências Braso Taste: Selection, Celebration, Personal Taste, Da Anatomia à Brasa, Brunch e House Burger.",
-      },
-      { property: "og:title", content: "Experiências — Braso Taste" },
-      {
-        property: "og:description",
-        content:
-          "Seis formatos de alta gastronomia na brasa, conduzidos pelo Chef Fabio Tortelote no seu espaço.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: canonicalUrl("/experiencias") },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/experiencias") }],
   }),
-  component: ExperienciasIndex,
+  component: ExperiencesPage,
 });
 
-function ExperienciasIndex() {
+function ExperiencesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
       <Header />

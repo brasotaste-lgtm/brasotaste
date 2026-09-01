@@ -11,31 +11,28 @@ import storyCouple from "@/assets/story/casal-sorrindo.jpg";
 import wedding1 from "@/assets/story/casamento-01.jpg";
 import wedding2 from "@/assets/story/casamento-02.jpg";
 import wedding3 from "@/assets/story/casamento-03.jpg";
+import { canonicalUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+const pageTitle = "Nossa História | Tatiana, Fábio e a Braso Taste";
+const pageDescription =
+  "Conheça a história de Tatiana e Fábio, das cozinhas de família e do casamento junino ao nascimento da Braso Taste.";
 
 export const Route = createFileRoute("/nossa-historia")({
   head: () => ({
     meta: [
-      { title: "Nossa História — Tatiana e Fábio | Braso Taste" },
-      {
-        name: "description",
-        content:
-          "Como tudo começou: a história de Tatiana e Fábio Tortelote, do primeiro almoço em família à Braso Taste — alta gastronomia, brasa e hospitalidade na sua casa.",
-      },
-      { property: "og:title", content: "Nossa História — Tatiana e Fábio | Braso Taste" },
-      {
-        property: "og:description",
-        content:
-          "Do fogo em casa para a mesa dos nossos clientes: a trajetória que deu origem à Braso Taste.",
-      },
+      { title: pageTitle },
+      { name: "description", content: pageDescription },
+      { property: "og:title", content: pageTitle },
+      { property: "og:description", content: pageDescription },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: canonicalUrl("/nossa-historia") },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Nossa História — Tatiana e Fábio | Braso Taste" },
-      {
-        name: "twitter:description",
-        content:
-          "Do fogo em casa para a mesa dos nossos clientes: a trajetória que deu origem à Braso Taste.",
-      },
+      { name: "twitter:title", content: pageTitle },
+      { name: "twitter:description", content: pageDescription },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/nossa-historia") }],
   }),
   component: NossaHistoriaPage,
 });
@@ -110,9 +107,11 @@ const VALUES = [
 const WEDDING_PHOTOS = [
   { src: wedding1, alt: "Tatiana e Fábio celebrando o casamento junino" },
   { src: wedding2, alt: "Tatiana e Fábio dançando no casamento junino" },
-  { src: wedding3, alt: "Tatiana e Fábio compartilhando a mesa com os convidados" },
+  {
+    src: wedding3,
+    alt: "Tatiana e Fábio compartilhando a mesa com os convidados",
+  },
 ];
-
 
 function NossaHistoriaPage() {
   return (
@@ -138,9 +137,10 @@ function NossaHistoriaPage() {
               <span className="italic text-brand-gold">como tudo começou</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[18px] leading-relaxed text-white/85 text-justify">
-              Nenhuma história começa no dia em que uma empresa abre as portas. A nossa começou em
-              duas casas do Rio de Janeiro, em mesas que nunca ficavam vazias — muito antes de
-              existir um nome, um logotipo ou um cliente.
+              Nenhuma história começa no dia em que uma empresa abre as portas.
+              A nossa começou em duas casas do Rio de Janeiro, em mesas que
+              nunca ficavam vazias — muito antes de existir um nome, um logotipo
+              ou um cliente.
             </p>
           </div>
         </section>
@@ -153,25 +153,31 @@ function NossaHistoriaPage() {
               <h2 className="mt-5 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl md:text-5xl">
                 O fogo prepara a comida.
                 <br />
-                <span className="italic text-brand-gold">As pessoas dão sentido à mesa</span>.
+                <span className="italic text-brand-gold">
+                  As pessoas dão sentido à mesa
+                </span>
+                .
               </h2>
               <span className="gold-divider mt-6" />
               <div className="mt-7 space-y-5 text-[18px] leading-relaxed text-muted-foreground text-justify">
                 <p>
-                  Fábio Tortelote aprendeu com o pai, Salvador, que nada bom se constrói com pressa,
-                  e com a avó Iolanda que comida é uma forma de dizer que alguém é bem-vindo. Da
-                  eletrônica e da tecnologia trouxe o resto: método, precisão e controle de tempo —
-                  hoje aplicados ao ponto exato de cada corte na brasa.
+                  Fábio Tortelote aprendeu com o pai, Salvador, que nada bom se
+                  constrói com pressa, e com a avó Iolanda que comida é uma
+                  forma de dizer que alguém é bem-vindo. Da eletrônica e da
+                  tecnologia trouxe o resto: método, precisão e controle de
+                  tempo — hoje aplicados ao ponto exato de cada corte na brasa.
                 </p>
                 <p>
-                  Tatiana cresceu entre música, ciência e a cozinha da avó Moema, onde valia a regra
-                  de que é melhor sobrar do que faltar. É dela o olhar de anfitriã: o fluxo do
-                  evento, o ritmo do serviço, a beleza da mesa e o cuidado que faz tudo parecer
+                  Tatiana cresceu entre música, ciência e a cozinha da avó
+                  Moema, onde valia a regra de que é melhor sobrar do que
+                  faltar. É dela o olhar de anfitriã: o fluxo do evento, o ritmo
+                  do serviço, a beleza da mesa e o cuidado que faz tudo parecer
                   simples para quem está sentado.
                 </p>
                 <p>
-                  A Braso Taste vive exatamente no encontro dessas duas heranças — por isso
-                  entregamos uma experiência inteira, e não apenas comida.
+                  A Braso Taste vive exatamente no encontro dessas duas heranças
+                  — por isso entregamos uma experiência inteira, e não apenas
+                  comida.
                 </p>
               </div>
             </Reveal>
@@ -194,17 +200,27 @@ function NossaHistoriaPage() {
         <section className="bg-brand-cream-deep pb-14 sm:pb-20">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal>
-              <p className="eyebrow">O casamento que acendeu a primeira brasa</p>
+              <p className="eyebrow">
+                O casamento que acendeu a primeira brasa
+              </p>
               <h2 className="mt-5 max-w-3xl font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
                 Uma celebração onde fogo, mesa e afeto
-                <span className="italic text-brand-gold"> ganharam identidade</span>.
+                <span className="italic text-brand-gold">
+                  {" "}
+                  ganharam identidade
+                </span>
+                .
               </h2>
               <span className="gold-divider mt-6" />
             </Reveal>
 
             <div className="mt-9 grid gap-4 md:grid-cols-2">
               {WEDDING_PHOTOS.map((photo, i) => (
-                <Reveal key={photo.src} delay={i * 90} className={i === 0 ? "md:row-span-2" : ""}>
+                <Reveal
+                  key={photo.src}
+                  delay={i * 90}
+                  className={i === 0 ? "md:row-span-2" : ""}
+                >
                   <figure className="h-full overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
                     <img
                       src={photo.src}
@@ -231,7 +247,6 @@ function NossaHistoriaPage() {
               </h2>
               <span className="gold-divider mt-6" />
             </Reveal>
-
 
             <ol className="mt-12 space-y-12 border-l border-border/70 pl-6 sm:pl-10">
               {CHAPTERS.map((c, i) => (
@@ -279,7 +294,9 @@ function NossaHistoriaPage() {
               {VALUES.map((v, i) => (
                 <Reveal key={v.k} delay={i * 100}>
                   <div className="border-t border-brand-gold/40 pt-6">
-                    <h3 className="font-display text-2xl font-light text-brand-gold">{v.k}</h3>
+                    <h3 className="font-display text-2xl font-light text-brand-gold">
+                      {v.k}
+                    </h3>
                     <p className="mt-3 text-[18px] leading-relaxed text-white/80 text-justify">
                       {v.v}
                     </p>
@@ -295,7 +312,8 @@ function NossaHistoriaPage() {
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
             <Reveal>
               <h2 className="font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
-                A próxima história pode ser <span className="italic text-brand-gold">a sua</span>.
+                A próxima história pode ser{" "}
+                <span className="italic text-brand-gold">a sua</span>.
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-[18px] leading-relaxed text-muted-foreground">
                 Conte para a gente o que você quer celebrar — cuidamos do resto.
