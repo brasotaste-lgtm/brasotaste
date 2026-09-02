@@ -37,19 +37,18 @@ function ContatoPage() {
           aria-labelledby="areas-atendidas"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <p className="eyebrow">Áreas atendidas</p>
+            <p className="eyebrow">Contato</p>
             <h2
               id="areas-atendidas"
               className="mt-4 max-w-3xl font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl"
             >
-              Experiências gastronômicas no seu espaço, em diferentes regiões do
-              Rio de Janeiro.
+              Vamos criar a sua experiência no seu espaço.
             </h2>
             <p className="mt-6 max-w-4xl text-[18px] leading-relaxed text-muted-foreground">
-              A Braso Taste atende eventos particulares e corporativos na Grande
-              Rio, Região Serrana e Região dos Lagos. A disponibilidade e a
-              logística são confirmadas durante o planejamento de cada
-              experiência.
+              A Braso Taste realiza eventos particulares e corporativos em
+              diferentes regiões do Rio de Janeiro. Atendemos a Grande Rio, a
+              Região Serrana e a Região dos Lagos, com disponibilidade e
+              logística confirmadas durante o planejamento.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
@@ -84,7 +83,7 @@ function ContatoPage() {
             </div>
           </div>
         </section>
-        <Contact />
+        <Contact pageIntro />
       </main>
       <Footer />
       <FloatingWhatsApp />
