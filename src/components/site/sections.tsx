@@ -643,16 +643,20 @@ export function Gallery() {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isVideoCarouselPaused, setIsVideoCarouselPaused] = useState(false);
 
-  const moveVideoCarousel = (direction: -1 | 1) => {
+  const scrollVideoTo = (index: number) => {
     const carousel = videoCarouselRef.current;
-    if (!carousel) return;
+    const item = carousel?.children[index] as HTMLElement | undefined;
+    if (!carousel || !item) return;
+    carousel.scrollTo({
+      left: item.offsetLeft,
+      behavior: "smooth",
+    });
+  };
+
+  const moveVideoCarousel = (direction: -1 | 1) => {
     const next =
       (activeVideo + direction + VIDEO_GALLERY.length) % VIDEO_GALLERY.length;
-    carousel.children[next]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start",
-    });
+    scrollVideoTo(next);
     setActiveVideo(next);
   };
 
@@ -667,11 +671,7 @@ export function Gallery() {
     const timer = window.setInterval(() => {
       setActiveVideo((current) => {
         const next = (current + 1) % VIDEO_GALLERY.length;
-        videoCarouselRef.current?.children[next]?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "start",
-        });
+        scrollVideoTo(next);
         return next;
       });
     }, 4500);
@@ -978,7 +978,11 @@ export function Testimonials() {
 }
 
 /* ---------- CONTACT ---------- */
-export function Contact() {
+export function Contact({
+  pageIntro = false,
+}: {
+  pageIntro?: boolean;
+} = {}) {
   const [loading, setLoading] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -1030,16 +1034,27 @@ export function Contact() {
     >
       <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.3fr] lg:items-start lg:gap-14">
         <Reveal className="lg:sticky lg:top-28">
-          <p className="eyebrow">Contato</p>
+          <p className="eyebrow">
+            {pageIntro ? "Solicite seu orçamento" : "Contato"}
+          </p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
-            Vamos criar a sua
-            <br />
-            <span className="italic text-brand-gold">experiência</span>.
+            {pageIntro ? (
+              <>
+                Conte-nos sobre o seu <span className="italic text-brand-gold">evento</span>.
+              </>
+            ) : (
+              <>
+                Vamos criar a sua
+                <br />
+                <span className="italic text-brand-gold">experiência</span>.
+              </>
+            )}
           </h2>
           <span className="gold-divider mt-6" />
           <p className="mt-7 max-w-2xl text-[19px] leading-relaxed text-brand-cream/85 text-justify">
-            Conte-nos sobre o seu evento. Em até 24 horas retornaremos com uma
-            proposta personalizada.
+            {pageIntro
+              ? "Em breve, retornaremos com sua proposta personalizada."
+              : "Conte-nos sobre o seu evento. Em breve, retornaremos com sua proposta personalizada."}
           </p>
 
         </Reveal>
@@ -1240,12 +1255,7 @@ export function Footer() {
                 className="inline-flex items-center gap-2 hover:text-brand-gold"
               >
                 <MessageCircle className="h-4 w-4 text-brand-gold" />
-                <span>
-                  <strong className="font-semibold text-brand-gold">
-                    WhatsApp:
-                  </strong>{" "}
-                  (21) 97406-4098
-                </span>
+                <span>(21) 97406-4098</span>
               </a>
               <a
                 href="https://instagram.com/brasotaste"
