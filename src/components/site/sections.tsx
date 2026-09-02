@@ -36,6 +36,9 @@ import { trackEvent } from "@/lib/analytics";
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
+import galleryFogoChao from "@/assets/gallery-fogo-chao.jpg";
+import galleryEspetoBrasa from "@/assets/gallery-espeto-brasa.jpg";
+import galleryGrelha from "@/assets/gallery-grelha.jpg";
 import videoFire from "@/assets/videos/fogo-brasa.mp4";
 import videoCarving from "@/assets/videos/corte-finalizacao.mp4";
 import videoFullService from "@/assets/videos/mesa-full-service.mp4";
@@ -646,38 +649,14 @@ function GalleryVideo({
 
 export function Gallery() {
   const videoCarouselRef = useRef<HTMLDivElement>(null);
-  const [activeVideo, setActiveVideo] = useState(0);
 
   const moveVideoCarousel = (direction: -1 | 1) => {
     const carousel = videoCarouselRef.current;
     if (!carousel) return;
-    const next = Math.min(
-      VIDEO_GALLERY.length - 1,
-      Math.max(0, activeVideo + direction),
-    );
-    carousel.children[next]?.scrollIntoView({
+    carousel.scrollBy({
+      left: direction * carousel.clientWidth * 0.82,
       behavior: "smooth",
-      block: "nearest",
-      inline: "center",
     });
-    setActiveVideo(next);
-  };
-
-  const updateActiveVideo = () => {
-    const carousel = videoCarouselRef.current;
-    if (!carousel) return;
-    const center = carousel.scrollLeft + carousel.clientWidth / 2;
-    const closest = Array.from(carousel.children).reduce(
-      (best, child, index) => {
-        const element = child as HTMLElement;
-        const distance = Math.abs(
-          element.offsetLeft + element.offsetWidth / 2 - center,
-        );
-        return distance < best.distance ? { index, distance } : best;
-      },
-      { index: 0, distance: Number.POSITIVE_INFINITY },
-    );
-    setActiveVideo(closest.index);
   };
 
   return (
@@ -707,6 +686,38 @@ export function Gallery() {
           </a>
         </Reveal>
 
+        <div className="mt-9 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+          {[
+            {
+              src: galleryFogoChao,
+              alt: "Carnes e linguiças preparadas no fogo de chão",
+              className: "h-[300px] lg:h-[360px]",
+            },
+            {
+              src: galleryEspetoBrasa,
+              alt: "Carnes e linguiças assando diretamente sobre a brasa",
+              className: "col-span-2 h-[300px] lg:h-[360px]",
+            },
+            {
+              src: galleryGrelha,
+              alt: "Carnes variadas dourando sobre a grelha",
+              className: "h-[300px] lg:h-[360px]",
+            },
+          ].map((photo, i) => (
+            <Reveal key={photo.src} delay={i * 70} className={photo.className}>
+              <figure className="group relative h-full overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/35 to-transparent" />
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+
         <div className="mt-9">
           <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
             Deslize para assistir
@@ -716,22 +727,17 @@ export function Gallery() {
         <div className="relative">
         <div
           ref={videoCarouselRef}
-          onScroll={updateActiveVideo}
           style={{ scrollbarWidth: "none", overflowY: "hidden" }}
-          className="experience-carousel -mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-[10vw] pb-7 pt-4 sm:-mx-8 sm:px-[22vw] lg:mx-0 lg:px-[34%]"
+          className="experience-carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-2"
         >
           {VIDEO_GALLERY.map((video, i) => (
             <Reveal
               key={video.title}
               delay={i * 60}
-              className={`w-[76vw] max-w-[350px] shrink-0 snap-center transition-all duration-500 sm:w-[43vw] lg:w-[29vw] ${
-                activeVideo === i
-                  ? "scale-100 opacity-100"
-                  : "scale-[0.9] opacity-60"
-              }`}
+              className="w-[76%] shrink-0 snap-start sm:w-[43%] lg:w-[28%]"
             >
-              <figure className="group relative overflow-hidden rounded-[22px] bg-brand-navy-deep shadow-[var(--shadow-elegant)] ring-1 ring-brand-gold/20">
-                <GalleryVideo video={video} active={activeVideo === i} />
+              <figure className="group relative overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
+                <GalleryVideo video={video} active />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-navy-deep/90 to-transparent px-5 pb-5 pt-14">
                   <figcaption className="text-[13px] font-semibold tracking-[0.2em] uppercase text-brand-cream">
                     {video.title}
@@ -762,27 +768,6 @@ export function Gallery() {
               <ChevronRight className="h-12 w-12 stroke-[1.35]" />
             </button>
           </div>
-        </div>
-        <div
-          className="flex justify-center gap-2"
-          aria-label="Posição dos vídeos"
-        >
-          {VIDEO_GALLERY.map((video, index) => (
-            <button
-              key={video.title}
-              type="button"
-              aria-label={`Mostrar ${video.title}`}
-              onClick={() => {
-                videoCarouselRef.current?.children[index]?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "nearest",
-                  inline: "center",
-                });
-                setActiveVideo(index);
-              }}
-              className={`h-2 rounded-full transition-all ${activeVideo === index ? "w-7 bg-brand-gold" : "w-2 bg-brand-navy/25"}`}
-            />
-          ))}
         </div>
       </div>
     </section>
