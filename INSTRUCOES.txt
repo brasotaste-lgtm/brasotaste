@@ -1,0 +1,17 @@
+BRASO TASTE — CARROSSEL DE EXPERIÊNCIAS V13
+
+Substitua somente estes dois arquivos no repositório, preservando os caminhos:
+
+src/components/site/sections.tsx
+src/styles.css
+
+Não envie os arquivos soltos para a raiz do repositório.
+
+Alteração incluída:
+- movimento 3D em leque inspirado no Social Media Carousel;
+- card central frontal e integralmente legível;
+- cards laterais em perspectiva;
+- desenho branco dos cards restaurado;
+- textos, ordem, imagens e identidade preservados;
+- setas, indicadores, arraste e gesto no celular;
+- movimento reduzido respeitado para acessibilidade.

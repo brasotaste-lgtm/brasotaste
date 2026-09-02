@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type FormEvent,
+} from "react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
@@ -117,39 +123,38 @@ export function Hero() {
 
 /* ---------- EXPERIENCES ---------- */
 export function Experiences() {
-  const carouselRef = useRef<HTMLDivElement>(null);
   const [activeExperience, setActiveExperience] = useState(0);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+  const swipeStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (
+      isCarouselPaused ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveExperience((current) => (current + 1) % EXPERIENCES.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [isCarouselPaused]);
 
   const moveCarousel = (direction: -1 | 1) => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-    const next = Math.min(
-      EXPERIENCES.length - 1,
-      Math.max(0, activeExperience + direction),
+    setActiveExperience(
+      (current) =>
+        (current + direction + EXPERIENCES.length) % EXPERIENCES.length,
     );
-    carousel.children[next]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
-    setActiveExperience(next);
   };
 
-  const updateActiveExperience = () => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-    const center = carousel.scrollLeft + carousel.clientWidth / 2;
-    const closest = Array.from(carousel.children).reduce(
-      (best, child, index) => {
-        const element = child as HTMLElement;
-        const distance = Math.abs(
-          element.offsetLeft + element.offsetWidth / 2 - center,
-        );
-        return distance < best.distance ? { index, distance } : best;
-      },
-      { index: 0, distance: Number.POSITIVE_INFINITY },
-    );
-    setActiveExperience(closest.index);
+  const relativePosition = (index: number) => {
+    let position = index - activeExperience;
+    const halfway = EXPERIENCES.length / 2;
+    if (position > halfway) position -= EXPERIENCES.length;
+    if (position < -halfway) position += EXPERIENCES.length;
+    return position;
   };
 
   return (
@@ -171,54 +176,66 @@ export function Experiences() {
           </p>
         </Reveal>
 
-        <div className="mt-5 flex items-center justify-between gap-4">
+        <div className="mt-5">
           <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
             Deslize para conhecer todas
           </p>
-          <div className="flex gap-2" aria-label="Controles do carrossel">
-            <button
-              type="button"
-              onClick={() => moveCarousel(-1)}
-              aria-label="Experiências anteriores"
-              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-navy"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => moveCarousel(1)}
-              aria-label="Próximas experiências"
-              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-navy"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
         </div>
 
         <div
-          ref={carouselRef}
-          onScroll={updateActiveExperience}
-          style={{ scrollbarWidth: "none", overflowY: "hidden" }}
-          className="experience-carousel -mx-5 mt-3 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-[9vw] pb-5 pt-3 sm:-mx-8 sm:px-[18vw] lg:mx-0 lg:px-[32%]"
+          className="experience-coverflow relative -mx-5 mt-3 h-[590px] overflow-hidden px-5 pt-3 sm:-mx-8 sm:h-[610px] sm:px-8 lg:mx-0"
+          role="region"
+          aria-roledescription="carrossel"
+          aria-label="Experiências Braso Taste"
+          onMouseEnter={() => setIsCarouselPaused(true)}
+          onMouseLeave={() => setIsCarouselPaused(false)}
+          onFocusCapture={() => setIsCarouselPaused(true)}
+          onBlurCapture={() => setIsCarouselPaused(false)}
+          onPointerDown={(event) => {
+            setIsCarouselPaused(true);
+            swipeStartX.current = event.clientX;
+          }}
+          onPointerUp={(event) => {
+            if (swipeStartX.current === null) return;
+            const distance = event.clientX - swipeStartX.current;
+            swipeStartX.current = null;
+            setIsCarouselPaused(false);
+            if (Math.abs(distance) < 45) return;
+            moveCarousel(distance < 0 ? 1 : -1);
+          }}
+          onPointerCancel={() => {
+            swipeStartX.current = null;
+            setIsCarouselPaused(false);
+          }}
         >
-          {EXPERIENCES.map((e, i) => (
-            <Reveal
-              key={e.title}
-              delay={i * 60}
-              className={`w-[82vw] max-w-[390px] shrink-0 snap-center transition-all duration-500 sm:w-[48vw] lg:w-[34vw] ${
-                activeExperience === i
-                  ? "scale-100 opacity-100"
-                  : "scale-[0.92] opacity-60"
-              }`}
-            >
+          {EXPERIENCES.map((e, i) => {
+            const position = relativePosition(i);
+            const distance = Math.abs(position);
+            const isActive = position === 0;
+
+            return (
+              <div
+                key={e.title}
+                aria-hidden={!isActive}
+                className="experience-coverflow-card absolute left-1/2 top-3 w-[82vw] max-w-[390px]"
+                style={
+                  {
+                    "--card-position": position,
+                    "--card-distance": Math.min(distance, 3),
+                    zIndex: 30 - distance,
+                    opacity: distance > 2 ? 0 : isActive ? 1 : 0.78,
+                    pointerEvents: isActive ? "auto" : "none",
+                  } as CSSProperties
+                }
+              >
               <Link
                 to="/experiencias/$slug"
                 params={{ slug: e.slug }}
                 aria-label={`Conhecer ${e.title}`}
                 className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
               >
-                <article className="relative aspect-[4/5] overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)] transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-gold-glow)]">
-                  <div className="absolute inset-0 overflow-hidden">
+                <article className="relative flex h-full flex-col overflow-hidden rounded-sm border border-border/70 bg-card shadow-[var(--shadow-elegant)] transition-shadow duration-500 group-hover:border-brand-gold/60 group-hover:shadow-[var(--shadow-gold-glow)]">
+                  <div className="relative aspect-[2/1] overflow-hidden">
                     <img
                       src={e.img}
                       alt={e.title}
@@ -227,30 +244,52 @@ export function Experiences() {
                       height={720}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep via-brand-navy-deep/15 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/45 via-transparent to-transparent" />
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-brand-cream">
-                    <div className="mb-3 grid h-11 w-11 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110">
-                      <e.Icon className="h-11 w-11" />
+                  <div className="flex min-h-[350px] flex-1 flex-col px-5 py-4">
+                    <div className="mx-auto mb-1 grid h-12 w-12 place-items-center text-brand-gold transition-transform duration-500 group-hover:scale-110">
+                      <e.Icon className="h-12 w-12" />
                     </div>
-                    <p className="text-[11px] tracking-[0.22em] uppercase text-brand-gold">
+                    <p className="text-center text-[12px] tracking-[0.24em] uppercase text-brand-gold">
                       {e.sub}
                     </p>
-                    <h3 className="mt-2 font-display text-[26px] font-medium text-white">
+                    <h3 className="mt-2 text-center font-display text-[21px] font-medium text-brand-navy">
                       {e.title}
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-[16px] leading-relaxed text-brand-cream/80">
+                    <p className="mt-3 flex-1 text-justify text-[17px] leading-relaxed text-muted-foreground">
                       {e.text}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-gold/70 px-5 py-2.5 text-[12px] font-semibold tracking-[0.2em] uppercase text-brand-gold transition-colors group-hover:bg-brand-gold group-hover:text-brand-navy">
-                      Conhecer
+                    <span className="mt-5 inline-flex items-center justify-center gap-2 text-[14px] font-semibold tracking-[0.24em] uppercase text-brand-navy transition-colors group-hover:text-brand-gold">
+                      Saiba mais
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>
                 </article>
               </Link>
-            </Reveal>
-          ))}
+              </div>
+            );
+          })}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[min(430px,96%)] -translate-x-1/2 -translate-y-1/2 justify-between"
+            aria-label="Controles do carrossel"
+          >
+            <button
+              type="button"
+              onClick={() => moveCarousel(-1)}
+              aria-label="Experiência anterior"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronLeft className="h-12 w-12 stroke-[1.35]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveCarousel(1)}
+              aria-label="Próxima experiência"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronRight className="h-12 w-12 stroke-[1.35]" />
+            </button>
+          </div>
         </div>
         <div
           className="mt-1 flex justify-center gap-2"
@@ -261,14 +300,7 @@ export function Experiences() {
               key={experience.slug}
               type="button"
               aria-label={`Mostrar ${experience.title}`}
-              onClick={() => {
-                carouselRef.current?.children[index]?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "nearest",
-                  inline: "center",
-                });
-                setActiveExperience(index);
-              }}
+              onClick={() => setActiveExperience(index)}
               className={`h-2 rounded-full transition-all ${activeExperience === index ? "w-7 bg-brand-gold" : "w-2 bg-brand-navy/25"}`}
             />
           ))}
