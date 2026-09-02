@@ -32,9 +32,8 @@ function ContatoPage() {
     <div className="min-h-screen bg-background text-foreground antialiased">
       <Header />
       <main className="pt-[70px] sm:pt-[82px]">
-        <Contact />
         <section
-          className="bg-brand-cream-deep py-12 sm:py-16"
+          className="bg-brand-cream-deep py-10 sm:py-12"
           aria-labelledby="areas-atendidas"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -85,6 +84,7 @@ function ContatoPage() {
             </div>
           </div>
         </section>
+        <Contact />
       </main>
       <Footer />
       <FloatingWhatsApp />

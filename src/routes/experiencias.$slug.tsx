@@ -123,8 +123,8 @@ function ExperienceDetail() {
         </section>
 
         {/* Intro + highlights */}
-        <section className="bg-background py-8 sm:py-10">
-          <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
+        <section className="bg-background py-8 sm:py-10 lg:py-8">
+          <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
             <Reveal className="lg:col-span-6">
               <p className="eyebrow">A experiência</p>
               <h2 className="mt-3 font-display text-3xl font-light leading-tight text-brand-navy sm:text-4xl">
@@ -171,7 +171,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Includes */}
-        <section className="bg-brand-cream-deep py-8 sm:py-10">
+        <section className="bg-brand-cream-deep py-8 sm:py-10 lg:py-8">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">O que está incluso</p>
@@ -186,7 +186,7 @@ function ExperienceDetail() {
               </p>
             </Reveal>
 
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-6">
               {exp.includes.map((item, i) => (
                 <Reveal key={item} delay={i * 60}>
                   <li className="flex items-start gap-4 rounded-sm border border-border/70 bg-card p-5">
@@ -204,7 +204,7 @@ function ExperienceDetail() {
         </section>
 
         {/* CTA */}
-        <section className="bg-brand-navy text-brand-cream py-8 sm:py-10">
+        <section className="bg-brand-navy text-brand-cream py-8 sm:py-10 lg:py-8">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               <p className="eyebrow">Vamos conversar</p>
@@ -213,11 +213,11 @@ function ExperienceDetail() {
                 <span className="italic text-brand-gold">{exp.title}</span>.
               </h2>
               <span className="gold-divider mx-auto mt-6" />
-              <p className="mx-auto mt-7 max-w-xl text-[18px] leading-relaxed text-brand-cream/85">
+              <p className="mx-auto mt-7 max-w-xl text-[18px] leading-relaxed text-brand-cream/85 lg:mt-5">
                 Em até 24 horas retornaremos com uma proposta personalizada para
                 o seu evento.
               </p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 lg:mt-7">
                 <Link
                   to="/"
                   hash="contato"
@@ -240,7 +240,7 @@ function ExperienceDetail() {
         </section>
 
         {/* Related */}
-        <section className="bg-background py-8 sm:py-10">
+        <section className="bg-background py-8 sm:py-10 lg:py-8">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal>
               <p className="eyebrow">Outras experiências</p>
@@ -251,7 +251,7 @@ function ExperienceDetail() {
               <span className="gold-divider mt-4" />
             </Reveal>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-6 lg:grid-cols-3">
               {others.map((o, i) => (
                 <Reveal key={o.slug} delay={i * 80}>
                   <Link
