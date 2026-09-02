@@ -36,9 +36,6 @@ import { trackEvent } from "@/lib/analytics";
 import heroChef from "@/assets/hero-chef.jpg";
 import aboutGathering from "@/assets/about-gathering.jpg";
 import chefPortrait from "@/assets/chef-portrait.jpg";
-import galleryFogoChao from "@/assets/gallery-fogo-chao.jpg";
-import galleryEspetoBrasa from "@/assets/gallery-espeto-brasa.jpg";
-import galleryGrelha from "@/assets/gallery-grelha.jpg";
 import videoFire from "@/assets/videos/fogo-brasa.mp4";
 import videoCarving from "@/assets/videos/corte-finalizacao.mp4";
 import videoFullService from "@/assets/videos/mesa-full-service.mp4";
@@ -649,14 +646,57 @@ function GalleryVideo({
 
 export function Gallery() {
   const videoCarouselRef = useRef<HTMLDivElement>(null);
+  const [activeVideo, setActiveVideo] = useState(0);
+  const [isVideoCarouselPaused, setIsVideoCarouselPaused] = useState(false);
 
   const moveVideoCarousel = (direction: -1 | 1) => {
     const carousel = videoCarouselRef.current;
     if (!carousel) return;
-    carousel.scrollBy({
-      left: direction * carousel.clientWidth * 0.82,
+    const next =
+      (activeVideo + direction + VIDEO_GALLERY.length) % VIDEO_GALLERY.length;
+    carousel.children[next]?.scrollIntoView({
       behavior: "smooth",
+      block: "nearest",
+      inline: "start",
     });
+    setActiveVideo(next);
+  };
+
+  useEffect(() => {
+    if (
+      isVideoCarouselPaused ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveVideo((current) => {
+        const next = (current + 1) % VIDEO_GALLERY.length;
+        videoCarouselRef.current?.children[next]?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "start",
+        });
+        return next;
+      });
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [isVideoCarouselPaused]);
+
+  const updateActiveVideo = () => {
+    const carousel = videoCarouselRef.current;
+    if (!carousel) return;
+    const left = carousel.scrollLeft;
+    const closest = Array.from(carousel.children).reduce(
+      (best, child, index) => {
+        const distance = Math.abs((child as HTMLElement).offsetLeft - left);
+        return distance < best.distance ? { index, distance } : best;
+      },
+      { index: 0, distance: Number.POSITIVE_INFINITY },
+    );
+    setActiveVideo(closest.index);
   };
 
   return (
@@ -686,49 +726,27 @@ export function Gallery() {
           </a>
         </Reveal>
 
-        <div className="mt-9 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
-          {[
-            {
-              src: galleryFogoChao,
-              alt: "Carnes e linguiças preparadas no fogo de chão",
-              className: "h-[300px] lg:h-[360px]",
-            },
-            {
-              src: galleryEspetoBrasa,
-              alt: "Carnes e linguiças assando diretamente sobre a brasa",
-              className: "col-span-2 h-[300px] lg:h-[360px]",
-            },
-            {
-              src: galleryGrelha,
-              alt: "Carnes variadas dourando sobre a grelha",
-              className: "h-[300px] lg:h-[360px]",
-            },
-          ].map((photo, i) => (
-            <Reveal key={photo.src} delay={i * 70} className={photo.className}>
-              <figure className="group relative h-full overflow-hidden rounded-sm bg-brand-navy-deep shadow-[var(--shadow-elegant)]">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/35 to-transparent" />
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
         <div className="mt-9">
           <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
             Deslize para assistir
           </p>
         </div>
 
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => setIsVideoCarouselPaused(true)}
+          onMouseLeave={() => setIsVideoCarouselPaused(false)}
+          onFocusCapture={() => setIsVideoCarouselPaused(true)}
+          onBlurCapture={() => setIsVideoCarouselPaused(false)}
+          onPointerDown={() => setIsVideoCarouselPaused(true)}
+          onPointerUp={() => setIsVideoCarouselPaused(false)}
+          onPointerCancel={() => setIsVideoCarouselPaused(false)}
+        >
         <div
           ref={videoCarouselRef}
+          onScroll={updateActiveVideo}
           style={{ scrollbarWidth: "none", overflowY: "hidden" }}
-          className="experience-carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-2"
+          className="experience-carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain"
         >
           {VIDEO_GALLERY.map((video, i) => (
             <Reveal
@@ -748,7 +766,7 @@ export function Gallery() {
           ))}
         </div>
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[min(430px,96%)] -translate-x-1/2 -translate-y-1/2 justify-between"
+            className="pointer-events-none absolute left-1 right-1 top-1/2 z-40 flex -translate-y-1/2 justify-between sm:-left-6 sm:-right-6 lg:-left-16 lg:-right-16"
             aria-label="Controles dos vídeos"
           >
             <button
