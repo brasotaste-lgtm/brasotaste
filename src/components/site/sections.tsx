@@ -707,30 +707,13 @@ export function Gallery() {
           </a>
         </Reveal>
 
-        <div className="mt-9 flex items-center justify-between gap-4">
+        <div className="mt-9">
           <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
             Deslize para assistir
           </p>
-          <div className="flex gap-2" aria-label="Controles dos vídeos">
-            <button
-              type="button"
-              onClick={() => moveVideoCarousel(-1)}
-              aria-label="Vídeos anteriores"
-              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => moveVideoCarousel(1)}
-              aria-label="Próximos vídeos"
-              className="grid h-11 w-11 place-items-center rounded-full border border-brand-navy/25 text-brand-navy transition-colors hover:border-brand-gold hover:bg-brand-gold"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
         </div>
 
+        <div className="relative">
         <div
           ref={videoCarouselRef}
           onScroll={updateActiveVideo}
@@ -757,6 +740,28 @@ export function Gallery() {
               </figure>
             </Reveal>
           ))}
+        </div>
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[min(430px,96%)] -translate-x-1/2 -translate-y-1/2 justify-between"
+            aria-label="Controles dos vídeos"
+          >
+            <button
+              type="button"
+              onClick={() => moveVideoCarousel(-1)}
+              aria-label="Vídeo anterior"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronLeft className="h-12 w-12 stroke-[1.35]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveVideoCarousel(1)}
+              aria-label="Próximo vídeo"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronRight className="h-12 w-12 stroke-[1.35]" />
+            </button>
+          </div>
         </div>
         <div
           className="flex justify-center gap-2"
@@ -804,6 +809,9 @@ const TESTIMONIALS = [
 ];
 
 export function Testimonials() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isTestimonialPaused, setIsTestimonialPaused] = useState(false);
+  const testimonialSwipeStartX = useRef<number | null>(null);
   const fetchReviews = useServerFn(getGoogleReviews);
   const { data: reviews } = useQuery({
     queryKey: ["google-reviews"],
@@ -822,6 +830,40 @@ export function Testimonials() {
     ...TESTIMONIALS.map((t) => ({ ...t, rating: 5 })),
   ];
 
+  useEffect(() => {
+    if (
+      isTestimonialPaused ||
+      items.length < 2 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveTestimonial((current) => (current + 1) % items.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, [isTestimonialPaused, items.length]);
+
+  useEffect(() => {
+    if (activeTestimonial >= items.length) setActiveTestimonial(0);
+  }, [activeTestimonial, items.length]);
+
+  const moveTestimonials = (direction: -1 | 1) => {
+    setActiveTestimonial(
+      (current) => (current + direction + items.length) % items.length,
+    );
+  };
+
+  const testimonialPosition = (index: number) => {
+    let position = index - activeTestimonial;
+    const halfway = items.length / 2;
+    if (position > halfway) position -= items.length;
+    if (position < -halfway) position += items.length;
+    return position;
+  };
+
   return (
     <section id="depoimentos" className="bg-brand-cream-deep py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -835,9 +877,52 @@ export function Testimonials() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {items.map((t, i) => (
-            <Reveal key={`${t.name}-${i}`} delay={i * 100}>
+        <div
+          className="experience-coverflow relative -mx-5 mt-10 h-[430px] overflow-hidden px-5 pt-3 sm:-mx-8 sm:px-8 lg:mx-0"
+          role="region"
+          aria-roledescription="carrossel"
+          aria-label="Depoimentos dos convidados"
+          onMouseEnter={() => setIsTestimonialPaused(true)}
+          onMouseLeave={() => setIsTestimonialPaused(false)}
+          onFocusCapture={() => setIsTestimonialPaused(true)}
+          onBlurCapture={() => setIsTestimonialPaused(false)}
+          onPointerDown={(event) => {
+            setIsTestimonialPaused(true);
+            testimonialSwipeStartX.current = event.clientX;
+          }}
+          onPointerUp={(event) => {
+            if (testimonialSwipeStartX.current === null) return;
+            const distance = event.clientX - testimonialSwipeStartX.current;
+            testimonialSwipeStartX.current = null;
+            setIsTestimonialPaused(false);
+            if (Math.abs(distance) < 45) return;
+            moveTestimonials(distance < 0 ? 1 : -1);
+          }}
+          onPointerCancel={() => {
+            testimonialSwipeStartX.current = null;
+            setIsTestimonialPaused(false);
+          }}
+        >
+          {items.map((t, i) => {
+            const position = testimonialPosition(i);
+            const distance = Math.abs(position);
+            const isActive = position === 0;
+
+            return (
+            <div
+              key={`${t.name}-${i}`}
+              aria-hidden={!isActive}
+              className="experience-coverflow-card absolute left-1/2 top-3 w-[82vw] max-w-[390px]"
+              style={
+                {
+                  "--card-position": position,
+                  "--card-distance": Math.min(distance, 3),
+                  zIndex: 30 - distance,
+                  opacity: distance > 2 ? 0 : isActive ? 1 : 0.78,
+                  pointerEvents: isActive ? "auto" : "none",
+                } as CSSProperties
+              }
+            >
               <figure className="flex h-full flex-col rounded-sm border border-border/70 border-l-[3px] border-l-brand-gold bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-gold-glow)]">
                 <Quote className="h-7 w-7 text-brand-gold/60" />
                 <div className="mt-4 flex items-center gap-1 text-brand-gold">
@@ -859,7 +944,42 @@ export function Testimonials() {
                   </div>
                 </figcaption>
               </figure>
-            </Reveal>
+            </div>
+          )})}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[min(430px,96%)] -translate-x-1/2 -translate-y-1/2 justify-between"
+            aria-label="Controles dos depoimentos"
+          >
+            <button
+              type="button"
+              onClick={() => moveTestimonials(-1)}
+              aria-label="Depoimento anterior"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronLeft className="h-12 w-12 stroke-[1.35]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveTestimonials(1)}
+              aria-label="Próximo depoimento"
+              className="pointer-events-auto grid h-20 w-16 place-items-center text-brand-gold drop-shadow-[0_2px_3px_rgba(255,255,255,0.95)] transition-colors hover:text-brand-navy"
+            >
+              <ChevronRight className="h-12 w-12 stroke-[1.35]" />
+            </button>
+          </div>
+        </div>
+        <div
+          className="mt-1 flex justify-center gap-2"
+          aria-label="Posição dos depoimentos"
+        >
+          {items.map((testimonial, index) => (
+            <button
+              key={`${testimonial.name}-position-${index}`}
+              type="button"
+              aria-label={`Mostrar depoimento de ${testimonial.name}`}
+              onClick={() => setActiveTestimonial(index)}
+              className={`h-2 rounded-full transition-all ${activeTestimonial === index ? "w-7 bg-brand-gold" : "w-2 bg-brand-navy/25"}`}
+            />
           ))}
         </div>
       </div>
