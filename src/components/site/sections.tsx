@@ -176,14 +176,8 @@ export function Experiences() {
           </p>
         </Reveal>
 
-        <div className="mt-5">
-          <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
-            Deslize para conhecer todas
-          </p>
-        </div>
-
         <div
-          className="experience-coverflow relative -mx-5 mt-3 h-[590px] overflow-hidden px-5 pt-3 sm:-mx-8 sm:h-[610px] sm:px-8 lg:mx-0"
+          className="experience-coverflow relative -mx-5 mt-4 h-[590px] overflow-hidden px-5 pt-3 sm:-mx-8 sm:h-[610px] sm:px-8 lg:mx-0 lg:mt-3"
           role="region"
           aria-roledescription="carrossel"
           aria-label="Experiências Braso Taste"
@@ -729,14 +723,8 @@ export function Gallery() {
           </a>
         </Reveal>
 
-        <div className="mt-9">
-          <p className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
-            Deslize para assistir
-          </p>
-        </div>
-
         <div
-          className="relative"
+          className="relative mt-5"
           onPointerDown={() => setIsVideoCarouselPaused(true)}
           onPointerUp={() => setIsVideoCarouselPaused(false)}
           onPointerCancel={() => setIsVideoCarouselPaused(false)}
@@ -745,7 +733,7 @@ export function Gallery() {
           ref={videoCarouselRef}
           onScroll={updateActiveVideo}
           style={{ scrollbarWidth: "none", overflowY: "hidden" }}
-          className="experience-carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain"
+          className="experience-carousel flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain"
         >
           {VIDEO_GALLERY.map((video, i) => (
             <Reveal
@@ -1040,8 +1028,8 @@ export function Contact() {
       id="contato"
       className="relative bg-brand-navy text-brand-cream py-12 sm:py-14"
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.3fr] lg:items-start lg:gap-14">
-        <Reveal className="order-2 lg:order-1 lg:sticky lg:top-28">
+      <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.3fr] lg:items-start lg:gap-14">
+        <Reveal className="lg:sticky lg:top-28">
           <p className="eyebrow">Contato</p>
           <h2 className="mt-5 font-display text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
             Vamos criar a sua
@@ -1054,73 +1042,9 @@ export function Contact() {
             proposta personalizada.
           </p>
 
-          <div className="mt-9 space-y-5 text-[16px] text-brand-cream/90">
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                trackEvent("whatsapp_click", { location: "contact" })
-              }
-              className="flex items-center gap-4 transition-colors hover:text-brand-gold"
-            >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold">
-                <MessageCircle className="h-5 w-5" />
-              </span>
-              <span>
-                <strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">
-                  WhatsApp
-                </strong>
-                <span className="mt-1 block">(21) 97406-4098</span>
-              </span>
-            </a>
-            <a
-              href="https://instagram.com/brasotaste"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 transition-colors hover:text-brand-gold"
-            >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold">
-                <Instagram className="h-5 w-5" />
-              </span>
-              <span>
-                <strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">
-                  Instagram
-                </strong>
-                <span className="mt-1 block">@brasotaste</span>
-              </span>
-            </a>
-            <a
-              href="mailto:contato@brasotaste.com.br"
-              className="flex items-center gap-4 transition-colors hover:text-brand-gold"
-            >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold">
-                <Mail className="h-5 w-5" />
-              </span>
-              <span>
-                <strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">
-                  E-mail
-                </strong>
-                <span className="mt-1 block">contato@brasotaste.com.br</span>
-              </span>
-            </a>
-            <div className="flex items-center gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/35 text-brand-gold">
-                <MapPin className="h-5 w-5" />
-              </span>
-              <span>
-                <strong className="block text-[12px] tracking-[0.18em] uppercase text-brand-gold">
-                  Atendimento
-                </strong>
-                <span className="mt-1 block">
-                  Grande RJ, Região Serrana e Região dos Lagos
-                </span>
-              </span>
-            </div>
-          </div>
         </Reveal>
 
-        <Reveal delay={120} className="order-1 lg:order-2">
+        <Reveal delay={120}>
           <form
             onSubmit={handleSubmit}
             className="rounded-sm bg-brand-navy-deep p-7 ring-1 ring-white/10 shadow-[var(--shadow-elegant)] sm:p-10"
@@ -1203,7 +1127,7 @@ export function Contact() {
                   maxLength={1000}
                   rows={4}
                   className={`${input} min-h-[120px] py-3`}
-                  placeholder="Conte-nos sobre o seu evento (opcional)"
+                  placeholder="Informações adicionais (opcional)"
                 />
               </Field>
             </div>
@@ -1310,10 +1234,18 @@ export function Footer() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("whatsapp_click", { location: "footer" })
+                }
                 className="inline-flex items-center gap-2 hover:text-brand-gold"
               >
-                <MessageCircle className="h-4 w-4 text-brand-gold" /> (21)
-                97406-4098
+                <MessageCircle className="h-4 w-4 text-brand-gold" />
+                <span>
+                  <strong className="font-semibold text-brand-gold">
+                    WhatsApp:
+                  </strong>{" "}
+                  (21) 97406-4098
+                </span>
               </a>
               <a
                 href="https://instagram.com/brasotaste"
@@ -1376,9 +1308,12 @@ export function FloatingWhatsApp() {
         trackEvent("whatsapp_click", { location: "floating_button" })
       }
       aria-label="Conversar no WhatsApp"
-      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-brand-gold text-brand-navy shadow-[var(--shadow-gold-glow)] transition-transform duration-300 hover:scale-105"
+      className="fixed bottom-5 right-5 z-40 inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand-gold px-4 text-brand-navy shadow-[var(--shadow-gold-glow)] transition-transform duration-300 hover:scale-105"
     >
       <MessageCircle className="h-6 w-6" />
+      <span className="text-[12px] font-semibold tracking-[0.12em] uppercase">
+        WhatsApp
+      </span>
     </a>
   );
 }
