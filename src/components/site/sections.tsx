@@ -137,7 +137,7 @@ export function Experiences() {
 
     const timer = window.setInterval(() => {
       setActiveExperience((current) => (current + 1) % EXPERIENCES.length);
-    }, 4500);
+    }, 3800);
 
     return () => window.clearInterval(timer);
   }, [isCarouselPaused]);
@@ -688,10 +688,13 @@ export function Gallery() {
   const updateActiveVideo = () => {
     const carousel = videoCarouselRef.current;
     if (!carousel) return;
-    const left = carousel.scrollLeft;
+    const carouselLeft = carousel.getBoundingClientRect().left;
     const closest = Array.from(carousel.children).reduce(
       (best, child, index) => {
-        const distance = Math.abs((child as HTMLElement).offsetLeft - left);
+        const element = child as HTMLElement;
+        const distance = Math.abs(
+          element.getBoundingClientRect().left - carouselLeft,
+        );
         return distance < best.distance ? { index, distance } : best;
       },
       { index: 0, distance: Number.POSITIVE_INFINITY },
@@ -734,10 +737,6 @@ export function Gallery() {
 
         <div
           className="relative"
-          onMouseEnter={() => setIsVideoCarouselPaused(true)}
-          onMouseLeave={() => setIsVideoCarouselPaused(false)}
-          onFocusCapture={() => setIsVideoCarouselPaused(true)}
-          onBlurCapture={() => setIsVideoCarouselPaused(false)}
           onPointerDown={() => setIsVideoCarouselPaused(true)}
           onPointerUp={() => setIsVideoCarouselPaused(false)}
           onPointerCancel={() => setIsVideoCarouselPaused(false)}
